@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="spring.biz,aop" />
+	<aop:aspectj-autoproxy />
+	<!-- 트랜잭션 설정 -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!--jdbc 템플릿 ,data source 지정-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@70.12.115.75:1521:xe" />
+		<property name="username" value="cody" />
+		<property name="password" value="cody" />
+	</bean>
+	
+	<!-- MyBatis <start>-->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:/mybatis_config.xml"></property>
+	</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactoryBean"></constructor-arg>
+	</bean>
+	<!-- MyBatis <end>-->
+	
+	<bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource"/>
+	</bean>
+
+	<!-- 다국어 처리 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages.message</value>
+		</property>
+	</bean> 
+	
+	<!-- AOP 설정
+	<bean id="advice" class="aop.Advice"></bean>
+	AOP 환경설정
+	<aop:config>
+		<aop:pointcut expression="execution(* spring.biz.user.service.UserService.login(..))" id="mp"/>		
+		<aop:aspect ref="advice">
+			<aop:before pointcut-ref="mp" method="log" />
+			<aop:after-returning pointcut-ref="mp" method="after_Return" returning="data"/>
+			<aop:after-throwing pointcut-ref="mp" method="log" throwing="e" />
+			<aop:around pointcut-ref="mp" method="around" />
+		</aop:aspect>
+	</aop:config>-->
+	
+</beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMapper">
+     
+   <select id="login" parameterType="spring.biz.user.vo.UserVO" resultType="uservo">
+	  select * from userinfo 
+	  where userid=#{userid} and userpwd = #{userpwd}
+  </select>
+  <select id="getuser" resultType="uservo">
+  	select * from userinfo where userid = #{userid}
+  </select>
+  <insert id="adduser" parameterType="uservo">
+  insert into userinfo (userid, username, userpwd, email) 
+  values (#{userid}, #{username}, #{userpwd}, #{email})
+  </insert>
+  <select id="listuser" resultType="uservo">
+  select * from userinfo order by regdate desc
+  </select>
+  <update id="updateuser" parameterType="uservo">
+  update userinfo set email=#{email} where userid =#{userid}
+  </update>
+  <update id="removeuser">
+  delete from userinfo where  userid  = #{userid}
+  </update>
+  <select id="search" resultType="uservo" parameterType="hashMap">
+  select * from userinfo 
+  <where>
+  	<if test="userid != null">userid like '%'||#{userid}||'%'</if>
+  	<if test="username != null">username like '%'||#{username}||'%'</if>
+  	<if test="email != null">email like '%'||#{email}||'%'</if>
+  </where>
+   
+  </select>
+</mapper>
