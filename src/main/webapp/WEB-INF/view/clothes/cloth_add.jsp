@@ -8,15 +8,43 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>옷 등록</title>
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
-<script src="./js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
+<style type="text/css">
 
+</style>
 <script type="text/javascript">
-
+	
+	$(function () {
+		$("#cloth_uploadimg").on("change", handleImgFileSelect);
+	});
+	
+	function handleImgFileSelect(e) {
+		var files = e.target.files;
+		var fileArr = Array.prototype.slice.call(files);
+		
+		fileArr.forEach(function (f) {
+			if(!f.type.match("image.*")){
+				alert("확장자는 이미지 확장자만 가능합니다.");
+				return;
+			}
+			
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$("#img").attr("src", e.target.result);				
+			}
+			reader.readAsDataURL(f);
+		});
+		
+	}
 
 </script>
 
 </head>
 <body>
+<%@include file="/layout/header.jsp" %>
+<br>
 
 <div class="container">
 		<div class="row">
@@ -28,7 +56,7 @@
 						
 			<form method="post" enctype="multipart/form-data">
 				<figure class="figure">
-				 	 <img id="img" src="..." class="figure-img img-fluid rounded" alt="...">
+				 	 <img id="img"  class="figure-img img-fluid rounded">
 				  	<figcaption class="figure-caption text-right">옷 이미지 입니다.</figcaption>
 				</figure>
 			
