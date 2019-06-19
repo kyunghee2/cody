@@ -12,8 +12,8 @@
   	select * from userinfo where userid = #{userid}
   </select>
   <insert id="adduser" parameterType="uservo">
-  insert into userinfo (userid, username, userpwd, email) 
-  values (#{userid}, #{username}, #{userpwd}, #{email})
+  insert into userinfo (userid, name, userpwd, email, gender) 
+  values (#{userid}, #{name}, #{userpwd}, #{email}, #{gender})
   </insert>
   <select id="listuser" resultType="uservo">
   select * from userinfo order by regdate desc
@@ -28,7 +28,7 @@
   select * from userinfo 
   <where>
   	<if test="userid != null">userid like '%'||#{userid}||'%'</if>
-  	<if test="username != null">username like '%'||#{username}||'%'</if>
+  	<if test="username != null">name like '%'||#{name}||'%'</if>
   	<if test="email != null">email like '%'||#{email}||'%'</if>
   </where>
    

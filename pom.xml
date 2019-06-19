@@ -23,6 +23,13 @@
 		</repository>
 	</repositories>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+		    <groupId>commons-codec</groupId>
+		    <artifactId>commons-codec</artifactId>
+		    <version>1.10</version>
+		</dependency>
+
 		<!-- web Servlet -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>

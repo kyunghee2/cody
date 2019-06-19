@@ -1,5 +1,6 @@
 package web.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,12 +23,15 @@ import spring.biz.user.dao.UserDAO_JDBC;
 import spring.biz.user.service.UserService;
 import spring.biz.user.service.UserServiceImpl;
 import spring.biz.user.vo.UserVO;
+import util.AES256Util;
 import web.validator.UserValidator;
 
 @Controller
 public class UserController {
 	@Autowired
 	UserService service;
+	
+	private String key = "mc-cody-key!!@#%";    //acs key는 16자 이상
 	
 	@RequestMapping(value = "/user/join.do", method = RequestMethod.GET)
 	public String addJoin() {	
@@ -41,21 +45,34 @@ public class UserController {
 		view.setViewName("user/user_list");
 		return view;
 	}
-	@RequestMapping(value = "/user/add.do", method = RequestMethod.GET)
-	public String addUser() {	
-		return "user/user_write";
-	}
+//	@RequestMapping(value = "/user/add.do", method = RequestMethod.GET)
+//	public String addUser() {	
+//		return "user/user_write";
+//	}
+	//회원가입
 	@RequestMapping(value = "/user/add.do", method = RequestMethod.POST)
 	public String addUserProc(@ModelAttribute("user") UserVO vo,HttpServletRequest request,BindingResult errors) {	
 
-		new UserValidator().validate(vo, errors);//vo객체 유효성체크
-		if(errors.hasErrors()) {
-			return "user/user_write";
-		}
-		System.out.println(vo); //vo command 객체, 동적바인딩을 위해 form name과 동일하게 설정
-		int result = service.addUser(vo);
+//		new UserValidator().validate(vo, errors);//vo객체 유효성체크
+//		if(errors.hasErrors()) {
+//			return "user/user_write";
+//		}
+		System.out.println(vo); 
 		
-		return "redirect:./list.do";
+		try {
+			AES256Util aes256 = new AES256Util(key);			
+			String acs_pwd = aes256.aesEncode(vo.getUserpwd());
+			vo.setUserpwd(acs_pwd);
+			
+			int result = service.addUser(vo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "user/user_write";
+		}			
+		
+		//return "redirect:./list.do";
+		return "user/user_join_result";
 	}
 	@RequestMapping("/user/view.do")
 	public ModelAndView getView(@RequestParam("uid") String id) {

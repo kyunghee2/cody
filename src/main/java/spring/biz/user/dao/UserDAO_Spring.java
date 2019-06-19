@@ -53,7 +53,7 @@ public class UserDAO_Spring implements UserDAO{
 		try {
 			
 			row = template.update(sql,new Object[] {user.getUserid(),
-											user.getUsername(),
+											user.getName(),
 											user.getUserpwd(),
 											user.getEmail(),
 											user.getPhone(),
@@ -137,7 +137,7 @@ class UserRowMapper implements RowMapper<UserVO>{
 	public UserVO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		UserVO user=new UserVO();
 		user.setUserid(rs.getString("userid"));
-		user.setUsername(rs.getString("username"));
+		user.setName(rs.getString("name"));
 		user.setUserpwd(rs.getString("userpwd"));
 		user.setPhone(rs.getString("phone"));
 		user.setEmail(rs.getString("email"));

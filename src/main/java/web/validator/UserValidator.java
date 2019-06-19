@@ -18,9 +18,9 @@ public class UserValidator implements Validator{
 		if(vo.getUserid() == null || vo.getUserid().trim().isEmpty()) {
 			errors.rejectValue("userid", "required");
 		}
-		if(vo.getUsername()== null || vo.getUsername().trim().isEmpty()) {
-			errors.rejectValue("username", "required",
-					new Object[] {"username"},"input username");
+		if(vo.getName()== null || vo.getName().trim().isEmpty()) {
+			errors.rejectValue("name", "required",
+					new Object[] {"name"},"input name");
 		}
 		if(vo.getUserpwd()== null || vo.getUserpwd().trim().isEmpty()) {
 			errors.rejectValue("userpwd", "required");

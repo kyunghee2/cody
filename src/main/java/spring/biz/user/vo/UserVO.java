@@ -2,36 +2,52 @@ package spring.biz.user.vo;
 
 public class UserVO {
 	private String userid;
-	private String username;
+	private String name;
 	private String userpwd;
 	private String email;
 	private String phone;
 	private String address;
+	private String gender;
 	
 	public UserVO() {
 		super();
 	}
-	public UserVO(String userid, String username, String userpwd, String email, String phone, String address) {
+	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public UserVO(String userid, String name, String userpwd, String email, String phone, String address,
+			String gender) {
 		super();
 		this.userid = userid;
-		this.username = username;
+		this.name = name;
 		this.userpwd = userpwd;
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
+		this.gender = gender;
 	}
+
 	public String getUserid() {
 		return userid;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public String getUsername() {
-		return username;
+	
+	public String getName() {
+		return name;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setName(String name) {
+		this.name = name;
 	}
+
 	public String getUserpwd() {
 		return userpwd;
 	}
@@ -58,7 +74,7 @@ public class UserVO {
 	}
 	@Override
 	public String toString() {
-		return "UserVO [userid=" + userid + ", username=" + username + ", userpwd=" + userpwd + ", email=" + email
+		return "UserVO [userid=" + userid + ", name=" + name + ", userpwd=" + userpwd + ", email=" + email
 				+ ", phone=" + phone + ", address=" + address + "]";
 	}
 	
