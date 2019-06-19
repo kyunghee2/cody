@@ -16,4 +16,15 @@ public class ClothesController {
 	public String cloth_add_() {
 		return "/clothes/cloth_add";
 	}
+	
+	
+	@RequestMapping(value = "myCloth_list.do", method = RequestMethod.GET)
+	public String myCloth_list() {
+		return "/clothes/myCloth_list";
+	}
+	
+	@RequestMapping(value = "myCloth_list.do", method = RequestMethod.POST)
+	public String myCloth_list_() {
+		return "/clothes/myCloth_list";
+	}
 }
