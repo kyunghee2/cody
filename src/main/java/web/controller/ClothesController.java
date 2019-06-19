@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ClothesController {
 
-	@RequestMapping(value = "/cloth_add.do", method = RequestMethod.GET)
+	@RequestMapping(value = "cloth_add.do", method = RequestMethod.GET)
 	public String cloth_add() {
-		return "cloth_add";
+		return "/clothes/cloth_add";
 	}
 	
-	@RequestMapping(value = "/cloth_add.do", method = RequestMethod.POST)
+	@RequestMapping(value = "cloth_add.do", method = RequestMethod.POST)
 	public String cloth_add_() {
-		return "cloth_add";
+		return "/clothes/cloth_add";
 	}
 }
