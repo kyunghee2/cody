@@ -13,21 +13,23 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class Weather {
-	static Map<String, String> map = new HashMap<String, String>();
+	Map<String, String> map = new HashMap<String, String>();
 	
 	public static void main(String[] args) {
-		System.out.println(getWeather());
+		Weather w = new Weather();
+		String lat = "37.50065903853966";
+		String lon = "127.03946862393614";
+		System.out.println(w.getWeather(lat, lon));
 	}
 	
-	static void tempToday()	{
+	private void tempToday(String lat, String lon)	{
 		BufferedReader br = null;
 		try	{
-			String nx = "92";
-			String ny = "131";
 			String baseDate = "20190619";
 			String baseTime = "0500";
 			String serviceKey = "lWyXzvx6gba4CMkvCzEHrp%2FktvU3U4lreQYOIx9MO1yYn%2BMicRUNTEwYWOYxOfFYgxGEEHzw4YHuVW2mC80GRA%3D%3D";
-			String tempAddress = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?serviceKey=" + serviceKey + "&base_date=" + baseDate + "&base_time=" + baseTime + "&nx="+ nx + "&ny=" + ny + "&_type=json";
+			String[] xy = xyConv(lat, lon); 
+			String tempAddress = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?serviceKey=" + serviceKey + "&base_date=" + baseDate + "&base_time=" + baseTime + "&nx="+ xy[0] + "&ny=" + xy[1] + "&_type=json";
 			URL url = new URL(tempAddress);
 			String line = "";
 			String result = "";
@@ -73,15 +75,14 @@ public class Weather {
 		}
 	}
 	
-	static void tempNow()	{
+	private void tempNow(String lat, String lon)	{
 		BufferedReader br = null;
 		try	{
-			String nx = "92";
-			String ny = "131";
 			String baseDate = "20190619";
 			String baseTime = "0500";
 			String serviceKey = "lWyXzvx6gba4CMkvCzEHrp%2FktvU3U4lreQYOIx9MO1yYn%2BMicRUNTEwYWOYxOfFYgxGEEHzw4YHuVW2mC80GRA%3D%3D";
-			String tempAddress = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?serviceKey=" + serviceKey + "&base_date=" + baseDate + "&base_time=" + baseTime + "&nx="+ nx + "&ny=" + ny + "&_type=json";
+			String[] xy = xyConv(lat, lon);
+			String tempAddress = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?serviceKey=" + serviceKey + "&base_date=" + baseDate + "&base_time=" + baseTime + "&nx="+ xy[0] + "&ny=" + xy[1] + "&_type=json";
 			URL url = new URL(tempAddress);
 			String line = "";
 			String result = "";
@@ -111,12 +112,11 @@ public class Weather {
 	}
 	
 	
-	static void dust()	{
+	private void dust()	{
 		BufferedReader br = null;
 		try {
 			String result = "";
 			String line;
-			String data = "";
 			JSONParser jsonParser = new JSONParser();
 			Date date = new Date();
 			String serviceKey = "lWyXzvx6gba4CMkvCzEHrp%2FktvU3U4lreQYOIx9MO1yYn%2BMicRUNTEwYWOYxOfFYgxGEEHzw4YHuVW2mC80GRA%3D%3D";
@@ -151,11 +151,49 @@ public class Weather {
 		}
 	}
 	
-	static String getWeather()	{
-		tempNow();
-		tempToday();
+	public String getWeather(String lat, String lon)	{
+		tempNow(lat, lon);
+		tempToday(lat, lon);
 		dust();
 		return JSONObject.toJSONString(map);
+	}
+	
+	private String[] xyConv(String lat, String lon)	{
+		String[] xy = new String[2];
+		double DEGRAD = Math.PI/180.0;
+		double RADDEG = 180.0/Math.PI;
+		double EARTH_RADIUS = 6371.00877;
+		double GRID = 5.0;
+		double SLAT1 = 30.0;
+		double SLAT2 = 60.0;
+		double OLON = 126.0;
+		double OLAT = 38.0;
+		int XO = 43;
+		int YO = 136;
+		
+		double re = EARTH_RADIUS/GRID;
+		double slat1 = SLAT1 * DEGRAD;
+		double slat2 = SLAT2 * DEGRAD;
+		double olon = OLON * DEGRAD;
+		double olat = OLAT * DEGRAD;
+		double sn = Math.tan(Math.PI * 0.25 + slat2 * 0.5)/ Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+		sn = Math.log(Math.cos(slat1) / Math.cos(slat2)) / Math.log(sn);
+        double sf = Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+        sf = Math.pow(sf, sn) * Math.cos(slat1) / sn;
+        double ro = Math.tan(Math.PI * 0.25 + olat * 0.5);
+        ro = re * sf / Math.pow(ro, sn);
+        xy[0] = lat;
+        xy[1] = lon;
+        
+        double ra = Math.tan(Math.PI * 0.25 + Double.parseDouble((lat)) * DEGRAD * 0.5);
+            ra = re * sf / Math.pow(ra, sn);
+            double theta = Double.parseDouble(lon) * DEGRAD - olon;
+            if (theta > Math.PI) theta -= 2.0 * Math.PI;
+            if (theta < -Math.PI) theta += 2.0 * Math.PI;
+            theta *= sn;
+            xy[0] = (int)Math.floor(ra * Math.sin(theta) + XO + 0.5)+"";
+            xy[1] = (int)Math.floor(ro - ra * Math.cos(theta) + YO + 0.5)+"";
+        return xy;
 	}
 
 }
