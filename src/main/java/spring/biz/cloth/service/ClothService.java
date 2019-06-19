@@ -8,8 +8,9 @@ public interface ClothService {
 	
 	int addCloth(ClothVO cloth);
 	List<ClothVO> getClothList();
-	List<ClothVO> getCloth(String uid, String kind);
-	int updateCloth(ClothVO cloth);
-	int removeCloth(Integer cid);
+	List<ClothVO> getCloth(String userid);
+	List<ClothVO> getClothKind(String userid, String kind);
+	int updateCloth(String  userid);
+	int removeCloth(Integer clothid);
 	
 }

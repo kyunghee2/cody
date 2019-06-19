@@ -10,9 +10,11 @@ public interface ClothDAO {
 	 
 	List<ClothVO> getClothList();
 	
-	List<ClothVO> getCloth(String uid, String kind);
+	List<ClothVO> getCloth(String userid);
 	
-	int updateCloth(ClothVO cloth);
+	List<ClothVO> getClothKind(String userid, String kind);
 	
-	int removeCloth(Integer cid);
+	int updateCloth(String userid);
+	
+	int removeCloth(Integer clothid);
 }

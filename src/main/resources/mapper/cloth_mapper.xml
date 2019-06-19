@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="clothMapper">
+
+
+	<insert id="addcloth">
+		insert into cloth (clothid, userid, imgpath, imgname, season, kind, color) 
+			values ((select nvl(max(clothid),0)+1 from cloth), #{userid},
+			 #{imgpath}, #{imgname}, #{season}, #{kind}, #{color})
+	</insert>
+
+	<select id="getclothlist" resultType="clothvo">
+		select * from cloth
+	</select>
+
+	<select id="getclothes" resultType="clothvo">
+		select * from cloth where userid = #{userid}
+	</select>
+
+	<select id="getclotheskind" resultType="clothvo" parameterType="hashMap">
+		select * from cloth where userid = #{userid} and kind = #{kind}
+	</select>
+
+	<update id="updatecloth" parameterType="clothvo">
+		update cloth set imgpath = #{imgpath}, imgname = #{imgname},
+			 season = #{season}, kind = #{kind}, color = #{color} where userid = #{userid}
+	</update>
+	
+	<delete id="removecloth">
+		delete from cloth where clothid  = #{clothid}
+	</delete>
+</mapper>
