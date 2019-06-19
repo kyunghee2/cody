@@ -11,7 +11,8 @@
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
 </head>
 <body>
-
+<%@include file="/layout/header.jsp" %>
+<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2"></div>

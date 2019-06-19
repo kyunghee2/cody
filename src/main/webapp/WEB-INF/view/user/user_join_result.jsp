@@ -7,6 +7,7 @@
 <title>가입완료</title>
 </head>
 <body>
+<%@include file="/layout/header.jsp" %>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
