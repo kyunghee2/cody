@@ -9,9 +9,7 @@
 <title>옷 등록</title>
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
 <script src="../js/bootstrap.js"></script>
-<style type="text/css">
 
-</style>
 <script type="text/javascript">
 	
 	$(function () {
@@ -38,7 +36,6 @@
 		});
 		
 	}
-
 </script>
 
 </head>
@@ -124,7 +121,6 @@
 							<button type="submit" class="btn btn-primary">옷 등록하기</button>
 						</div>
 			</div>
-			
 			
 			</form>
 			</div>
