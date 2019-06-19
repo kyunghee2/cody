@@ -9,7 +9,6 @@
 </head>
 <body>
 <h2>Cody index.js</h2>
-<h2>Cody index.js</h2>
 
 </body>
 </html>
