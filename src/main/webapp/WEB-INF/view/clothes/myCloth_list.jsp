@@ -38,7 +38,7 @@
 						<div class="col-xs-6 col-md-3" class="pull-right" class="form-inline">
 							<a href="#" class="thumbnail"> <img src="../img/clouds-3488632_1920.jpg"  width="100%" height="150"></a>
 							<a href="#" class="thumbnail"> <img src="../img/cold-front-63037_1920.jpg" width="100%" height="150"></a>
-							<a href="#" class="thumbnail"> <img src="..." alt="..."></a>
+							<a href="#" class="thumbnail"> <img src="../img/rain-2422642_1920.jpg" alt="..."></a>
 							<a href="#" class="thumbnail"> <img src="..." alt="..."></a>
 						</div>
 						
