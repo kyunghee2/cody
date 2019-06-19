@@ -9,6 +9,8 @@
 </head>
 <body>
 <h2>Cody index.js</h2>
+<ul>
 <li><a href="./login.do">로그인</a></li>
+</ul>
 </body>
 </html>
