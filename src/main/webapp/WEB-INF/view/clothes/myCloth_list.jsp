@@ -3,16 +3,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+</style>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <title>옷 장</title>
-<link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
-<script src="./js/bootstrap.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+<script src="../js/bootstrap.js"></script>
 </head>
 <body>
+<%@include file="/layout/header.jsp" %>
+<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2"></div>
@@ -30,9 +35,9 @@
 					<div class="tab-pane fade show active" id="home" role="tabpanel"
 						aria-labelledby="home-tab">
 
-						<div class="col-xs-6 col-md-3">
-							<a href="#" class="thumbnail"> <img src="..." alt="..."></a>
-							<a href="#" class="thumbnail"> <img src="..." alt="..."></a>
+						<div class="col-xs-6 col-md-3" class="pull-right" class="form-inline">
+							<a href="#" class="thumbnail"> <img src="../img/clouds-3488632_1920.jpg"  width="100%" height="150"></a>
+							<a href="#" class="thumbnail"> <img src="../img/cold-front-63037_1920.jpg" width="100%" height="150"></a>
 							<a href="#" class="thumbnail"> <img src="..." alt="..."></a>
 							<a href="#" class="thumbnail"> <img src="..." alt="..."></a>
 						</div>
