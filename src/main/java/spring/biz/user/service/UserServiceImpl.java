@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 			vo = dao.login(id, pw);
 
 			if (vo != null) {
-				msg = context.getMessage("login.success", new Object[] { vo.getUsername() }, Locale.KOREA);
+				msg = context.getMessage("login.success", new Object[] { vo.getName() }, Locale.KOREA);
 
 			} else {
 				msg = context.getMessage("login.fail", new Object[] { id }, Locale.KOREA);

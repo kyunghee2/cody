@@ -42,7 +42,7 @@ public class UserDAO_JDBC implements UserDAO{
 				vo.setPhone(rs.getString("phone"));
 				vo.setAddress(rs.getString("address"));
 				vo.setEmail(rs.getString("email"));
-				vo.setUsername(rs.getString("username"));
+				vo.setName(rs.getString("name"));
 				vo.setUserpwd(rs.getString("userpwd"));
 			}
 			
@@ -67,7 +67,7 @@ public class UserDAO_JDBC implements UserDAO{
 			ps = con.prepareStatement(sql);
 			//세팅
 			ps.setString(1, user.getUserid());
-			ps.setString(2, user.getUsername());
+			ps.setString(2, user.getName());
 			ps.setString(3, user.getUserpwd());
 			ps.setString(4, user.getEmail());
 			ps.setString(5, user.getPhone());
@@ -106,7 +106,7 @@ public class UserDAO_JDBC implements UserDAO{
 				vo.setPhone(rs.getString("phone"));
 				vo.setAddress(rs.getString("address"));
 				vo.setEmail(rs.getString("email"));
-				vo.setUsername(rs.getString("username"));
+				vo.setName(rs.getString("name"));
 				vo.setUserpwd(rs.getString("userpwd"));
 			}
 			
@@ -142,7 +142,7 @@ public class UserDAO_JDBC implements UserDAO{
 				vo.setPhone(rs.getString("phone"));
 				vo.setAddress(rs.getString("address"));
 				vo.setEmail(rs.getString("email"));
-				vo.setUsername(rs.getString("username"));
+				vo.setName(rs.getString("name"));
 				vo.setUserpwd(rs.getString("userpwd"));
 				list.add(vo);
 			}
@@ -235,7 +235,7 @@ public class UserDAO_JDBC implements UserDAO{
 				vo.setPhone(rs.getString("phone"));
 				vo.setAddress(rs.getString("address"));
 				vo.setEmail(rs.getString("email"));
-				vo.setUsername(rs.getString("username"));
+				vo.setName(rs.getString("name"));
 				vo.setUserpwd(rs.getString("userpwd"));
 				
 				list.add(vo);
