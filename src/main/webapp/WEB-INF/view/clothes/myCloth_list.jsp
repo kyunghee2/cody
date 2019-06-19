@@ -9,8 +9,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <title>옷 장</title>
-<link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
-<script src="./js/bootstrap.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+<script src="../js/bootstrap.js"></script>
 </head>
 <body>
 	<div class="container">

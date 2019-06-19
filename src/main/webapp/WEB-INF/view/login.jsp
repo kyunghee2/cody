@@ -20,7 +20,7 @@
 <body>
 <form class="form-signin" action="login.do" method="POST">
       <div class="text-center mb-4">
-        <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Cody Login</h1>
         <p></p>
       </div>
 
