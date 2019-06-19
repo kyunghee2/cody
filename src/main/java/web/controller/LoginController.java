@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,12 +14,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import spring.biz.user.service.UserService;
 import spring.biz.user.vo.UserVO;
+import util.AES256Util;
 
 @Controller
+@PropertySource("classpath:config.properties")
 public class LoginController {
 	@Autowired
 	UserService service;
 	
+	@Value("${secretkey}") 
+	private String key;
 	
 	@RequestMapping(value = "/login.do",method = RequestMethod.GET)
 	public String login() {
@@ -25,7 +31,10 @@ public class LoginController {
 	}
 	@RequestMapping(value = "/login.do",method = RequestMethod.POST)
 	public String loginProc(UserVO vo,HttpServletRequest request) throws Exception {
-		UserVO user = service.login(vo.getUserid(), vo.getUserpwd());
+		AES256Util aes256 = new AES256Util(key);			
+		String acs_pwd = aes256.aesEncode(vo.getUserpwd());
+		
+		UserVO user = service.login(vo.getUserid(), acs_pwd);
 		if(user != null) {
 			request.getSession().setAttribute("User", user);
 			request.getSession().setAttribute("login", user);

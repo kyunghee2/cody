@@ -48,7 +48,7 @@
 			<value>messages.message</value>
 		</property>
 	</bean> 
-	
+		
 	<!-- AOP 설정
 	<bean id="advice" class="aop.Advice"></bean>
 	AOP 환경설정

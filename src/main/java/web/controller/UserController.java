@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,11 +29,13 @@ import util.AES256Util;
 import web.validator.UserValidator;
 
 @Controller
+@PropertySource("classpath:config.properties")
 public class UserController {
 	@Autowired
 	UserService service;
 	
-	private String key = "mc-cody-key!!@#%";    //acs key는 16자 이상
+	@Value("${secretkey}") 
+	private String key;
 	
 	@RequestMapping(value = "/user/join.do", method = RequestMethod.GET)
 	public String addJoin() {	
