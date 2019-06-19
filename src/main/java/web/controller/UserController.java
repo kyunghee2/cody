@@ -29,6 +29,10 @@ public class UserController {
 	@Autowired
 	UserService service;
 	
+	@RequestMapping(value = "/user/join.do", method = RequestMethod.GET)
+	public String addJoin() {	
+		return "user/user_join";
+	}
 	@RequestMapping("/user/list.do")
 	public ModelAndView getUserList() {
 		ModelAndView view = new ModelAndView();
