@@ -1,15 +1,28 @@
 @charset "UTF-8";
       
-	#backgroundImage:after {
-		background-image:  url("../img/clouds-3488632_1920.jpg");
-		top:0;
-		left:0;
-		position: absolute;
-		filter:alpha(opacity=40);
-		opacity: 0.4!important;
-		z-index: -1;
-		content: "";
-		width: 100%;
-		height: 100%;
+#backgroundImage:after {
+	background-image:  url("../img/clouds-3488632_1920.jpg");
+	top:0;
+	left:0;
+	position: absolute;
+	filter:alpha(opacity=40);
+	opacity: 0.4!important;
+	z-index: -1;
+	content: "";
+	width: 100%;
+	height: 100%;
+}
+	
+#backgroundImage h1 {
+	text-align: center;
+}	
+
+#today {
+	text-align: center;
+	margin-top: 30px;
+	font-weight: normal;
+}
+
+#left_info {
 	
 }
