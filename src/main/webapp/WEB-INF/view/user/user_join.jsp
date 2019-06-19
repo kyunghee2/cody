@@ -14,8 +14,8 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-2"></div>
-			<div class="col-6">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
 
 				<h3>회원가입</h3>
 				<br>
@@ -83,7 +83,7 @@
 
 
 			</div>
-			<div class="col-2"></div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 
