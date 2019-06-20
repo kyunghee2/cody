@@ -14,40 +14,7 @@
 <link rel="stylesheet" href="./css/cody.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="./plugin/slick/slick.css">
 <link rel="stylesheet" type="text/css" href="./plugin/slick/slick-theme.css">
-<style type="text/css">
-
-.slider {
-	width: 50%;
-	margin: 100px auto;
-}
-
-.slick-slide {
-	margin: 0px 20px;
-}
-
-.slick-slide img {
-	width: 100%;
-}
-
-.slick-prev:before, .slick-next:before {
-	color: black;
-}
-
-.slick-slide {
-	transition: all ease-in-out .3s;
-	opacity: .2;
-}
-
-.slick-active {
-	opacity: .5;
-}
-
-.slick-current {
-	opacity: 1;
-}
-</style>
-
-
+<link rel="stylesheet" href="./css/index.css" type="text/css">
 </head>
 <body>
 	<%@include file="layout/header.jsp"%>
@@ -59,17 +26,17 @@
 					<form id="left_info">
 
 						<div id="now_location">
-							<label>현재위치</label>
+							<label>현재위치</label>&nbsp;<span id="position" class="weather_val"></span>
 						</div>
 
 						<div id="tempe">
-							<label>온도</label>
+							<label>온도</label>&nbsp;<span id="tempNow" class="weather_val"></span>
 						</div>
 						<div id="hum">
-							<label>습도</label>
+							<label>습도</label>&nbsp;<span id="humidity" class="weather_val"></span>
 						</div>
 						<div id="dust">
-							<label>미세먼지</label>
+							<label>미세먼지</label>&nbsp;<span id="pm10Grade" class="weather_val"></span>
 						</div>
 
 					</form>
@@ -177,9 +144,11 @@
 	<script src="./plugin/slick/slick.min.js" type="text/javascript"
 		charset="utf-8"></script>
 	<script type="text/javascript">
+	var log = console.log;
 		$(function() {
 			getToday();
-
+			getLocation();
+			
 			$('.autoplay').slick({
 				slidesToShow : 3,
 				slidesToScroll : 1,
@@ -189,10 +158,75 @@
 
 		});
 
+		function getLocation() {
+		  if (navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(geoPosition,showError);
+		  } else { 
+		    log("브라우저에서 위치정보를 가져올 수 없습니다.");
+		  }
+		}
+		function showError(error)
+		  {
+		  switch(error.code) 
+		    {
+		    case error.PERMISSION_DENIED:
+		    	log("User denied the request for Geolocation.");
+		      break;
+		    case error.POSITION_UNAVAILABLE:
+		    	log("Location information is unavailable.");
+		      break;
+		    case error.TIMEOUT:
+		    	log("The request to get user location timed out.");
+		      break;
+		    case error.UNKNOWN_ERROR:
+		    	log("An unknown error occurred.");
+		      break;
+		    }
+		  }
+		
+		function geoPosition(position) {			
+			var lat = position.coords.latitude;
+			var lon = position.coords.longitude
+		  log(position);
+		  
+		  getWeather(lat,lon);
+		}
+		function getWeather(p_lat,p_lon){
+			
+			$.ajax({
+				url:'./weather.do?lat='+p_lat+'&lon='+p_lon,
+				type:"GET",
+				//data:$('form').serializeArray(),
+				success:function(data){		
+					var json = $.parseJSON(data);
+					log(json);
+					weaderRender(json);
+				},
+				error:function(e){				
+					log(e);
+				}
+			});
+		}
+		function weaderRender(json){
+			var pm10Grade_txt="좋음";
+			if(json.pm10Grade!=undefined){
+				var pm10Grade = json.pm10Grade;
+				switch(pm10Grade){
+					case "1": pm10Grade_txt = "좋음"; break;
+					case "2": pm10Grade_txt = "보통"; break;
+					case "3": pm10Grade_txt = "나쁨"; break;
+					case "4": pm10Grade_txt = "매우나쁨"; break;
+					default: pm10Grade_txt = ""; break;
+				}
+				$("#pm10Grade").html(pm10Grade_txt);
+			}
+			if(json.tempNow != undefined)		
+				$("#tempNow").html(json.tempNow);
+			if(json.humidity != undefined)
+				$("#humidity").html(json.humidity);
+		}
 		function getToday() {
-
 			var date = new Date();
-
 			var yyyy = date.getFullYear();
 			var mm = date.getMonth() + 1;
 			var dd = date.getDate();
@@ -204,9 +238,10 @@
 				dd = "0" + dd;
 			}
 			var now = yyyy + "-" + mm + "-" + dd;
-			console.log(now);
+			//console.log(now);
 			$("#today").html(now);
 		}
 	</script>
+	
 </body>
 </html>
