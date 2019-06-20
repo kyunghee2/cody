@@ -10,7 +10,8 @@
 	z-index: -1;
 	content: "";
 	width: 100%;
-	height: 100%;
+	height: 200%;
+	background-size: cover;
 }
 	
 #backgroundImage h1 {
@@ -23,6 +24,35 @@
 	font-weight: normal;
 }
 
-#left_info {
-	
+#now_location{
+	margin-top:200px;
+	margin-bottom: 50px;
+}
+
+#tempe{
+	margin-bottom: 50px;
+}
+
+#hum{
+	margin-bottom: 50px;
+}
+
+#dust{
+	margin-bottom: 50px;
+}
+
+#index_cloth_top{
+	margin-top: 150px;
+}
+
+#index_cloth_bottom{
+	margin-top: 300px;
+}
+
+#index_cloth_history{
+	margin-top: 300px;
+}
+
+#topclothes{
+	width: 800px;
 }

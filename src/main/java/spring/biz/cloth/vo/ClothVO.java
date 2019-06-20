@@ -16,10 +16,9 @@ public class ClothVO {
 	public ClothVO() {
 		super();
 	}
-	public ClothVO(int clothid, String userid, String imgpath, String imgname, String season, String kind, String color,
+	public ClothVO(String userid, String imgpath, String imgname, String season, String kind, String color,
 			Date reg_date) {
 		super();
-		this.clothid = clothid;
 		this.userid = userid;
 		this.imgpath = imgpath;
 		this.imgname = imgname;
