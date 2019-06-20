@@ -34,30 +34,41 @@ public class ClothServiceImpl implements ClothService{
 	public void setDao(ClothDAO dao) {
 		this.dao = dao;
 	}
-	
+
 	public int addCloth(ClothVO cloth) {
 		return dao.addCloth(cloth);
 	}
 
+	@Override
+	public ClothVO getClothId(Integer clothid) {
+		return dao.getClothId(clothid);
+	}
+	@Override
 	public List<ClothVO> getClothList() {
 		return dao.getClothList();
 	}
+
 
 	public List<ClothVO> getCloth(String userid) {
 		return dao.getCloth(userid);
 	}
 	
+	
+	@Override
+	public int updateCloth(ClothVO vo) {
+		return dao.updateCloth(vo);
+	}
+
+	@Override
+	public int removeCloth(Integer clothid) {
+		return dao.removeCloth(clothid);
+	}
+	@Override
 	public List<ClothVO> getClothKind(String userid, String kind) {
 		return dao.getClothKind(userid, kind);
 	}
 	
-	public int updateCloth(String userid) {
-		return dao.updateCloth(userid);
-	}
 
-	public int removeCloth(Integer clothid) {
-		return dao.removeCloth(clothid);
-	}
-	
 
 }
+

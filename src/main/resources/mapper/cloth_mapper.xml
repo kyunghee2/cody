@@ -5,30 +5,37 @@
 <mapper namespace="clothMapper">
 
 
-	<insert id="addcloth">
+<insert id="addcloth"><!-- 완료 -->
 		insert into cloth (clothid, userid, imgpath, imgname, season, kind, color) 
 			values ((select nvl(max(clothid),0)+1 from cloth), #{userid},
 			 #{imgpath}, #{imgname}, #{season}, #{kind}, #{color})
 	</insert>
 
-	<select id="getclothlist" resultType="clothvo">
+	<select id="getclothlist" resultType="clothvo"> <!-- 완료 -->
 		select * from cloth
 	</select>
 
-	<select id="getclothes" resultType="clothvo">
+	<select id="getclothes" resultType="clothvo"> <!-- 완료 -->
 		select * from cloth where userid = #{userid}
 	</select>
+	
+	<select id="getclothid" resultType="clothvo"> <!-- 완료 -->
+		select * from cloth where clothid = #{clothid}
+	</select>
 
-	<select id="getclotheskind" resultType="clothvo" parameterType="hashMap">
+	<select id="getclotheskind" resultType="clothvo" parameterType="Map"> <!-- 완료 -->
 		select * from cloth where userid = #{userid} and kind = #{kind}
 	</select>
 
-	<update id="updatecloth" parameterType="clothvo">
+	<update id="updatecloth" parameterType="clothvo"> <!-- 완료 -->
 		update cloth set imgpath = #{imgpath}, imgname = #{imgname},
-			 season = #{season}, kind = #{kind}, color = #{color} where userid = #{userid}
+			 season = #{season}, kind = #{kind}, color = #{color} where clothid = #{clothid}
 	</update>
 	
-	<delete id="removecloth">
-		delete from cloth where clothid  = #{clothid}
+	<delete id="removecloth" parameterType="map">
+		delete from cloth where clothid in
+		<foreach item="cloth" index="index" collection="list" open="(" separator="," close=")">
+		 	#{cloth.clothid}
+		 </foreach>
 	</delete>
 </mapper>
