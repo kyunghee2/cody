@@ -1,5 +1,6 @@
 @charset "UTF-8";
-      
+
+/* index.jsp */      
 #backgroundImage:after {
 	background-image:  url("../img/clouds-3488632_1920.jpg");
 	top:0;
@@ -53,6 +54,7 @@
 	margin-top: 300px;
 }
 
+/* myCloth_list.jsp */
 #topclothes{
 	width: 800px;
 }
