@@ -26,7 +26,7 @@
 					<form id="left_info">
 
 						<div id="now_location">
-							<label>현재위치</label>&nbsp;<span id="position" class="weather_val"></span>
+							<label>현재위치</label>&nbsp;<span id="position" class="weather_val">강남구</span>
 						</div>
 
 						<div id="tempe">
