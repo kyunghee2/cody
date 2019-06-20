@@ -78,3 +78,7 @@ img{
 	height:186px;
 }
 
+.cloth_selected {
+	    border-style: solid;
+}
+
