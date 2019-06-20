@@ -2,12 +2,23 @@ package spring.biz.cloth.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
+
 import spring.biz.cloth.dao.ClothDAO;
 import spring.biz.cloth.vo.ClothVO;
 
+@Service("clothservice")
 public class ClothServiceImpl implements ClothService{
 
+	@Resource(name = "cmybatis")
 	ClothDAO dao;
+
+	@Autowired
+	ApplicationContext context;
 	
 	public ClothServiceImpl() {
 		
@@ -23,30 +34,32 @@ public class ClothServiceImpl implements ClothService{
 	public void setDao(ClothDAO dao) {
 		this.dao = dao;
 	}
-	
 	@Override
 	public int addCloth(ClothVO cloth) {
 		return dao.addCloth(cloth);
 	}
-
+	@Override
+	public ClothVO getClothId(Integer clothid) {
+		return dao.getClothId(clothid);
+	}
 	@Override
 	public List<ClothVO> getClothList() {
 		return dao.getClothList();
 	}
-
 	@Override
-	public List<ClothVO> getCloth(String uid, String kind) {
-		return dao.getCloth(uid, kind);
+	public List<ClothVO> getCloth(String userid) {
+		return dao.getCloth(userid);
 	}
-
 	@Override
-	public int updateCloth(ClothVO cloth) {
-		return dao.updateCloth(cloth);
+	public int updateCloth(ClothVO vo) {
+		return dao.updateCloth(vo);
 	}
-
 	@Override
-	public int removeCloth(Integer cid) {
-		return dao.removeCloth(cid);
+	public int removeCloth(Integer clothid) {
+		return dao.removeCloth(clothid);
 	}
-
+	@Override
+	public List<ClothVO> getClothKind(String userid, String kind) {
+		return dao.getClothKind(userid, kind);
+	}
 }

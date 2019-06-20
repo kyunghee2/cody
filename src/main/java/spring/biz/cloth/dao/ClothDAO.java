@@ -7,12 +7,16 @@ import spring.biz.cloth.vo.ClothVO;
 public interface ClothDAO {
 
 	int addCloth(ClothVO cloth);
+	
+	ClothVO getClothId(Integer clothid);
 	 
 	List<ClothVO> getClothList();
 	
-	List<ClothVO> getCloth(String uid, String kind);
+	List<ClothVO> getCloth(String userid);
 	
-	int updateCloth(ClothVO cloth);
+	List<ClothVO> getClothKind(String userid, String kind);
 	
-	int removeCloth(Integer cid);
+	int updateCloth(ClothVO vo);
+	
+	int removeCloth(Integer clothid);
 }
