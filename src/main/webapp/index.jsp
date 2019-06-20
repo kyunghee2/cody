@@ -13,18 +13,9 @@
 <script src="./js/bootstrap.js"></script>
 <link rel="stylesheet" href="./css/cody.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="./plugin/slick/slick.css">
-<link rel="stylesheet" type="text/css"
-	href="./plugin/slick/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="./plugin/slick/slick-theme.css">
 <style type="text/css">
 
-/*     html, body {
-      margin: 0;
-      padding: 0;
-    }
-
-    * {
-      box-sizing: border-box;
-    } */
 .slider {
 	width: 50%;
 	margin: 100px auto;
@@ -89,7 +80,7 @@
 						<h1>오늘의 코디</h1>
 						<div id="today"></div>
 
-						<div id="index_cloth_top" class="alert alert-success" role="alert">
+						<div id="index_cloth_top" class="alert alert-success subtitle" role="alert">
 							<strong>상의</strong>
 						</div>
 						<!-- 상의list <start> -->
@@ -99,33 +90,80 @@
 								<img src="./upload/pic1.jpg">
 							</div>
 							<div>
-								<h3>2</h3>
+								<img src="./upload/pic1.jpg">
 							</div>
 							<div>
-								<h3>3</h3>
+								<img src="./upload/pic1.jpg">
 							</div>
 							<div>
-								<h3>4</h3>
+								<img src="./upload/pic1.jpg">
 							</div>
 							<div>
-								<h3>5</h3>
+								<img src="./upload/pic1.jpg">
 							</div>
 							<div>
-								<h3>6</h3>
+								<img src="./upload/pic1.jpg">
 							</div>
 						</div>
 
 						<!-- 상의list <end> -->
 
-						<div id="index_cloth_bottom" class="alert alert-success"
+						<div id="index_cloth_bottom" class="alert alert-success subtitle"
 							" role="alert">
 							<strong>하의</strong>
 						</div>
-
-						<div id="index_cloth_history" class="alert alert-success"
-							" role="alert">
-							<strong>최근 입었던 옷 (Top4정도)</strong>
+						<!-- 하의list <start> -->
+						<div id="slide2" class="autoplay "
+							data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
 						</div>
+
+						<!-- 하의list <end> -->
+						<div id="index_cloth_history" class="alert alert-success subtitle"
+							" role="alert">
+							<strong>최근 입었던 옷</strong>
+						</div>
+						<!-- list <start> -->
+						<div id="slide3" class="autoplay "
+							data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+							<div>
+								<img src="./upload/pic1.jpg">
+							</div>
+						</div>
+
+						<!-- list <end> -->
 					</form>
 
 
@@ -145,7 +183,7 @@
 			$('.autoplay').slick({
 				slidesToShow : 3,
 				slidesToScroll : 1,
-				autoplay : true,
+				autoplay : false,
 				autoplaySpeed : 2000,
 			});
 
