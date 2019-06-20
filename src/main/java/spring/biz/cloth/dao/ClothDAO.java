@@ -16,7 +16,11 @@ public interface ClothDAO {
 	
 	List<ClothVO> getClothKind(String userid, String kind);
 	
+<<<<<<< HEAD
 	int updateCloth(ClothVO vo);
+=======
+	int updateCloth(String userid);
+>>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	
 	int removeCloth(Integer clothid);
 }
