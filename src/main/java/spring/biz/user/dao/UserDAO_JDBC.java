@@ -17,6 +17,7 @@ public class UserDAO_JDBC implements UserDAO{
 	public UserDAO_JDBC() {
 		//System.out.println("UserDAO_JDBC 호출");
 	}
+	@Override
 	public UserVO login(String id, String pw) {		
 		String sql = "select * from userinfo where userid=? and userpwd = ?";
 		
@@ -53,6 +54,7 @@ public class UserDAO_JDBC implements UserDAO{
 		return vo;
 	}
 
+	@Override
 	public int addUser(UserVO user) {
 		String sql = "insert into userinfo (userid, username, userpwd, email, phone,address) values (?, ?, ?, ?, ?, ?)";
 		Connection con = null;
@@ -82,6 +84,7 @@ public class UserDAO_JDBC implements UserDAO{
 		return row;
 	}
 
+	@Override
 	public UserVO getUser(String uid) {
 		String sql = "select * from userinfo where userid = ?";
 		Connection con = null;
@@ -116,6 +119,7 @@ public class UserDAO_JDBC implements UserDAO{
 		return vo;
 	}
 
+	@Override
 	public List<UserVO> getUserList() {
 		String sql = "select * from userinfo ";
 		Connection con = null;
@@ -152,6 +156,7 @@ public class UserDAO_JDBC implements UserDAO{
 		return list;
 	}
 
+	@Override
 	public int updateUser(UserVO user) {
 		String sql ="update userinfo set email=?,phone=?,address=? where userid =?";
 		Connection con = null;
@@ -180,6 +185,7 @@ public class UserDAO_JDBC implements UserDAO{
 		return row;
 	}
 
+	@Override
 	public int removeUser(String uid) {
 		String sql = "delete from userinfo where  userid  = ? ";
 		Connection con = null;
@@ -204,6 +210,7 @@ public class UserDAO_JDBC implements UserDAO{
 		return row;
 	}
 
+	@Override
 	public List<UserVO> searchUser(String condition, String keyword) {
 		String sql = "select * from userinfo where "+condition +" like '%'||?||'%'";
 		

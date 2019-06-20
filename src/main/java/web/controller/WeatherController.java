@@ -1,10 +1,9 @@
 package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import spring.biz.user.service.UserService;
 import weather.Weather;
@@ -14,9 +13,10 @@ public class WeatherController {
 	@Autowired
 	UserService service;
 	
-	@RequestMapping(value = "/weather.do")
-	public ResponseEntity<String> getWeather(String lat, String lon) {
-		return new ResponseEntity<String>(new Weather().getWeather(lat, lon), HttpStatus.OK);
+	@RequestMapping(value = "/weather.do", method = RequestMethod.GET)
+	public String weatherJSON(String lat, String lon) {	
+		Weather w = new Weather();
+		return w.getWeather(lat, lon);
 	}
 	
 }

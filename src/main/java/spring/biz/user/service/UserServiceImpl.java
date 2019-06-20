@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
 		this.dao = dao;
 	}
 
+	@Override
 	public UserVO login(String id, String pw) {
 
 		String msg = "";
@@ -60,26 +61,32 @@ public class UserServiceImpl implements UserService {
 		return vo;
 	}
 
+	@Override
 	public int addUser(UserVO user) {
 		return dao.addUser(user);
 	}
 
+	@Override
 	public UserVO getUser(String uid) {
 		return dao.getUser(uid);
 	}
 
+	@Override
 	public List<UserVO> getUserList() {
 		return dao.getUserList();
 	}
 
+	@Override
 	public int updateUser(UserVO user) {
 		return dao.updateUser(user);
 	}
 
+	@Override
 	public int removeUser(String uid) {
 		return dao.removeUser(uid);
 	}
 
+	@Override
 	public List<UserVO> searchUser(String condition, String keyword) {
 		return dao.searchUser(condition, keyword);
 	}

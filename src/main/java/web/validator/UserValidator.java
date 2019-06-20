@@ -7,10 +7,12 @@ import spring.biz.user.vo.UserVO;
 
 public class UserValidator implements Validator{
 
+	@Override
 	public boolean supports(Class<?> clazz) {
 		return true;
 	}
 
+	@Override
 	public void validate(Object target, Errors errors) {
 		UserVO vo=(UserVO) target;
 		if(vo.getUserid() == null || vo.getUserid().trim().isEmpty()) {
