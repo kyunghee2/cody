@@ -1,7 +1,7 @@
 @charset "UTF-8";
       
 #backgroundImage:after {
-	background-image:  url("../img/clouds-3488632_1920.jpg");
+	background-image:  url("../img/weather_1.jpg");
 	top:0;
 	left:0;
 	position: absolute;
