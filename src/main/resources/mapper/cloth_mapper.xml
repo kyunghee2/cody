@@ -5,8 +5,7 @@
 <mapper namespace="clothMapper">
 
 
-<<<<<<< HEAD
-	<insert id="addcloth"><!-- 완료 -->
+<insert id="addcloth"><!-- 완료 -->
 		insert into cloth (clothid, userid, imgpath, imgname, season, kind, color) 
 			values ((select nvl(max(clothid),0)+1 from cloth), #{userid},
 			 #{imgpath}, #{imgname}, #{season}, #{kind}, #{color})
@@ -38,32 +37,5 @@
 		<foreach item="cloth" index="index" collection="list" open="(" separator="," close=")">
 		 	#{cloth.clothid}
 		 </foreach>
-=======
-	<insert id="addcloth">
-		insert into cloth (clothid, userid, imgpath, imgname, season, kind, color) 
-			values ((select nvl(max(clothid),0)+1 from cloth), #{userid},
-			 #{imgpath}, #{imgname}, #{season}, #{kind}, #{color})
-	</insert>
-
-	<select id="getclothlist" resultType="clothvo">
-		select * from cloth
-	</select>
-
-	<select id="getclothes" resultType="clothvo">
-		select * from cloth where userid = #{userid}
-	</select>
-
-	<select id="getclotheskind" resultType="clothvo" parameterType="hashMap">
-		select * from cloth where userid = #{userid} and kind = #{kind}
-	</select>
-
-	<update id="updatecloth" parameterType="clothvo">
-		update cloth set imgpath = #{imgpath}, imgname = #{imgname},
-			 season = #{season}, kind = #{kind}, color = #{color} where userid = #{userid}
-	</update>
-	
-	<delete id="removecloth">
-		delete from cloth where clothid  = #{clothid}
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	</delete>
 </mapper>

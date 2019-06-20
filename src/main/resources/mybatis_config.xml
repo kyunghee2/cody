@@ -5,11 +5,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="spring.biz.user.vo.UserVO" alias="uservo"/>
-<<<<<<< HEAD
 		<typeAlias type="spring.biz.cloth.vo.ClothVO" alias="clothvo"/>		
-=======
-		<typeAlias type="spring.biz.cloth.vo.ClothVO" alias="clothvo"/>
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
+
 	</typeAliases>
   
   <mappers>

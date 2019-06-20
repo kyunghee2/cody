@@ -34,55 +34,31 @@ public class ClothServiceImpl implements ClothService{
 	public void setDao(ClothDAO dao) {
 		this.dao = dao;
 	}
-<<<<<<< HEAD
-	@Override
-=======
-	
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
+
 	public int addCloth(ClothVO cloth) {
 		return dao.addCloth(cloth);
 	}
-<<<<<<< HEAD
+
 	@Override
 	public ClothVO getClothId(Integer clothid) {
 		return dao.getClothId(clothid);
 	}
 	@Override
-=======
-
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	public List<ClothVO> getClothList() {
 		return dao.getClothList();
 	}
-<<<<<<< HEAD
-	@Override
-	public List<ClothVO> getCloth(String userid) {
-		return dao.getCloth(userid);
-=======
+
 
 	public List<ClothVO> getCloth(String userid) {
 		return dao.getCloth(userid);
 	}
 	
-	public List<ClothVO> getClothKind(String userid, String kind) {
-		return dao.getClothKind(userid, kind);
-	}
 	
-	public int updateCloth(String userid) {
-		return dao.updateCloth(userid);
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
-	}
-<<<<<<< HEAD
 	@Override
 	public int updateCloth(ClothVO vo) {
 		return dao.updateCloth(vo);
-=======
-
-	public int removeCloth(Integer clothid) {
-		return dao.removeCloth(clothid);
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	}
-<<<<<<< HEAD
+
 	@Override
 	public int removeCloth(Integer clothid) {
 		return dao.removeCloth(clothid);
@@ -91,8 +67,7 @@ public class ClothServiceImpl implements ClothService{
 	public List<ClothVO> getClothKind(String userid, String kind) {
 		return dao.getClothKind(userid, kind);
 	}
-=======
 	
 
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
+
 }
