@@ -29,9 +29,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
-=======
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

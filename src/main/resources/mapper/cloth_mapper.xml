@@ -5,78 +5,30 @@
 <mapper namespace="clothMapper">
 
 
-<<<<<<< HEAD
 	<insert id="addcloth">
-		insert into cloth (clothid, userid, imgpath, imgname,
-		season, kind, color)
-		values ((select nvl(max(clothid),0)+1 from cloth), #{userid},
-		#{imgpath}, #{imgname}, #{season}, #{kind}, #{color})
-=======
-<insert id="addcloth"><!-- 완료 -->
 		insert into cloth (clothid, userid, imgpath, imgname, season, kind, color) 
 			values ((select nvl(max(clothid),0)+1 from cloth), #{userid},
 			 #{imgpath}, #{imgname}, #{season}, #{kind}, #{color})
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	</insert>
 
-	<select id="getclothlist" resultType="clothvo"> <!-- 완료 -->
+	<select id="getclothlist" resultType="clothvo">
 		select * from cloth
 	</select>
 
-<<<<<<< HEAD
 	<select id="getclothes" resultType="clothvo">
-		select * from cloth where
-		userid = #{userid}
-=======
-	<select id="getclothes" resultType="clothvo"> <!-- 완료 -->
 		select * from cloth where userid = #{userid}
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
-	</select>
-	
-	<select id="getclothid" resultType="clothvo"> <!-- 완료 -->
-		select * from cloth where clothid = #{clothid}
 	</select>
 
-<<<<<<< HEAD
-	<select id="getclotheskind" resultType="clothvo"
-		parameterType="hashMap">
-		select * from cloth where userid = #{userid} and kind =
-		#{kind}
-=======
-	<select id="getclotheskind" resultType="clothvo" parameterType="Map"> <!-- 완료 -->
+	<select id="getclotheskind" resultType="clothvo" parameterType="hashMap">
 		select * from cloth where userid = #{userid} and kind = #{kind}
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	</select>
 
-<<<<<<< HEAD
 	<update id="updatecloth" parameterType="clothvo">
-		update cloth set imgpath
-		= #{imgpath}, imgname = #{imgname},
-		season = #{season}, kind = #{kind}, color = #{color} where userid =
-		#{userid}
-=======
-	<update id="updatecloth" parameterType="clothvo"> <!-- 완료 -->
 		update cloth set imgpath = #{imgpath}, imgname = #{imgname},
-			 season = #{season}, kind = #{kind}, color = #{color} where clothid = #{clothid}
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
+			 season = #{season}, kind = #{kind}, color = #{color} where userid = #{userid}
 	</update>
-<<<<<<< HEAD
-
-	<delete id="removecloth">
-		delete from cloth
-		<where>
-		clothid in
-			<foreach collection="list" item="item" separator="," open="(" close=")">
-				#{item.value}
-			</foreach>
-		</where>
-=======
 	
-	<delete id="removecloth" parameterType="map">
-		delete from cloth where clothid in
-		<foreach item="cloth" index="index" collection="list" open="(" separator="," close=")">
-		 	#{cloth.clothid}
-		 </foreach>
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
+	<delete id="removecloth">
+		delete from cloth where clothid  = #{clothid}
 	</delete>
 </mapper>

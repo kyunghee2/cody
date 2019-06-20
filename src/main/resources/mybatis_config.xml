@@ -5,8 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="spring.biz.user.vo.UserVO" alias="uservo"/>
-		<typeAlias type="spring.biz.cloth.vo.ClothVO" alias="clothvo"/>		
-
+		<typeAlias type="spring.biz.cloth.vo.ClothVO" alias="clothvo"/>
 	</typeAliases>
   
   <mappers>

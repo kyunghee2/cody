@@ -53,7 +53,7 @@
 						
 			<form method="post" enctype="multipart/form-data">
 				<figure class="figure">
-				 	 <img id="img"  class="figure-img img-fluid rounded">
+				 	 <img id="img"  class="rounded-lg" width="300" height="300">
 				  	<figcaption class="figure-caption text-right">옷 이미지 입니다.</figcaption>
 				</figure>
 			
