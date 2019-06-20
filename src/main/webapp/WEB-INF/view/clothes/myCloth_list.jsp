@@ -13,77 +13,167 @@
 
 <title>옷 장</title>
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="../css/clotheslist.css" type="text/css">
 <script src="../js/bootstrap.js"></script>
+<script src="../js/myclothes.js"></script>
 <link rel="stylesheet" href="../css/cody.css" type="text/css">
 </head>
-<body>
+<body id="boby">
 	<%@include file="/layout/header.jsp"%>
-	<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 
-				<ul class="nav nav-tabs" id="myTab" role="tablist">
-					<li class="nav-item"><a class="nav-link active" id="home-tab"
-						data-toggle="tab" href="#home" role="tab" aria-controls="home"
-						aria-selected="true">상의</a></li>
-					<li class="nav-item"><a class="nav-link" id="profile-tab"
-						data-toggle="tab" href="#profile" role="tab"
-						aria-controls="profile" aria-selected="false">하의</a></li>
+				<div id="myBtnContainer">
+					<button class="btn active" onclick="filterSelection('all')">
+						Show all</button>
+					<button class="btn" onclick="filterSelection('nature')">
+						Nature</button>
+					<button class="btn" onclick="filterSelection('cars')">Cars</button>
+					<button class="btn" onclick="filterSelection('people')">
+						People</button>
+				</div>
 
-					<a href="http://localhost:9090/cody/clothes/cloth_add.do"
-						class="btn btn-outline-dark" role="button" style="float: right;">옷등록</a>
-					<a class="btn btn-outline-dark" role="button" style="float: right;">옷삭제</a>
-
-				</ul>
-				<div class="tab-content" id="myTabContent">
-					<div class="tab-pane fade show active" id="home" role="tabpanel"
-						aria-labelledby="home-tab">
-						<div class="col-xs-6 col-md-3 input-group-append overflow-auto" id="topclothes">
-							<a href="#" class="thumbnail"> <img
-								src="../img/clouds-3488632_1920.jpg"></a> <a href="#"
-								class="thumbnail"> <img
-								src="../img/cold-front-63037_1920.jpg"></a> <a href="#"
-								class="thumbnail"> <img src="../img/rain-2422642_1920.jpg"></a>
-							<a href="#" class="thumbnail"> <img
-								src="../img/rain-731313_1920.jpg"></a> <a href="#"
-								class="thumbnail"> <img src="../img/sky-2048854_1920.jpg"></a>
-							<a href="#" class="thumbnail"> <img
-								src="../img/clouds-3488632_1920.jpg"></a> <a href="#"
-								class="thumbnail"> <img
-								src="../img/cold-front-63037_1920.jpg"></a> <a href="#"
-								class="thumbnail"> <img src="../img/rain-2422642_1920.jpg"></a>
-							<a href="#" class="thumbnail"> <img
-								src="../img/rain-731313_1920.jpg"></a> <a href="#"
-								class="thumbnail"> <img src="../img/clouds-3488632_1920.jpg"></a>
-							<a href="#" class="thumbnail"> <img
-								src="../img/cold-front-63037_1920.jpg"></a> <a href="#"
-								class="thumbnail"> <img src="../img/rain-2422642_1920.jpg"></a>
-							<a href="#" class="thumbnail"> <img
-								src="../img/rain-731313_1920.jpg"></a> <a href="#"
-								class="thumbnail"> <img src="../img/sky-2048854_1920.jpg"></a>
-						</div>
-
-					</div>
-					<div class="tab-pane fade" id="profile" role="tabpanel"
-						aria-labelledby="profile-tab">
-						<div class="col-xs-6 col-md-3" id="pants">
-							<a href="#" class="thumbnail"> <img src="../img/pic1.jpg"></a>
-							<a href="#" class="thumbnail"> <img src="../img/pic2.jpg"></a>
-							<a href="#" class="thumbnail"> <img src="../img/pic3.jpg"></a>
-							<a href="#" class="thumbnail"> <img src="../img/pic1.jpg"></a>
-							<a href="#" class="thumbnail"> <img src="../img/pic2.jpg"></a>
-							<a href="#" class="thumbnail"> <img src="../img/pic3.jpg"></a>
-							<a href="#" class="thumbnail"> <img src="../img/pic1.jpg"></a>
-							<a href="#" class="thumbnail"> <img src="../img/pic2.jpg"></a>
-							<a href="#" class="thumbnail"> <img src="../img/pic3.jpg"></a>
+				<!-- Portfolio Gallery Grid -->
+				<div class="row">
+					<div class="column nature">
+						<div class="content">
+							<img src="/w3images/mountains.jpg" alt="Mountains"
+								style="width: 100%">
+							<h4>Mountains</h4>
+							<p>Lorem ipsum dolor..</p>
 						</div>
 					</div>
+					<div class="column nature">
+						<div class="content">
+							<img src="/w3images/lights.jpg" alt="Lights" style="width: 100%">
+							<h4>Lights</h4>
+							<p>Lorem ipsum dolor..</p>
+						</div>
+					</div>
+					<div class="column nature">
+						<div class="content">
+							<img src="/w3images/nature.jpg" alt="Nature" style="width: 100%">
+							<h4>Forest</h4>
+							<p>Lorem ipsum dolor..</p>
+						</div>
+					</div>
+
+					<div class="column cars">
+						<div class="content">
+							<img src="/w3images/cars1.jpg" alt="Car" style="width: 100%">
+							<h4>Retro</h4>
+							<p>Lorem ipsum dolor..</p>
+						</div>
+					</div>
+					<div class="column cars">
+						<div class="content">
+							<img src="/w3images/cars2.jpg" alt="Car" style="width: 100%">
+							<h4>Fast</h4>
+							<p>Lorem ipsum dolor..</p>
+						</div>
+					</div>
+					<div class="column cars">
+						<div class="content">
+							<img src="/w3images/cars3.jpg" alt="Car" style="width: 100%">
+							<h4>Classic</h4>
+							<p>Lorem ipsum dolor..</p>
+						</div>
+					</div>
+
+					<div class="column people">
+						<div class="content">
+							<img src="/w3images/people1.jpg" alt="People" style="width: 100%">
+							<h4>Girl</h4>
+							<p>Lorem ipsum dolor..</p>
+						</div>
+					</div>
+					<div class="column people">
+						<div class="content">
+							<img src="/w3images/people2.jpg" alt="People" style="width: 100%">
+							<h4>Man</h4>
+							<p>Lorem ipsum dolor..</p>
+						</div>
+					</div>
+					<div class="column people">
+						<div class="content">
+							<img src="/w3images/people3.jpg" alt="People" style="width: 100%">
+							<h4>Woman</h4>
+							<p>Lorem ipsum dolor..</p>
+						</div>
+					</div>
+					<!-- END GRID -->
 				</div>
 			</div>
 			<div class="col-md-2"></div>
 		</div>
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+		filterSelection("all") // Execute the function and show all columns
+		function filterSelection(c) {
+			var x, i;
+			x = document.getElementsByClassName("column");
+			if (c == "all")
+				c = "";
+			// Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+			for (i = 0; i < x.length; i++) {
+				w3RemoveClass(x[i], "show");
+				if (x[i].className.indexOf(c) > -1)
+					w3AddClass(x[i], "show");
+			}
+		}
+
+		// Show filtered elements
+		function w3AddClass(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				if (arr1.indexOf(arr2[i]) == -1) {
+					element.className += " " + arr2[i];
+				}
+			}
+		}
+
+		// Hide elements that are not selected
+		function w3RemoveClass(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				while (arr1.indexOf(arr2[i]) > -1) {
+					arr1.splice(arr1.indexOf(arr2[i]), 1);
+				}
+			}
+			element.className = arr1.join(" ");
+		}
+
+		// Add active class to the current button (highlight it)
+		var btnContainer = document.getElementById("myBtnContainer");
+		var btns = btnContainer.getElementsByClassName("btn");
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].addEventListener("click", function() {
+				var current = document.getElementsByClassName("active");
+				current[0].className = current[0].className.replace(" active",
+						"");
+				this.className += " active";
+			});
+		}
+	</script>
 </body>
 </html>
