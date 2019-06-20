@@ -24,7 +24,7 @@
 	</select>
 
 	<select id="getclotheskind" resultType="clothvo" parameterType="Map"> <!-- 완료 -->
-		select * from cloth where userid = #{userid} and kind = #{kind}
+		select * from cloth where userid = #{userid} and season = #{season} and kind = #{kind}
 	</select>
 
 	<update id="updatecloth" parameterType="clothvo"> <!-- 완료 -->
