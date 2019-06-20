@@ -41,7 +41,7 @@
 	margin-bottom: 50px;
 }
 
-#index_cloth_top{
+/* #index_cloth_top{
 	margin-top: 150px;
 }
 
@@ -51,8 +51,10 @@
 
 #index_cloth_history{
 	margin-top: 300px;
+} */
+.subtitle {
+	margin-top: 20px;
 }
-
 #topclothes{
 	width: 800px;
 }
