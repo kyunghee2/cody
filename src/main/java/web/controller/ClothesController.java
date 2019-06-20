@@ -24,6 +24,14 @@ public class ClothesController {
 		return "/clothes/cloth_add";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	/*myCloth_list.do 페이지*/
 	@RequestMapping(value = "/clothes/myCloth_list.do", method = RequestMethod.GET)
 	public String myCloth_list() {
 		return "/clothes/myCloth_list";

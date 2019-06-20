@@ -6,8 +6,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <title>옷 장</title>
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
@@ -22,14 +21,12 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<div id="myBtnContainer">
-					<button class="btn" onclick="filterSelection('all')">
-						Show all</button>
-					<button class="btn" onclick="filterSelection('nature')">
-						Nature</button>
-					<button class="btn" onclick="filterSelection('cars')">Cars</button>
+					<button class="btn" onclick="filterSelection('all')">모두보기</button>
+					<button class="btn" onclick="filterSelection('nature')">상의</button>
+					<button class="btn" onclick="filterSelection('cars')">하의</button>
 					
-					<a class="btn btn-outline-dark" role="button" style="float: right;">옷삭제</a>
-					<a href="http://localhost:9090/cody/clothes/cloth_add.do"
+					<a class="btn btn-outline-dark" role="button" style="float: right;" id="delete">옷삭제</a>
+					<a href="http://localhost:9090/cody/clothes/cloth_add.do" 
 						class="btn btn-outline-dark" role="button" style="float: right;">옷등록</a>
 					</div>
 
@@ -37,71 +34,42 @@
 				<div class="row">
 					<div class="column nature">
 						<div class="content">
-							<img src="../img/pic1.jpg" alt="Mountains"
-								style="width: 100%">
+							<img src="../upload/pic1.jpg" alt="Mountains" style="width: 100%" id="img1">
 							<h4>Mountains</h4>
 							<p>Lorem ipsum dolor..</p>
 						</div>
 					</div>
 					<div class="column nature">
 						<div class="content">
-							<img src="../img/pic2.jpg" alt="Lights" style="width: 100%">
+							<img src="../upload/pic2.jpg" alt="Lights" style="width: 100%" id="img2">
 							<h4>Lights</h4>
 							<p>Lorem ipsum dolor..</p>
 						</div>
 					</div>
 					<div class="column nature">
 						<div class="content">
-							<img src="../img/pic3.jpg" alt="Nature" style="width: 100%">
+							<img src="../upload/pic3.jpg" alt="Nature" style="width: 100%" id="img3">
 							<h4>Forest</h4>
 							<p>Lorem ipsum dolor..</p>
 						</div>
 					</div>
 					<div class="column nature">
 						<div class="content">
-							<img src="../img/pic7.jpg" alt="Nature" style="width: 100%">
+							<img src="../upload/pic1.jpg" alt="Nature" style="width: 100%">
 							<h4>Forest</h4>
 							<p>Lorem ipsum dolor..</p>
 						</div>
 					</div>
 					<div class="column nature">
 						<div class="content">
-							<img src="../img/pic8.jpg" alt="Nature" style="width: 100%">
+							<img src="../upload/pic2.jpg" alt="Nature" style="width: 100%">
 							<h4>Forest</h4>
 							<p>Lorem ipsum dolor..</p>
 						</div>
 					</div>
 					<div class="column nature">
 						<div class="content">
-							<img src="../img/pic9.jpg" alt="Nature" style="width: 100%">
-							<h4>Forest</h4>
-							<p>Lorem ipsum dolor..</p>
-						</div>
-					</div>
-					<div class="column nature">
-						<div class="content">
-							<img src="../img/pic10.jpg" alt="Nature" style="width: 100%">
-							<h4>Forest</h4>
-							<p>Lorem ipsum dolor..</p>
-						</div>
-					</div>
-										<div class="column nature">
-						<div class="content">
-							<img src="../img/dtd.jpg" alt="Nature" style="width: 100%">
-							<h4>Forest</h4>
-							<p>Lorem ipsum dolor..</p>
-						</div>
-					</div>
-										<div class="column nature">
-						<div class="content">
-							<img src="../img/flower.jpg" alt="Nature" style="width: 100%">
-							<h4>Forest</h4>
-							<p>Lorem ipsum dolor..</p>
-						</div>
-					</div>
-										<div class="column nature">
-						<div class="content">
-							<img src="../img/pink.jpg" alt="Nature" style="width: 100%">
+							<img src="../upload/pic3.jpg" alt="Nature" style="width: 100%">
 							<h4>Forest</h4>
 							<p>Lorem ipsum dolor..</p>
 						</div>
@@ -113,24 +81,23 @@
 		<!-- <-- 상의~~하의 --> 
 
 
-
 					<div class="column cars">
 						<div class="content">
-							<img src="../img/pic4.jpg" alt="Car" style="width: 100%">
+							<img src="../upload/dtd.jpg" alt="Car" style="width: 100%">
 							<h4>Retro</h4>
 							<p>Lorem ipsum dolor..</p>
 						</div>
 					</div>
 					<div class="column cars">
 						<div class="content">
-							<img src="../img/pic5.jpg" alt="Car" style="width: 100%">
+							<img src="../upload/flower.jpg" alt="Car" style="width: 100%">
 							<h4>Fast</h4>
 							<p>Lorem ipsum dolor..</p>
 						</div>
 					</div>
 					<div class="column cars">
 						<div class="content">
-							<img src="../img/pic6.jpg" alt="Car" style="width: 100%">
+							<img src="../upload/pink.jpg" alt="Car" style="width: 100%">
 							<h4>Classic</h4>
 							<p>Lorem ipsum dolor..</p>
 						</div>
@@ -202,6 +169,27 @@
 				this.className += " active";
 			});
 		}
+		
+
+		$(document).ready(function() {
+			$(".column").click(function() {
+				if (!$(this).hasClass("cloth_selected"))
+					$(this).addClass("cloth_selected");
+				else
+					$(this).removeClass("cloth_selected");
+			});
+			$("#delete").click(function() {
+				if (!$(".column").hasClass("cloth_selected")) {
+					alert("선택된 항목이 없습니다.");
+				} else {
+					var c = confirm("정말 삭제 하시겠습니까?");
+					if (c == true) {
+						if ($(".column").hasClass("cloth_selected"))
+							$(".cloth_selected").remove();
+					}
+				}
+			});
+		});
 	</script>
 </body>
 </html>
