@@ -42,7 +42,7 @@
 							<img src="/w3images/mountains.jpg" alt="Mountains"
 								style="width: 100%">
 							<h4>Mountains</h4>
-							<p>Lorem ipsum dolor..</p>
+							<p>Lorem ipsum dolor...</p>
 						</div>
 					</div>
 					<div class="column nature">
