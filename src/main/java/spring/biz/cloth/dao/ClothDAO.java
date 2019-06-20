@@ -14,7 +14,7 @@ public interface ClothDAO {
 	
 	List<ClothVO> getCloth(String userid);
 	
-	List<ClothVO> getClothKind(String userid, String kind);
+	List<ClothVO> getClothKind(String userid, String season, String kind);
 	
 	int updateCloth(ClothVO vo);
 	

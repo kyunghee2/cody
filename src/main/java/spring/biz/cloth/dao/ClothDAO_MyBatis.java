@@ -50,9 +50,10 @@ public class ClothDAO_MyBatis implements ClothDAO{
 	}
 
 	@Override
-	public List<ClothVO> getClothKind(String userid, String kind) {
+	public List<ClothVO> getClothKind(String userid, String season, String kind) {
 		HashMap<String , String> map = new HashMap<String, String>();
 	    map.put("userid", userid);
+	    map.put("season", season);
 	    map.put("kind", kind);
 		return sqlSession.selectList("clothMapper.getclotheskind",map);
 	}

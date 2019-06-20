@@ -64,8 +64,8 @@ public class ClothServiceImpl implements ClothService{
 		return dao.removeCloth(clothid);
 	}
 	@Override
-	public List<ClothVO> getClothKind(String userid, String kind) {
-		return dao.getClothKind(userid, kind);
+	public List<ClothVO> getClothKind(String userid, String season, String kind) {
+		return dao.getClothKind(userid, season, kind);
 	}
 	
 
