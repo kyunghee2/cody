@@ -14,8 +14,7 @@
 <link rel="stylesheet" href="./css/cody.css" type="text/css">
 
 <script type="text/javascript">
-	
-	
+
 	$(function () {
 		getToday();
 		
@@ -50,20 +49,45 @@
 		<div id="backgroundImage">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<form id="left_info">
+						
+						<div id = "now_location">
+							<label>현재위치</label>
+						</div>
+							
+						<div id = "tempe">
+							<label>온도</label>
+						</div>	
+						<div id = "hum">
+							<label>습도</label>
+						</div>	
+						<div id = "dust">
+							<label>미세먼지</label>
+						</div>	
+					
+					</form>	
+				</div>
 				
 				<div class="col-md-8">
 					<form>
 						<h1>오늘의 코디</h1>
 						<div id= "today"></div>
+						
+						<div id= "index_cloth_top" class="alert alert-success" role="alert">
+							<strong>상의</strong>
+						</div>
+						
+						<div id= "index_cloth_bottom" class="alert alert-success"" role="alert">
+							<strong>하의</strong>
+						</div>
+						
+						<div id= "index_cloth_history" class="alert alert-success"" role="alert">
+							<strong>최근 입었던 옷 (Top4정도)</strong>
+						</div>
 					</form>
 				
-					<span id = "left_info">
-						<p>현재위치</p>
-						<p>온도</p>
-						<p>습도</p>
-						<p>미세먼지</p>
-					</span>	
+					
 					
 				</div>
 				<div class="col-md-2"></div>
