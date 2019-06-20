@@ -22,11 +22,9 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<div id="myBtnContainer">
-					<button class="btn" onclick="filterSelection('all')">
-						Show all</button>
-					<button class="btn" onclick="filterSelection('nature')">
-						Nature</button>
-					<button class="btn" onclick="filterSelection('cars')">Cars</button>
+					<button class="btn" onclick="filterSelection('all')">모두보기</button>
+					<button class="btn" onclick="filterSelection('nature')">상의</button>
+					<button class="btn" onclick="filterSelection('cars')">하의</button>
 					
 					<a class="btn btn-outline-dark" role="button" style="float: right;">옷삭제</a>
 					<a href="http://localhost:9090/cody/clothes/cloth_add.do"
