@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -187,7 +187,7 @@
 		function geoPosition(position) {			
 			var lat = position.coords.latitude;
 			var lon = position.coords.longitude
-		  log(position);
+		  //log(position);
 		  
 		  getWeather(lat,lon);
 		}
@@ -199,7 +199,7 @@
 				//data:$('form').serializeArray(),
 				success:function(data){		
 					var json = $.parseJSON(data);
-					log(json);
+					//log(json);
 					weaderRender(json);
 				},
 				error:function(e){				
