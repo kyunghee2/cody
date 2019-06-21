@@ -28,5 +28,6 @@
         <level value="INFO" /><!-- INFO :console,log파일에 기록 -->
         <appender-ref ref="stdout" />
         <appender-ref ref="dailyout" />
+        
     </root>
 </log4j:configuration>
