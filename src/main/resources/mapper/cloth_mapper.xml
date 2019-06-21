@@ -14,7 +14,7 @@
 	<select id="getclothlist" resultType="clothvo"> <!-- 완료 -->
 		select * from cloth
 	</select>
-
+	
 	<select id="getclothes" resultType="clothvo"> <!-- 완료 -->
 		select * from cloth where userid = #{userid}
 	</select>
@@ -24,9 +24,9 @@
 	</select>
 
 	<select id="getclotheskind" resultType="clothvo" parameterType="Map"> <!-- 완료 -->
-		select * from cloth where userid = #{userid} and season = #{season} and kind = #{kind}
+		select * from cloth where userid = #{userid} and season like '%'||#{season}||'%' and kind = #{kind}
 	</select>
-
+	
 	<update id="updatecloth" parameterType="clothvo"> <!-- 완료 -->
 		update cloth set imgpath = #{imgpath}, imgname = #{imgname},
 			 season = #{season}, kind = #{kind}, color = #{color} where clothid = #{clothid}
