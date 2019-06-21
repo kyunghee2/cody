@@ -1,6 +1,7 @@
 package spring.biz.cloth.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -64,6 +65,10 @@ public class ClothServiceImpl implements ClothService{
 	@Override
 	public List<ClothVO> getClothKind(String userid, String season, String kind) {
 		return dao.getClothKind(userid, season, kind);
+	}
+	@Override
+	public int multiRemoveCloth(Map<String, Object> map) {
+		return dao.multiRemoveCloth(map);
 	}
 	
 

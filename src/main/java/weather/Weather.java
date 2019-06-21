@@ -1,3 +1,4 @@
+    
 package weather;
 
 import java.io.BufferedReader;
@@ -122,6 +123,7 @@ public class Weather {
 	
 	private void dust()	{
 		BufferedReader br = null;
+		Calendar cal = Calendar.getInstance();
 		try {
 			String result = "";
 			String line;
@@ -137,11 +139,10 @@ public class Weather {
 			}
 
 			JSONArray dustArray = (JSONArray) ((JSONObject) jsonParser.parse(result)).get("list");
-
 			for (Object obj : dustArray) {
 				JSONObject dustObject = (JSONObject) jsonParser.parse(obj.toString());
 				if((dustObject.get("dataTime").toString().substring(11, 13)) != null)	{
-					if (Calendar.HOUR == Integer.parseInt(dustObject.get("dataTime").toString().substring(11, 13))) {
+					if (cal.get(Calendar.HOUR_OF_DAY) == Integer.parseInt(dustObject.get("dataTime").toString().substring(11, 13))) {
 	
 						map.put("pm10Value", dustObject.get("pm10Value").toString());
 						map.put("pm10Grade", dustObject.get("pm10Grade").toString());
@@ -203,3 +204,4 @@ public class Weather {
 	}
 
 }
+

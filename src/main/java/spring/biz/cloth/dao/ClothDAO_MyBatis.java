@@ -2,6 +2,7 @@ package spring.biz.cloth.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class ClothDAO_MyBatis implements ClothDAO{
 
 	@Override
 	public int removeCloth(Integer clothid) {
-		return sqlSession.update("clothMapper.removecloth", clothid);
+		return sqlSession.delete("clothMapper.removecloth", clothid);
 	}
 
 	@Override
@@ -56,5 +57,10 @@ public class ClothDAO_MyBatis implements ClothDAO{
 	    map.put("season", season);
 	    map.put("kind", kind);
 		return sqlSession.selectList("clothMapper.getclotheskind",map);
+	}
+
+	@Override
+	public int multiRemoveCloth(Map<String, Object> map) {
+		return sqlSession.delete("clothMapper.multiremovecloth", map);
 	}
 }

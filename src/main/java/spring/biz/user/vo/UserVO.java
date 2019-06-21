@@ -6,7 +6,6 @@ public class UserVO {
 	private String userpwd;
 	private String email;
 	private String phone;
-	private String address;
 	private String gender;
 	
 	public UserVO() {
@@ -21,15 +20,13 @@ public class UserVO {
 		this.gender = gender;
 	}
 
-	public UserVO(String userid, String name, String userpwd, String email, String phone, String address,
-			String gender) {
+	public UserVO(String userid, String name, String userpwd, String email, String phone, String gender) {
 		super();
 		this.userid = userid;
 		this.name = name;
 		this.userpwd = userpwd;
 		this.email = email;
 		this.phone = phone;
-		this.address = address;
 		this.gender = gender;
 	}
 
@@ -66,16 +63,10 @@ public class UserVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+
 	@Override
 	public String toString() {
-		return "UserVO [userid=" + userid + ", name=" + name + ", userpwd=" + userpwd + ", email=" + email
-				+ ", phone=" + phone + ", address=" + address + "]";
-	}
-	
+		return "UserVO [userid=" + userid + ", name=" + name + ", userpwd=" + userpwd + ", email=" + email + ", phone="
+				+ phone + ", gender=" + gender + "]";
+	}	
 }

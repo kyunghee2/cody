@@ -1,7 +1,7 @@
 @charset "UTF-8";
       
 #backgroundImage:after {
-	background-image:  url("../img/clouds-3488632_1920.jpg");
+	background-image:  url("../img/weather_1.jpg");
 	top:0;
 	left:0;
 	position: absolute;
@@ -24,6 +24,19 @@
 	font-weight: normal;
 }
 
+#add_history{	
+		
+}
+
+#msg_info{
+	text-align: center;
+	margin-top: 20px;
+}
+
+#history_button{
+	
+}
+
 #now_location{
 	margin-top:200px;
 	margin-bottom: 50px;
@@ -41,7 +54,7 @@
 	margin-bottom: 50px;
 }
 
-#index_cloth_top{
+/* #index_cloth_top{
 	margin-top: 150px;
 }
 
@@ -51,8 +64,10 @@
 
 #index_cloth_history{
 	margin-top: 300px;
+} */
+.subtitle {
+	margin-top: 20px;
 }
-
 #topclothes{
 	width: 800px;
 }

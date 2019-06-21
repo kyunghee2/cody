@@ -32,10 +32,14 @@
 			 season = #{season}, kind = #{kind}, color = #{color} where clothid = #{clothid}
 	</update>
 	
-	<delete id="removecloth" parameterType="map">
+	<delete id="removecloth">
+		delete from cloth where clothid = #{clothid}
+	</delete>
+	
+	<delete id="multiremovecloth" parameterType="map">
 		delete from cloth where clothid in
-		<foreach item="cloth" index="index" collection="list" open="(" separator="," close=")">
-		 	#{cloth.clothid}
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		 	#{item.clothid}
 		 </foreach>
 	</delete>
 </mapper>

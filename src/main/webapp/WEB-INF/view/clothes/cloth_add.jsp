@@ -12,10 +12,13 @@
 
 <script type="text/javascript">
 	
-	$(function () {
-		$("#cloth_uploadimg").on("change", handleImgFileSelect);
-	});
+	var log = console.log;
 	
+	$(function () {
+		$("#cloth_img_upload").on("change", handleImgFileSelect);
+		
+	});
+
 	function handleImgFileSelect(e) {
 		var files = e.target.files;
 		var fileArr = Array.prototype.slice.call(files);
@@ -34,8 +37,28 @@
 			}
 			reader.readAsDataURL(f);
 		});
-		
 	}
+	
+	   /* function uploadFile(){
+          var form = $("#file_form")[0];
+          var formData = new FormData(form);
+          formData.append("fileObj", $("#cloth_img_upload")[0].files[0]);
+          //console.log(formData)
+
+          $.ajax({
+              url: "//70.12.115.75/cody/upload/",
+                      processData: false,
+                      contentType: false,
+                      data: formData,
+                      type: 'POST',
+                      success: function(result){
+                          alert("업로드 성공!!");
+                      }
+              });
+      }  */
+
+
+	
 </script>
 
 </head>
@@ -51,7 +74,7 @@
 			<h3>옷 등록</h3>
 			<br>
 						
-			<form method="post" enctype="multipart/form-data">
+			<form id="file_form" method="post" enctype="multipart/form-data">
 				<figure class="figure">
 				 	 <img id="img"  class="rounded-lg" width="300" height="300">
 				  	<figcaption class="figure-caption text-right">옷 이미지 입니다.</figcaption>
@@ -59,8 +82,7 @@
 			
   			<div class="form-group">
 			    <label for="cloth_uploadimg">이미지 등록</label>
-			<!--     <button type="submit" class="btn btn-outline-primary">이미지등록</button><br> -->
-			    <input type="file" class="form-control-file" id="cloth_uploadimg">
+			    <input type="file" class="form-control-file" id="cloth_img_upload" name="cloth_img_upload">
 			 </div>	
 			</form>
 			
@@ -118,7 +140,7 @@
 			
 			<div class="form-group row">
 						<div class="col-sm-10">
-							<button type="submit" class="btn btn-primary">옷 등록하기</button>
+							<button id="add_cloth" type="submit" class="btn btn-primary">옷 등록하기</button>
 						</div>
 			</div>
 			

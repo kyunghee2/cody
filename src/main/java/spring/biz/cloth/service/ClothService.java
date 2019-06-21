@@ -1,6 +1,7 @@
 package spring.biz.cloth.service;
 
 import java.util.List;
+import java.util.Map;
 
 import spring.biz.cloth.vo.ClothVO;
 
@@ -19,5 +20,7 @@ int addCloth(ClothVO cloth);
 	int updateCloth(ClothVO vo);
 	
 	int removeCloth(Integer clothid);
+	
+	int multiRemoveCloth(Map<String, Object> map);
 	
 }
