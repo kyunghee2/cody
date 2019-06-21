@@ -44,16 +44,11 @@ public class ClothServiceImpl implements ClothService{
 	public ClothVO getClothId(Integer clothid) {
 		return dao.getClothId(clothid);
 	}
-	@Override
-	public List<ClothVO> getClothList() {
-		return dao.getClothList();
-	}
-
-
-	public List<ClothVO> getCloth(String userid) {
-		return dao.getCloth(userid);
-	}
 	
+	@Override
+	public List<ClothVO> getClothes(String userid, String kind, String season) {
+		return dao.getClothes(userid, kind, season);
+	}
 	
 	@Override
 	public int updateCloth(ClothVO vo) {
@@ -64,16 +59,10 @@ public class ClothServiceImpl implements ClothService{
 	public int removeCloth(Integer clothid) {
 		return dao.removeCloth(clothid);
 	}
-	@Override
-	public List<ClothVO> getClothKind(String userid, String season, String kind) {
-		return dao.getClothKind(userid, season, kind);
-	}
+	
 	@Override
 	public int multiRemoveCloth(Map<String, Object> map) {
 		return dao.multiRemoveCloth(map);
 	}
-	
-
-
 }
 
