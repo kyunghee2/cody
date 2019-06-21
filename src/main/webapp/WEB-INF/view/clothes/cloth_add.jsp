@@ -8,6 +8,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>옷 등록</title>
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="../css/cloth_add.css" type="text/css">
+
 <script src="../js/bootstrap.js"></script>
 
 <script type="text/javascript">
@@ -98,15 +100,18 @@
 			<br>
 						
 			<form action id="file_form" method="post" enctype="multipart/form-data">
+				<div id="add_img">
+				
 				<figure class="figure">
-				 	 <img id="img"  class="rounded-lg" width="300" height="300">
+				 	 <img id="img">
 				  	<figcaption class="figure-caption text-right">옷 이미지 입니다.</figcaption>
 				</figure>
-			
-  			<div class="form-group">
-			    <label for="cloth_img_upload">이미지 등록</label>
-			    <input type="file" class="form-control-file" id="cloth_img_upload" name="file">
-			 </div>	
+				</div>
+				
+	  			<div class="form-group">
+				    <label for="cloth_img_upload">이미지 등록</label>
+				    <input type="file" class="form-control-file" id="cloth_img_upload" name="file">
+				 </div>	
 			
 			
 			
