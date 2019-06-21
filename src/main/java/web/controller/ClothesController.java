@@ -22,7 +22,7 @@ public class ClothesController {
 	
 	/*옷 이미지 등록*/
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.POST)
-	public String cloth_upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+	public String cloth_add(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
 		String fileName = file.getOriginalFilename(); /*클라이언트가 선택한 파일이름 불러옴*/
 		String path = request.getRealPath("/upload/"); /*upload폴더 만든거 , 실제 서비스가 되면 저장되는 폴더*/
 		
@@ -40,7 +40,6 @@ public class ClothesController {
 		return "/clothes/myCloth_list";
 	}
 	
-
 	
 
 	

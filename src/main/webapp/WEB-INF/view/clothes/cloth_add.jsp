@@ -15,7 +15,7 @@
 	var log = console.log;
 	
 	$(function() {
-		$("#cloth_img_upload").on("change", handleImgFileSelect);
+		$("#cloth_img_upload").on("change", addfiles);
 		
 		$("#add_cloth_img").click(function() {
 			log("파일업로드");
@@ -31,7 +31,8 @@
 		});
 	});
 
-	function handleImgFileSelect(e) {
+	/*파일추가*/
+	function addfiles(e) {
 		var files = e.target.files;
 		var fileArr = Array.prototype.slice.call(files);
 		
@@ -51,8 +52,8 @@
 		});
 	}
 	
-	/*ajax 파일 업로드*/
-	/* 
+	/*데이터 전송*/
+
 	    function uploadFile(){
           var form = $("#file_form")[0];
           var formData = new FormData(form);
@@ -61,16 +62,23 @@
 
           $.ajax({
               type: 'POST',
-              url: "//70.12.115.75/cody/upload/",
+              url: "http://localhost:9090/cody/upload/",
               data: formData,
               processData: false,
               contentType: false,
-              success: function(result){
-            	   console.log('success');
-                          alert("업로드 성공!!");
-                      }
+              success: function(data){
+            	  if(data.result){
+					console.log('success');
+					alert("이미지 업로드 성공!");
+            	  }else{
+            		  alert(data.result);
+            	  }
+              },
+             error : function(error){
+            	 alert(error,status);
+             }
               }); 
-      }  */
+      }  
 
 
 	
