@@ -13,25 +13,26 @@ import spring.biz.cloth.dao.ClothDAO;
 import spring.biz.cloth.vo.ClothVO;
 
 @Service("clothservice")
-public class ClothServiceImpl implements ClothService{
+public class ClothServiceImpl implements ClothService {
 
 	@Resource(name = "cmybatis")
 	ClothDAO dao;
 
 	@Autowired
 	ApplicationContext context;
-	
+
 	public ClothServiceImpl() {
-		
+
 	}
+
 	public ClothServiceImpl(ClothDAO dao) {
 		this.dao = dao;
 	}
-	
+
 	public ClothDAO getDao() {
 		return dao;
 	}
-	
+
 	public void setDao(ClothDAO dao) {
 		this.dao = dao;
 	}
@@ -44,15 +45,12 @@ public class ClothServiceImpl implements ClothService{
 	public ClothVO getClothId(Integer clothid) {
 		return dao.getClothId(clothid);
 	}
+
 	@Override
-	public List<ClothVO> getClothList() {
-		return dao.getClothList();
+	public List<ClothVO> getClothes(String userid, String kind, String season) {
+		return dao.getClothes(userid, kind, season);
 	}
 
-	public List<ClothVO> getCloth(String userid) {
-		return dao.getCloth(userid);
-	}
-	
 	@Override
 	public int updateCloth(ClothVO vo) {
 		return dao.updateCloth(vo);
@@ -62,16 +60,9 @@ public class ClothServiceImpl implements ClothService{
 	public int removeCloth(Integer clothid) {
 		return dao.removeCloth(clothid);
 	}
-	@Override
-	public List<ClothVO> getClothKind(String userid, String season, String kind) {
-		return dao.getClothKind(userid, season, kind);
-	}
+
 	@Override
 	public int multiRemoveCloth(Map<String, Object> map) {
 		return dao.multiRemoveCloth(map);
 	}
-	
-
-
 }
-

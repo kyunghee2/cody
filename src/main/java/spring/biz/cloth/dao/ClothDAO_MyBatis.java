@@ -31,13 +31,13 @@ public class ClothDAO_MyBatis implements ClothDAO{
 	}
 
 	@Override
-	public List<ClothVO> getClothList() {
-		return sqlSession.selectList("clothMapper.getclothlist");
-	}
-
-	@Override
-	public List<ClothVO> getCloth(String userid) {
-		return sqlSession.selectList("clothMapper.getclothes", userid);
+	public List<ClothVO> getClothes(String userid, String kind, String season) {
+		HashMap<String , String> map = new HashMap<String, String>();
+	    map.put("userid", userid);
+	    map.put("season", season);
+	    map.put("kind", kind);
+	    
+		return sqlSession.selectList("clothMapper.getclothes",map);
 	}
 
 	@Override
@@ -48,15 +48,6 @@ public class ClothDAO_MyBatis implements ClothDAO{
 	@Override
 	public int removeCloth(Integer clothid) {
 		return sqlSession.delete("clothMapper.removecloth", clothid);
-	}
-
-	@Override
-	public List<ClothVO> getClothKind(String userid, String season, String kind) {
-		HashMap<String , String> map = new HashMap<String, String>();
-	    map.put("userid", userid);
-	    map.put("season", season);
-	    map.put("kind", kind);
-		return sqlSession.selectList("clothMapper.getclotheskind",map);
 	}
 
 	@Override
