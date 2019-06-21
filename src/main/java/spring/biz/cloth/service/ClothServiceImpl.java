@@ -49,11 +49,9 @@ public class ClothServiceImpl implements ClothService{
 		return dao.getClothList();
 	}
 
-
 	public List<ClothVO> getCloth(String userid) {
 		return dao.getCloth(userid);
 	}
-	
 	
 	@Override
 	public int updateCloth(ClothVO vo) {

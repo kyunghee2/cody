@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="clothHistoryMapper">
+
+	<insert id="addclothhistory">
+		insert into cloth_history (kind, clothid, userid, temp, humidity, dust) 
+							values (#{kind}, #{clothid}, #{userid}, #{temp}, #{humidity}, #{dust})
+	</insert>
+	
+	<select id="getclothhistorylist" resultType="clothhistoryvo">
+		select * from cloth_history
+	</select>
+	
+	<select id="getclothhistorydate" parameterType="map" resultType="clothhistoryvo">
+		select * from cloth_history where userid = #{userid} and kind = #{kind} order by regdate
+	</select>
+	
+</mapper>
