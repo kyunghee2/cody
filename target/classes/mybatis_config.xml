@@ -6,10 +6,12 @@
 	<typeAliases>
 		<typeAlias type="spring.biz.user.vo.UserVO" alias="uservo"/>
 		<typeAlias type="spring.biz.cloth.vo.ClothVO" alias="clothvo"/>
+		<typeAlias type="spring.biz.cloth.vo.ClothHistoryVO" alias="clothhistoryvo"/>
 	</typeAliases>
   
   <mappers>
     <mapper resource="mapper/user_mapper.xml"/>
     <mapper resource="mapper/cloth_mapper.xml"/>
+    <mapper resource="mapper/clothHistory_mapper.xml"/>
   </mappers>
 </configuration>
