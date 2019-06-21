@@ -1,11 +1,16 @@
 package web.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.biz.cloth.service.ClothService;
+import spring.biz.cloth.vo.ClothVO;
 import spring.biz.user.vo.UserVO;
 
 
@@ -67,6 +73,34 @@ public class ClothesController {
 		mav.setViewName("/clothes/myCloth_list");
 			
 		return mav;
+	}
+	
+	/* cloth update */
+	@RequestMapping("/clothes/updatecloth.do")
+	public ModelAndView update(@ModelAttribute("cloth") ClothVO cloth) {
+		ModelAndView mav = new ModelAndView();
+		clothservice.updateCloth(cloth);
+		mav.addObject("clothes", clothservice.updateCloth(cloth));
+		mav.setViewName("/clothes/cloth_view");
+		
+		return mav;
+	}
+	
+	/*multi remove */
+	@RequestMapping("/clothes/clothesremove.do")
+	public String deleteUserProc(@RequestParam("clothidList") List<Integer> clothidlist) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<ClothVO> list = new ArrayList<ClothVO>();
+		
+		for(int clothid : clothidlist) {
+			ClothVO item = new ClothVO();
+			item.setClothid(clothid);
+			list.add(item);
+		}
+		map.put("list", list);
+
+		clothservice.multiRemoveCloth(map);
+		return "redirect:/clothes/myCloth_list";
 	}
 
 }
