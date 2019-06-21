@@ -10,7 +10,7 @@
 
 	<div class="collapse navbar-collapse" id="navbarsExample01">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/">홈
+			<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/index.do">홈
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/clothes/cloth_add.do">옷등록</a></li>
