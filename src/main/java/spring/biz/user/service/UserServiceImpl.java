@@ -7,14 +7,11 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import spring.biz.user.dao.UserDAO;
 import spring.biz.user.vo.UserVO;
 
-//@Component("userservice")
 @Service("userservice")
 public class UserServiceImpl implements UserService {
 
