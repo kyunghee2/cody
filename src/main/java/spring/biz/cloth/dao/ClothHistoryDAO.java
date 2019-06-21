@@ -8,5 +8,6 @@ public interface ClothHistoryDAO {
 	
 	int addClothHistory(ClothHistoryVO clothhistory); 
 	List<ClothHistoryVO> getClothHistoryList();
-	List<ClothHistoryVO> getClothDate(String userid, Date reg_date, String kind );
+	List<ClothHistoryVO> getClothDate(String userid, String kind );
+	
 }

@@ -28,13 +28,13 @@ public class ClothHistoryDAO_MyBatis implements ClothHistoryDAO{
 	}
 
 	@Override
-	public List<ClothHistoryVO> getClothDate(String userid, Date reg_date, String kind) {
+	public List<ClothHistoryVO> getClothDate(String userid, String kind) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
-		map.put("date", new Date().toString());
 		map.put("kind", kind);
-		return null;
+		return sqlSession.selectList("clothHistoryMapper.getclothhistorydate", map);
 	}
+	
 	
 	
 }
