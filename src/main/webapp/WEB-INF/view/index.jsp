@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="./css/index.css" type="text/css">
 </head>
 <body>
-	<%@include file="layout/header.jsp"%>
+	<%@include file="/layout/header.jsp"%>
 	<br>
 	<div id="backgroundImage">
 		<div class="container">

@@ -25,6 +25,11 @@ public class LoginController {
 	@Value("${secretkey}") 
 	private String key;
 	
+	@RequestMapping(value = "/index.do",method = RequestMethod.GET)
+	public String index() {
+		return "/index";
+	}
+	
 	@RequestMapping(value = "/login.do",method = RequestMethod.GET)
 	public String login() {
 		return "login";// view페이지 리턴
@@ -39,7 +44,8 @@ public class LoginController {
 			request.getSession().setAttribute("User", user);
 			request.getSession().setAttribute("login", user);
 			
-			return "redirect:index.jsp";
+			//return "redirect:index.jsp";
+			return "index";
 		}else {
 			request.setAttribute("msg", "로그인 정보를 다시 입력하세요.");
 			return "login";
