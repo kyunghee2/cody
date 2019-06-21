@@ -13,5 +13,6 @@
     <mapper resource="mapper/user_mapper.xml"/>
     <mapper resource="mapper/cloth_mapper.xml"/>
     <mapper resource="mapper/clothHistory_mapper.xml"/>
+    
   </mappers>
 </configuration>
