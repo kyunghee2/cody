@@ -14,9 +14,21 @@
 	
 	var log = console.log;
 	
-	$(function () {
+	$(function() {
 		$("#cloth_img_upload").on("change", handleImgFileSelect);
 		
+		$("#add_cloth_img").click(function() {
+			log("파일업로드");
+			if(!("file")){
+				
+			}else{
+				confirm("옷을 등록하시겠습니까?");
+				
+				log("파일업로드완료");
+			}
+		
+	
+		});
 	});
 
 	function handleImgFileSelect(e) {
@@ -39,22 +51,25 @@
 		});
 	}
 	
-	   /* function uploadFile(){
+	/*ajax 파일 업로드*/
+	/* 
+	    function uploadFile(){
           var form = $("#file_form")[0];
           var formData = new FormData(form);
           formData.append("fileObj", $("#cloth_img_upload")[0].files[0]);
-          //console.log(formData)
+          	log(formData);
 
           $.ajax({
+              type: 'POST',
               url: "//70.12.115.75/cody/upload/",
-                      processData: false,
-                      contentType: false,
-                      data: formData,
-                      type: 'POST',
-                      success: function(result){
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function(result){
+            	   console.log('success');
                           alert("업로드 성공!!");
                       }
-              });
+              }); 
       }  */
 
 
@@ -74,42 +89,41 @@
 			<h3>옷 등록</h3>
 			<br>
 						
-			<form id="file_form" method="post" enctype="multipart/form-data">
+			<form action id="file_form" method="post" enctype="multipart/form-data">
 				<figure class="figure">
 				 	 <img id="img"  class="rounded-lg" width="300" height="300">
 				  	<figcaption class="figure-caption text-right">옷 이미지 입니다.</figcaption>
 				</figure>
 			
   			<div class="form-group">
-			    <label for="cloth_uploadimg">이미지 등록</label>
-			    <input type="file" class="form-control-file" id="cloth_img_upload" name="cloth_img_upload">
+			    <label for="cloth_img_upload">이미지 등록</label>
+			    <input type="file" class="form-control-file" id="cloth_img_upload" name="file">
 			 </div>	
-			</form>
 			
-			<form>
+			
 			
 			<div class="form-group row">
 				<label for="inputEmail3" class="col-sm-2 col-form-label">계절</label>
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="season" value="봄">
-						<label class="form-check-label" for="inlineCheckbox1">봄</label>
+						<input class="form-check-input" type="checkbox" id="spring" name="season" value="봄">
+						<label class="form-check-label" for="spring">봄</label>
 					</div>	
 					
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="season" value="여름">
-						<label class="form-check-label" for="inlineCheckbox2">여름</label>
+						<input class="form-check-input" type="checkbox" id="summer" name="season" value="여름">
+						<label class="form-check-label" for="summer">여름</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="season" value="가을">
-						<label class="form-check-label" for="inlineCheckbox3">가을</label>
+						<input class="form-check-input" type="checkbox" id="fall" name="season" value="가을">
+						<label class="form-check-label" for="fall">가을</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="season" value="겨울">
-						<label class="form-check-label" for="inlineCheckbox4">겨울</label>
+						<input class="form-check-input" type="checkbox" id="winter" name="season" value="겨울">
+						<label class="form-check-label" for="winter">겨울</label>
 					</div>
 				</div>
 			</div>
@@ -119,13 +133,13 @@
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="cloth" id="inlineRadio1" value="top">
-					  <label class="form-check-label" for="inlineRadio1">상의</label>
+					  <input class="form-check-input" type="radio" name="cloth" id="cloth_top" value="top">
+					  <label class="form-check-label" for="cloth_top">상의</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="cloth" id="inlineRadio2" value="top">
-					  <label class="form-check-label" for="inlineRadio2">하의</label>
+					  <input class="form-check-input" type="radio" name="cloth" id="cloth_bottom" value="top">
+					  <label class="form-check-label" for="cloth_bottom">하의</label>
 					</div>
 				</div>	
 			</div>
@@ -140,7 +154,7 @@
 			
 			<div class="form-group row">
 						<div class="col-sm-10">
-							<button id="add_cloth" type="submit" class="btn btn-primary">옷 등록하기</button>
+							<button id="add_cloth_img" type="submit" class="btn btn-primary">옷 등록하기</button>
 						</div>
 			</div>
 			
