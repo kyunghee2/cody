@@ -21,6 +21,9 @@
     <logger name="userMapper">
     	<level value="TRACE"></level>
     </logger>
+    <logger name="clothMapper">
+    	<level value="TRACE"></level>
+    </logger>
      <root>
         <level value="INFO" /><!-- INFO :console,log파일에 기록 -->
         <appender-ref ref="stdout" />
