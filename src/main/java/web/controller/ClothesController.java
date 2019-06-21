@@ -1,17 +1,9 @@
 package web.controller;
 
-import java.io.File;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import spring.biz.cloth.vo.ClothVO;
 
 @Controller
 public class ClothesController {
