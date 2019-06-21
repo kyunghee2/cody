@@ -48,7 +48,7 @@
 			
 			var reader = new FileReader();
 			reader.onload = function (e) {
-				$("#img").attr("src", e.target.result);				
+				$("#input_img").attr("src", e.target.result);				
 			}
 			reader.readAsDataURL(f);
 		});
@@ -102,10 +102,10 @@
 			<form action id="file_form" method="post" enctype="multipart/form-data">
 				<div id="out_imgbox">
 				<div id="in_imgbox">
-				<figure class="figure">
-				 	 <img id="img">
-				  	<figcaption class="figure-caption text-right">옷 이미지 입니다.</figcaption>
-				</figure>
+				
+				 	 <img id="input_img">
+				  	
+			
 				</div>
 				</div>
 				
@@ -169,6 +169,7 @@
 			<div class="form-group row">
 						<div class="col-sm-10">
 							<button id="add_cloth_img" type="submit" class="btn btn-primary">옷 등록하기</button>
+							<button id="go_to_myCloth_list" type="submit" class="btn btn-success">내 옷장가기</button>
 						</div>
 			</div>
 			

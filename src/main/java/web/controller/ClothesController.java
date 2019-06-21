@@ -52,15 +52,6 @@ public class ClothesController {
 
 	
 	/*myCloth_list.do 페이지*/
-//	@RequestMapping(value = "/clothes/myCloth_list.do", method = RequestMethod.GET)
-//	public String myCloth_list() {
-//		return "/clothes/myCloth_list";
-//	}
-	
-//	@RequestMapping(value = "/clothes/myCloth_list.do", method = RequestMethod.POST)
-//	public String myCloth_list_() {
-//		return "/clothes/myCloth_list";
-//	}
 	
 	/*데이터 주입*/
 	@RequestMapping(value="/clothes/myCloth_list.do" , method = RequestMethod.GET)
