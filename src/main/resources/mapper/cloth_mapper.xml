@@ -10,6 +10,13 @@
 			values ((select nvl(max(clothid),0)+1 from cloth), #{userid},
 			 #{imgpath}, #{imgname}, #{season}, #{kind}, #{color})
 	</insert>
+<<<<<<< HEAD
+=======
+
+	<select id="getclothlist" resultType="clothvo"> <!-- 완료 -->
+		select * from cloth
+	</select>
+>>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	
 	<select id="getclothes" resultType="clothvo"> <!-- 완료 -->
 		select * from cloth 
@@ -24,6 +31,13 @@
 		select * from cloth where clothid = #{clothid}
 	</select>
 
+<<<<<<< HEAD
+=======
+	<select id="getclotheskind" resultType="clothvo" parameterType="Map"> <!-- 완료 -->
+		select * from cloth where userid = #{userid} and season like '%'||#{season}||'%' and kind = #{kind}
+	</select>
+	
+>>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	<update id="updatecloth" parameterType="clothvo"> <!-- 완료 -->
 		update cloth set imgpath = #{imgpath}, imgname = #{imgname},
 			 season = #{season}, kind = #{kind}, color = #{color} where clothid = #{clothid}

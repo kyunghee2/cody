@@ -3,18 +3,26 @@ package web.controller;
 import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
+<<<<<<< HEAD
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+=======
+
+>>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+<<<<<<< HEAD
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.biz.cloth.service.ClothService;
 import spring.biz.cloth.vo.ClothVO;
+=======
+
+>>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 
 @Controller
 public class ClothesController {
@@ -48,7 +56,33 @@ public class ClothesController {
 		return "reportResult";
 		return "/clothes/cloth_add";
 	}
+<<<<<<< HEAD
 	*/
+=======
+	
+	/*옷 이미지 등록*/
+	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.POST)
+	public String cloth_add(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+		String fileName = file.getOriginalFilename(); /*클라이언트가 선택한 파일이름 불러옴*/
+		String path = request.getRealPath("/upload/"); /*upload폴더 만든거 , 실제 서비스가 되면 저장되는 폴더*/
+		
+		System.out.println(path);
+		if(!file.isEmpty()) {
+			File f = new File(path+fileName); /*java.io.File -import*/ /*경로에 이이름으로*/
+			/*파일 복사*/
+			try {
+				file.transferTo(f);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}
+		request.setAttribute("imgname",fileName);
+		return "/clothes/myCloth_list";
+	}
+	
+	
+
+>>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	
 	/*myCloth_list.do 페이지*/
 	

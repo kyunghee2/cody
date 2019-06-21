@@ -8,15 +8,33 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>옷 등록</title>
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="../css/cloth_add.css" type="text/css">
+
 <script src="../js/bootstrap.js"></script>
 
 <script type="text/javascript">
 	
-	$(function () {
-		$("#cloth_uploadimg").on("change", handleImgFileSelect);
-	});
+	var log = console.log;
 	
-	function handleImgFileSelect(e) {
+	$(function() {
+		$("#cloth_img_upload").on("change", addfiles);
+		
+		$("#add_cloth_img").click(function() {
+			log("파일업로드");
+			if(!("file")){
+				
+			}else{
+				confirm("옷을 등록하시겠습니까?");
+				
+				log("파일업로드완료");
+			}
+		
+	
+		});
+	});
+
+	/*파일추가*/
+	function addfiles(e) {
 		var files = e.target.files;
 		var fileArr = Array.prototype.slice.call(files);
 		
@@ -34,8 +52,38 @@
 			}
 			reader.readAsDataURL(f);
 		});
-		
 	}
+	
+	/*데이터 전송*/
+
+	    function uploadFile(){
+          var form = $("#file_form")[0];
+          var formData = new FormData(form);
+          formData.append("fileObj", $("#cloth_img_upload")[0].files[0]);
+          	log(formData);
+
+          $.ajax({
+              type: 'POST',
+              url: "http://localhost:9090/cody/upload/",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function(data){
+            	  if(data.result){
+					console.log('success');
+					alert("이미지 업로드 성공!");
+            	  }else{
+            		  alert(data.result);
+            	  }
+              },
+             error : function(error){
+            	 alert(error,status);
+             }
+              }); 
+      }  
+
+
+	
 </script>
 
 </head>
@@ -51,43 +99,44 @@
 			<h3>옷 등록</h3>
 			<br>
 						
-			<form method="post" enctype="multipart/form-data">
+			<form action id="file_form" method="post" enctype="multipart/form-data">
+				<div id="add_img">
+				
 				<figure class="figure">
-				 	 <img id="img"  class="rounded-lg" width="300" height="300">
+				 	 <img id="img">
 				  	<figcaption class="figure-caption text-right">옷 이미지 입니다.</figcaption>
 				</figure>
+				</div>
+				
+	  			<div class="form-group">
+				    <label for="cloth_img_upload">이미지 등록</label>
+				    <input type="file" class="form-control-file" id="cloth_img_upload" name="file">
+				 </div>	
 			
-  			<div class="form-group">
-			    <label for="cloth_uploadimg">이미지 등록</label>
-			<!--     <button type="submit" class="btn btn-outline-primary">이미지등록</button><br> -->
-			    <input type="file" class="form-control-file" id="cloth_uploadimg">
-			 </div>	
-			</form>
 			
-			<form>
 			
 			<div class="form-group row">
 				<label for="inputEmail3" class="col-sm-2 col-form-label">계절</label>
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="season" value="봄">
-						<label class="form-check-label" for="inlineCheckbox1">봄</label>
+						<input class="form-check-input" type="checkbox" id="spring" name="season" value="봄">
+						<label class="form-check-label" for="spring">봄</label>
 					</div>	
 					
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="season" value="여름">
-						<label class="form-check-label" for="inlineCheckbox2">여름</label>
+						<input class="form-check-input" type="checkbox" id="summer" name="season" value="여름">
+						<label class="form-check-label" for="summer">여름</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="season" value="가을">
-						<label class="form-check-label" for="inlineCheckbox3">가을</label>
+						<input class="form-check-input" type="checkbox" id="fall" name="season" value="가을">
+						<label class="form-check-label" for="fall">가을</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="season" value="겨울">
-						<label class="form-check-label" for="inlineCheckbox4">겨울</label>
+						<input class="form-check-input" type="checkbox" id="winter" name="season" value="겨울">
+						<label class="form-check-label" for="winter">겨울</label>
 					</div>
 				</div>
 			</div>
@@ -97,13 +146,13 @@
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="cloth" id="inlineRadio1" value="top">
-					  <label class="form-check-label" for="inlineRadio1">상의</label>
+					  <input class="form-check-input" type="radio" name="cloth" id="cloth_top" value="top">
+					  <label class="form-check-label" for="cloth_top">상의</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="cloth" id="inlineRadio2" value="top">
-					  <label class="form-check-label" for="inlineRadio2">하의</label>
+					  <input class="form-check-input" type="radio" name="cloth" id="cloth_bottom" value="top">
+					  <label class="form-check-label" for="cloth_bottom">하의</label>
 					</div>
 				</div>	
 			</div>
@@ -118,7 +167,7 @@
 			
 			<div class="form-group row">
 						<div class="col-sm-10">
-							<button type="submit" class="btn btn-primary">옷 등록하기</button>
+							<button id="add_cloth_img" type="submit" class="btn btn-primary">옷 등록하기</button>
 						</div>
 			</div>
 			

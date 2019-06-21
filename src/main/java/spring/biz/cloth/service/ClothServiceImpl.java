@@ -44,12 +44,26 @@ public class ClothServiceImpl implements ClothService{
 	public ClothVO getClothId(Integer clothid) {
 		return dao.getClothId(clothid);
 	}
+<<<<<<< HEAD
+=======
+	@Override
+	public List<ClothVO> getClothList() {
+		return dao.getClothList();
+	}
+
+	public List<ClothVO> getCloth(String userid) {
+		return dao.getCloth(userid);
+	}
+>>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	
+<<<<<<< HEAD
 	@Override
 	public List<ClothVO> getClothes(String userid, String kind, String season) {
 		return dao.getClothes(userid, kind, season);
 	}
 	
+=======
+>>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 	@Override
 	public int updateCloth(ClothVO vo) {
 		return dao.updateCloth(vo);

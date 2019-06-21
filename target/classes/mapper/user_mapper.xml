@@ -16,7 +16,7 @@
   values (#{userid}, #{name}, #{userpwd}, #{email}, #{gender})
   </insert>
   <select id="listuser" resultType="uservo">
-  select * from userinfo order by regdate desc
+  select * from userinfo order by reg_date desc
   </select>
   <update id="updateuser" parameterType="uservo">
   update userinfo set email=#{email} where userid =#{userid}
