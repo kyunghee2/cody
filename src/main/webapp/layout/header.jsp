@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <nav class="navbar navbar-dark bg-dark">
-	<a class="navbar-brand" href="#"><b>Today's Cody</a>
+	<a class="navbar-brand" href="${pageContext.request.contextPath}/index.do"><b>Today's Cody</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarsExample01" aria-controls="navbarsExample01"
 		aria-expanded="false" aria-label="Toggle navigation">
