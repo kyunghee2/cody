@@ -4,15 +4,23 @@ import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import spring.biz.cloth.service.ClothService;
+import spring.biz.user.vo.UserVO;
 
 
 @Controller
 public class ClothesController {
+	
+	@Autowired
+	   ClothService clothservice;
 
 	/*cloth_add.do 페이지*/
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.GET)
@@ -22,7 +30,7 @@ public class ClothesController {
 	
 	/*옷 이미지 등록*/
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.POST)
-	public String cloth_upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+	public String cloth_add(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
 		String fileName = file.getOriginalFilename(); /*클라이언트가 선택한 파일이름 불러옴*/
 		String path = request.getRealPath("/upload/"); /*upload폴더 만든거 , 실제 서비스가 되면 저장되는 폴더*/
 		
@@ -40,19 +48,34 @@ public class ClothesController {
 		return "/clothes/myCloth_list";
 	}
 	
-
 	
 
 	
 	/*myCloth_list.do 페이지*/
-	@RequestMapping(value = "/clothes/myCloth_list.do", method = RequestMethod.GET)
-	public String myCloth_list() {
-		return "/clothes/myCloth_list";
-	}
+//	@RequestMapping(value = "/clothes/myCloth_list.do", method = RequestMethod.GET)
+//	public String myCloth_list() {
+//		return "/clothes/myCloth_list";
+//	}
 	
-	@RequestMapping(value = "/clothes/myCloth_list.do", method = RequestMethod.POST)
-	public String myCloth_list_() {
-		return "/clothes/myCloth_list";
+//	@RequestMapping(value = "/clothes/myCloth_list.do", method = RequestMethod.POST)
+//	public String myCloth_list_() {
+//		return "/clothes/myCloth_list";
+//	}
+	
+	/*데이터 주입*/
+	@RequestMapping(value="/clothes/myCloth_list.do" , method = RequestMethod.GET)
+	public ModelAndView myCloth_list_(HttpServletRequest request, String kind, String season) {
+		System.out.println("/clothes/myCloth_list.do");
+		
+		//HttpSession session = request.getSession();
+		UserVO vo = (UserVO) request.getSession().getAttribute("login");
+		System.out.println("edd");
+		ModelAndView mav = new ModelAndView();
+		System.out.println(clothservice.getClothes(vo.getUserid(), kind, season));
+		mav.addObject("clothes", clothservice.getClothes(vo.getUserid(), kind, season));
+		mav.setViewName("/clothes/myCloth_list");
+			
+		return mav;
 	}
 
 }

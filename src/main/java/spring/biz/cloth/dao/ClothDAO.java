@@ -10,16 +10,14 @@ public interface ClothDAO {
 	int addCloth(ClothVO cloth);
 	
 	ClothVO getClothId(Integer clothid);
-	 
-	List<ClothVO> getClothList();
 	
-	List<ClothVO> getCloth(String userid);
-	
-	List<ClothVO> getClothKind(String userid, String season, String kind);
+	List<ClothVO> getClothes(String userid, String kind, String season);
 	
 	int updateCloth(ClothVO vo);
 	
 	int removeCloth(Integer clothid);
 	
 	int multiRemoveCloth(Map<String, Object> map);
+	
+	
 }

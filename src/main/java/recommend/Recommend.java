@@ -23,7 +23,8 @@ import weather.Weather;
 public class Recommend {
 
 	public static void main(String[] args) {
-
+		
+		Weather weather = new Weather();
 		String[] config = { "applicationContext.xml" };
 		ApplicationContext context = new ClassPathXmlApplicationContext(config);
 		ClothService service = (ClothService) context.getBean("clothservice");
@@ -57,12 +58,13 @@ public class Recommend {
 			System.out.println("여름");
 			List<ClothVO> list = new ArrayList<ClothVO>();
 			List<ClothVO> list2 = new ArrayList<ClothVO>();
-			for (ClothVO vo : service.getClothKind("a","1","1")) {
+			for (ClothVO vo : service.getClothes("a","1","1")) {
 				//System.out.println(vo);
 				list.add(vo);
 			}
 			System.out.println(list);
 			Collections.shuffle(list);
+			
 			
 			for(int i=0;i<5;i++) {
 			ClothVO get_list = list.get(i);
@@ -72,13 +74,11 @@ public class Recommend {
 		}
 		if (season >= 916 && season <= 1114) {
 			System.out.println("가을");
-
 		}
 		if (season >= 1115 && season <= 315) {
 			System.out.println("겨울");
-			
-
 		}
+		
 /*
 		Weather weather = new Weather();
 		String lat = "37.50065903853966";

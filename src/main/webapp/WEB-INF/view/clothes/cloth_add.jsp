@@ -8,6 +8,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>옷 등록</title>
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="../css/cloth_add.css" type="text/css">
+
 <script src="../js/bootstrap.js"></script>
 
 <script type="text/javascript">
@@ -15,7 +17,7 @@
 	var log = console.log;
 	
 	$(function() {
-		$("#cloth_img_upload").on("change", handleImgFileSelect);
+		$("#cloth_img_upload").on("change", addfiles);
 		
 		$("#add_cloth_img").click(function() {
 			log("파일업로드");
@@ -31,7 +33,8 @@
 		});
 	});
 
-	function handleImgFileSelect(e) {
+	/*파일추가*/
+	function addfiles(e) {
 		var files = e.target.files;
 		var fileArr = Array.prototype.slice.call(files);
 		
@@ -51,8 +54,8 @@
 		});
 	}
 	
-	/*ajax 파일 업로드*/
-	/* 
+	/*데이터 전송*/
+
 	    function uploadFile(){
           var form = $("#file_form")[0];
           var formData = new FormData(form);
@@ -61,16 +64,23 @@
 
           $.ajax({
               type: 'POST',
-              url: "//70.12.115.75/cody/upload/",
+              url: "http://localhost:9090/cody/upload/",
               data: formData,
               processData: false,
               contentType: false,
-              success: function(result){
-            	   console.log('success');
-                          alert("업로드 성공!!");
-                      }
+              success: function(data){
+            	  if(data.result){
+					console.log('success');
+					alert("이미지 업로드 성공!");
+            	  }else{
+            		  alert(data.result);
+            	  }
+              },
+             error : function(error){
+            	 alert(error,status);
+             }
               }); 
-      }  */
+      }  
 
 
 	
@@ -90,15 +100,19 @@
 			<br>
 						
 			<form action id="file_form" method="post" enctype="multipart/form-data">
+				<div id="out_imgbox">
+				<div id="in_imgbox">
 				<figure class="figure">
-				 	 <img id="img"  class="rounded-lg" width="300" height="300">
+				 	 <img id="img">
 				  	<figcaption class="figure-caption text-right">옷 이미지 입니다.</figcaption>
 				</figure>
-			
-  			<div class="form-group">
-			    <label for="cloth_img_upload">이미지 등록</label>
-			    <input type="file" class="form-control-file" id="cloth_img_upload" name="file">
-			 </div>	
+				</div>
+				</div>
+				
+	  			<div class="form-group">
+				    <label for="cloth_img_upload">이미지 등록</label>
+				    <input type="file" class="form-control-file" id="cloth_img_upload" name="file">
+				 </div>	
 			
 			
 			
