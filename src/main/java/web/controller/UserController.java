@@ -1,8 +1,5 @@
 package web.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sun.tracing.dtrace.ModuleAttributes;
-
-import spring.biz.user.dao.UserDAO;
-import spring.biz.user.dao.UserDAO_JDBC;
 import spring.biz.user.service.UserService;
-import spring.biz.user.service.UserServiceImpl;
 import spring.biz.user.vo.UserVO;
 import util.AES256Util;
-import web.validator.UserValidator;
 
 @Controller
 @PropertySource("classpath:config.properties")
@@ -68,7 +59,7 @@ public class UserController {
 			String acs_pwd = aes256.aesEncode(vo.getUserpwd());
 			vo.setUserpwd(acs_pwd);
 			
-			int result = service.addUser(vo);
+			service.addUser(vo);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -89,7 +80,7 @@ public class UserController {
 	}
 	@RequestMapping("/user/remove.do")
 	public String deleteUserProc(@RequestParam("uid") String id) {
-		int result = service.removeUser(id);
+		service.removeUser(id);
 		return "redirect:./list.do";
 	}
 	@RequestMapping("/user/modify.do")
