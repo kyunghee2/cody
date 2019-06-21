@@ -23,7 +23,8 @@ import weather.Weather;
 public class Recommend {
 
 	public static void main(String[] args) {
-
+		
+		Weather weather = new Weather();
 		String[] config = { "applicationContext.xml" };
 		ApplicationContext context = new ClassPathXmlApplicationContext(config);
 		ClothService service = (ClothService) context.getBean("clothservice");
@@ -72,13 +73,11 @@ public class Recommend {
 		}
 		if (season >= 916 && season <= 1114) {
 			System.out.println("가을");
-
 		}
 		if (season >= 1115 && season <= 315) {
 			System.out.println("겨울");
-			
-
 		}
+		
 /*
 		Weather weather = new Weather();
 		String lat = "37.50065903853966";

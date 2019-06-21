@@ -22,4 +22,6 @@ public interface ClothDAO {
 	int removeCloth(Integer clothid);
 	
 	int multiRemoveCloth(Map<String, Object> map);
+	
+	
 }
