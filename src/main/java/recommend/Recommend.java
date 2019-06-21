@@ -65,6 +65,7 @@ public class Recommend {
 			System.out.println(list);
 			Collections.shuffle(list);
 			
+			
 			for(int i=0;i<5;i++) {
 			ClothVO get_list = list.get(i);
 			list2.add(get_list);
