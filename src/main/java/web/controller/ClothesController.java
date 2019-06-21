@@ -3,26 +3,24 @@ package web.controller;
 import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
-<<<<<<< HEAD
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-=======
 
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-<<<<<<< HEAD
+
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.biz.cloth.service.ClothService;
 import spring.biz.cloth.vo.ClothVO;
-=======
 
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
+
+
 
 @Controller
 public class ClothesController {
@@ -56,9 +54,9 @@ public class ClothesController {
 		return "reportResult";
 		return "/clothes/cloth_add";
 	}
-<<<<<<< HEAD
+
 	*/
-=======
+
 	
 	/*옷 이미지 등록*/
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.POST)
@@ -82,7 +80,7 @@ public class ClothesController {
 	
 	
 
->>>>>>> branch 'master' of https://github.com/kyunghee2/cody.git
+
 	
 	/*myCloth_list.do 페이지*/
 	

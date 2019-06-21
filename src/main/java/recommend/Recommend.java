@@ -57,7 +57,7 @@ public class Recommend {
 			System.out.println("여름");
 			List<ClothVO> list = new ArrayList<ClothVO>();
 			List<ClothVO> list2 = new ArrayList<ClothVO>();
-			for (ClothVO vo : service.getClothKind("a","1","1")) {
+			for (ClothVO vo : service.getClothes("a","1","1")) {
 				//System.out.println(vo);
 				list.add(vo);
 			}
