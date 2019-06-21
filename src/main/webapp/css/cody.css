@@ -24,6 +24,19 @@
 	font-weight: normal;
 }
 
+#add_history{	
+		
+}
+
+#msg_info{
+	text-align: center;
+	margin-top: 20px;
+}
+
+#history_button{
+	
+}
+
 #now_location{
 	margin-top:200px;
 	margin-bottom: 50px;

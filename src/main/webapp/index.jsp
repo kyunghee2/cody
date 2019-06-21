@@ -47,6 +47,16 @@
 						<h1>오늘의 코디</h1>
 						<div id="today"></div>
 
+
+						<div id="msg_info">
+						 <label>메세지가 들어갈 부분입니다.</label>
+						</div>
+						
+						<div id="history_button">
+							<button id="add_history" type="submit" class="btn btn-secondary">히스토리 추가</button>
+						</div>
+						
+						
 						<div id="index_cloth_top" class="alert alert-success subtitle" role="alert">
 							<strong>상의</strong>
 						</div>
