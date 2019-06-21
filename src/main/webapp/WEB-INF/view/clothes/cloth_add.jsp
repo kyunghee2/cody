@@ -100,12 +100,13 @@
 			<br>
 						
 			<form action id="file_form" method="post" enctype="multipart/form-data">
-				<div id="add_img">
-				
+				<div id="out_imgbox">
+				<div id="in_imgbox">
 				<figure class="figure">
 				 	 <img id="img">
 				  	<figcaption class="figure-caption text-right">옷 이미지 입니다.</figcaption>
 				</figure>
+				</div>
 				</div>
 				
 	  			<div class="form-group">
