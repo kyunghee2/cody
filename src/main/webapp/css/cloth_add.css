@@ -1,12 +1,21 @@
 @charset "UTF-8";
 
-
-#img{
-	width:300px;
-	height:300px;
-}
-
-#add_img {
+#out_imgbox {
 	border: 1px solid;
+	height: 100%;
 }
+
+#in_imgbox {
+	text-align:center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#input_img{
+	border:0;
+	width: 50%;
+	size: 50;
+}
+
+
 

@@ -21,15 +21,17 @@
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 	</bean>
 	<!-- url 파라메터에 lang 들어오면 LocaleChangeInterceptor 동작됨 -->
-	<!-- <mvc:interceptors>
+	 <mvc:interceptors>
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<property name="paramName" value="lang"></property>
 		</bean>
 		<mvc:interceptor>
-			<mvc:mapping path="/user/list.do"/>
+			<mvc:mapping path="/clothes/cloth_add.do"/>
+			<mvc:mapping path="/clothes/myCloth_list.do"/>
+			<mvc:mapping path="/clothes/index.do"/>
 			<bean class="web.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors> 
 	
 	<!-- fileupload관련 -->
 	<bean id="multipartResolver"
