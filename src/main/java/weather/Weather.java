@@ -1,4 +1,3 @@
-
 package weather;
 
 import java.io.BufferedReader;
@@ -29,6 +28,7 @@ public class Weather {
 		String lat = "37.50065903853966";
 		String lon = "127.03946862393614";
 		System.out.println(w.getWeather(lat, lon));
+		System.out.println(insertWeather(map));
 	}
 
 	private void dust() {
@@ -125,7 +125,7 @@ public class Weather {
 	static int insertWeather(Map<String, String> map) {
 		String select = "SELECT * FROM (SELECT dataTime FROM weather ORDER BY datatime desc) t where rownum = 1";
 		String insert = "INSERT INTO weather(dataTime, tempMax,tempMin, weather, humidity, tempNow, pm10Value, pm10Grade, pm25Value, pm25Grade, location, weatherID)"
-						+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+						+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Connection con = null;
 		Statement st = null;
@@ -142,8 +142,8 @@ public class Weather {
 			ps = con.prepareStatement(insert);
 			rs = st.executeQuery(select);
 			rs.next();
-			
 				if (!(rs.getString("dataTime").equals(map.get("dataTime")))) {
+					
 					ps.setString(1, map.get("dataTime"));
 					ps.setString(2, map.get("tempMax"));
 					ps.setString(3, map.get("tempMin"));
@@ -161,9 +161,7 @@ public class Weather {
 					return 0;
 				}
 
-			row = ps.executeUpdate();
-			
-			System.out.println(row);
+			row = ps.executeUpdate();			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
