@@ -23,4 +23,6 @@ public interface ClothService {
 	
 	List<ClothVO> recommendCloth(String userid, String kind);
 	
+	String outerwear(String tempMax,String temMin);
+	
 }
