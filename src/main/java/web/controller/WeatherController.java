@@ -14,8 +14,15 @@ public class WeatherController {
 	@Autowired
 	UserService service;
 	
-	@RequestMapping(value = "/weather.do")
-	public ResponseEntity<String> getWeather(String lat, String lon) {
-		return new ResponseEntity<String>(new Weather().getWeatherFromDB(), HttpStatus.OK);
+	@RequestMapping(value = "/api/weather.do")
+	public ResponseEntity<String> getWeatherFromAPI(String lat, String lon) {
+		Weather w = new Weather();
+		return new ResponseEntity<String>(w.getWeatherFromAPI(lat, lon), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/db/weather.do")
+	public ResponseEntity<String> getWeatherFromDB() {
+		Weather w = new Weather();
+		return new ResponseEntity<String>(w.getWeatherFromDB(), HttpStatus.OK);
 	}
 }
