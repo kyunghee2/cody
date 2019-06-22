@@ -33,6 +33,7 @@ public class LoginController {
 	private String key;
 	
 	
+	
 	@RequestMapping(value = "/index.do",method = RequestMethod.GET)
 	public String index(HttpServletRequest request) {
 		
