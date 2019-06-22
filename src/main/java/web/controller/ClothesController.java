@@ -102,5 +102,8 @@ public class ClothesController {
 		clothservice.multiRemoveCloth(map);
 		return "redirect:/clothes/myCloth_list";
 	}
+	
+	
+	
 
 }

@@ -25,40 +25,25 @@ import spring.biz.cloth.vo.ClothVO;
 import weather.Weather;
 
 public class Recommend {
-
+	
 	public static void main(String[] args) {
-		
+
 		Weather weather = new Weather();
 		String[] config = { "applicationContext.xml" };
 		ApplicationContext context = new ClassPathXmlApplicationContext(config);
 		ClothService service = (ClothService) context.getBean("clothservice");
 		ClothHistoryService historyservice = (ClothHistoryService) context.getBean("clothhistoryservice");
-		
-		// SimpleDateFormat format1 = new SimpleDateFormat("MM-dd");
-		// SimpleDateFormat format2 = new SimpleDateFormat("MMdd");
 
 		Calendar calendar = Calendar.getInstance();
-		// String format_calendar = format1.format(calendar.getTime());
-		// int format2_calendar = format2.format(calendar.get);
+
 		int mon = calendar.get(Calendar.MONTH);
 		int day = calendar.get(Calendar.DAY_OF_MONTH);
-		// int[] a = {mon,day};
-
-		// System.out.println(format_calendar);
-		// System.out.println(format2_calendar);
-
-		// int season = format2_calendar;
-
 		String d = mon + "" + day;
 		int season = Integer.parseInt(d);
 
-		// System.out.println(mon);
-		// System.out.println(day);
-		// System.out.println(d);
-
 		if (season >= 316 && season <= 514) {
 			System.out.println("봄");
-			
+
 		}
 		if (season >= 515 && season <= 915) {
 			Map<Integer, ClothVO> map1 = new HashMap<Integer, ClothVO>();
@@ -68,96 +53,84 @@ public class Recommend {
 			System.out.println("여름");
 			List<ClothVO> list = new ArrayList<ClothVO>();
 			List<ClothVO> list2 = new ArrayList<ClothVO>();
-			for (ClothVO vo : service.recommendCloth("a","1","1")) {
-				map1.put(vo.getClothid(),vo);
-				//System.out.println(vo);
+			for (ClothVO vo : service.recommendCloth("a", "1", "1")) {
+				map1.put(vo.getClothid(), vo);
+				// System.out.println(vo);
 				list.add(vo);
 			}
-			
+
 			String j = JSONObject.toJSONString(map1).toString();
 			System.out.println(j);
 			System.out.println(list);
 			Collections.shuffle(list);
 			/////////////////////////////////////////////////////////////////////////
-			
-			Iterator<Integer> keys = map1.keySet().iterator();
-			int i=0;
-			for(int key: map1.keySet())	{
-				map2.put(i,map1.get(key));
+
+			//Iterator<Integer> keys = map1.keySet().iterator();
+			int i = 0;
+			for (int key : map1.keySet()) {
+				map2.put(i, map1.get(key));
 				i++;
-				if(i==5)
+				if (i == 5)
 					break;
 			}
 			System.out.println(map2);
-			
+
 			String js = JSONObject.toJSONString(map2).toString();
 			System.out.println(js);
-			
+
 			//////////////////////////////////////////////////////////////////////////
 			Object[] crunchifyKeys = map1.keySet().toArray();
 			Object key = crunchifyKeys[new Random().nextInt(crunchifyKeys.length)];
-			
+
 			System.out.println("************ Random Value ************ \n" + key + " :: " + map1.get(key));
-			 
+
 			List<Map.Entry<Integer, ClothVO>> map1list = new ArrayList<Map.Entry<Integer, ClothVO>>(map1.entrySet());
-	 
+
 			// Bonus Crunchify Tips: How to Shuffle a List??
 			// Each time you get a different order...
 			System.out.println("\n************ Now Let's start shuffling list ************");
 			Collections.shuffle(map1list);
-			
+
 			Map<Integer, ClothVO> mapentry = new HashMap<Integer, ClothVO>();
 			for (Map.Entry<Integer, ClothVO> entry : map1list) {
 				System.out.println(entry.getKey() + " :: " + entry.getValue());
 				System.out.println("****************************************************");
-				
+
 			}
-				//System.out.println(mapentry);
-			//List<Map<Integer, ClothVO>> map2list = new ArrayList<Map<Integer,ClothVO>>(map1.);
-			//for (Map<Integer, ClothVO> entry2 : map1list) {
-				
-			//}
+			// System.out.println(mapentry);
+			// List<Map<Integer, ClothVO>> map2list = new
+			// ArrayList<Map<Integer,ClothVO>>(map1.);
+			// for (Map<Integer, ClothVO> entry2 : map1list) {
+
+			// }
 			//////////////////////////////////////////////////////////////////////////
-			
-			
-			
+
 			/*
-			System.out.println("-------shuffling------");
-			Object[] ready = map1.keySet().toArray();
-			Object random = ready[new Random().nextInt(ready.length)];
-			System.out.println(random);
-			
-			List<Map<Integer, ClothVO>> list3 = null; // this is what you have already
-			
-			// 랜덤 5개 선택하여 출력
-			for(int i=0;i<5;i++) {
-				//ClothVO get_list = map1.get(i);
-				ClothVO get_list = list.get(i);
-				list2.add(get_list);
-				list3.add((Map<Integer, ClothVO>) list2);
-			}
-			System.out.println("====================================");
-			
-			
-			for (Map<Integer, ClothVO> map : list3) {
-			    for (Map.Entry<Integer, ClothVO> entry : map.entrySet()) {
-			    	Integer key = entry.getKey();
-			    	ClothVO value = entry.getValue();
-			    	map3.putAll(map);
-			    }
-			}
-			System.out.println(map3);
-			//System.out.println(list2);
-			*/
-			
+			 * System.out.println("-------shuffling------"); Object[] ready =
+			 * map1.keySet().toArray(); Object random = ready[new
+			 * Random().nextInt(ready.length)]; System.out.println(random);
+			 * 
+			 * List<Map<Integer, ClothVO>> list3 = null; // this is what you have already
+			 * 
+			 * // 랜덤 5개 선택하여 출력 for(int i=0;i<5;i++) { //ClothVO get_list = map1.get(i);
+			 * ClothVO get_list = list.get(i); list2.add(get_list); list3.add((Map<Integer,
+			 * ClothVO>) list2); }
+			 * System.out.println("====================================");
+			 * 
+			 * 
+			 * for (Map<Integer, ClothVO> map : list3) { for (Map.Entry<Integer, ClothVO>
+			 * entry : map.entrySet()) { Integer key = entry.getKey(); ClothVO value =
+			 * entry.getValue(); map3.putAll(map); } } System.out.println(map3);
+			 * //System.out.println(list2);
+			 */
+
 			// 히스토리 regdate 추출
-			//List<ClothHistoryVO> list3 = new ArrayList<ClothHistoryVO>();
-			//for (ClothHistoryVO vo : historyservice.getClothDate("a", "1")) {
-			//	list3.add(vo);
-				
-			//}
-			
-			
+			// List<ClothHistoryVO> list3 = new ArrayList<ClothHistoryVO>();
+			// for (ClothHistoryVO vo : historyservice.getClothDate("a", "1")) {
+			// list3.add(vo);
+
+			// }
+
 		}
 		if (season >= 916 && season <= 1114) {
 			System.out.println("가을");
@@ -165,41 +138,15 @@ public class Recommend {
 		if (season >= 1115 && season <= 315) {
 			System.out.println("겨울");
 		}
-		
-/*
-		Weather weather = new Weather();
-		String lat = "37.50065903853966";
-		String lon = "127.03946862393614";
-		System.out.println(weather.getWeather(lat, lon));
-		// Map<String, String> map = new HashMap<String, String>();
-		// map = weather.getWeather(lat, lon);
-
-		String w_value = weather.getWeather(lat, lon);
-
-		JSONParser parser = new JSONParser();
-
-		try {
-			JSONObject obj = (JSONObject) parser.parse(w_value);
-			// 몇개의 오브젝트가 들어있는가?
-            System.out.println("오브젝트의 갯수 : "+obj.size());
-            // key set 받아오기 
-            Set key = obj.keySet();
-            // Iterator 설정
-            Iterator<String> iter = key.iterator();
-            // 각각 키 값 출력
-            while(iter.hasNext())
-            {
-                String keyname = iter.next();
-                System.out.println("key : "+keyname+" type : "+obj.get(
-                                    keyname).getClass());
-            }
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-*/
-		
+	}
 	
-
-		}
+	
+	public String getRecommend(String userid, String kind, String season) {
+		
+		
+		
+		return season;
+	}
+	
 
 }
