@@ -38,7 +38,9 @@ public class LoginController {
 		UserVO vo = (UserVO) request.getSession().getAttribute("login");
 		String userid=vo.getUserid();
 		
-		//List<ClothVO> map = clothservice.recommendCloth(userid, "1");
+		List<ClothVO> map = clothservice.recommendCloth(userid, "1");
+		String msg = clothservice.outerwear();
+		
 		return "/index";
 	}
 	
