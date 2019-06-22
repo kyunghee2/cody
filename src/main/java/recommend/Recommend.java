@@ -106,24 +106,26 @@ public class Recommend {
 			// }
 			//////////////////////////////////////////////////////////////////////////
 
-			/*
-			 * System.out.println("-------shuffling------"); Object[] ready =
-			 * map1.keySet().toArray(); Object random = ready[new
-			 * Random().nextInt(ready.length)]; System.out.println(random);
-			 * 
-			 * List<Map<Integer, ClothVO>> list3 = null; // this is what you have already
-			 * 
-			 * // 랜덤 5개 선택하여 출력 for(int i=0;i<5;i++) { //ClothVO get_list = map1.get(i);
-			 * ClothVO get_list = list.get(i); list2.add(get_list); list3.add((Map<Integer,
-			 * ClothVO>) list2); }
-			 * System.out.println("====================================");
-			 * 
-			 * 
-			 * for (Map<Integer, ClothVO> map : list3) { for (Map.Entry<Integer, ClothVO>
-			 * entry : map.entrySet()) { Integer key = entry.getKey(); ClothVO value =
-			 * entry.getValue(); map3.putAll(map); } } System.out.println(map3);
-			 * //System.out.println(list2);
-			 */
+			
+			  System.out.println("-------shuffling------"); Object[] ready =
+			  map1.keySet().toArray(); Object random = ready[new
+			  Random().nextInt(ready.length)]; System.out.println(random);
+			  
+			  List<Map<Integer, ClothVO>> list3 = null; // this is what you have already
+			  
+			  // 랜덤 5개 선택하여 출력 
+			  for(int i=0;i<5;i++) { //ClothVO get_list = map1.get(i);
+			  ClothVO get_list = list.get(i); 
+			  list2.add(get_list); 
+			  list3.add((Map<Integer,ClothVO>) list2); }
+			  System.out.println("====================================");
+			  
+			  
+			  for (Map<Integer, ClothVO> map : list3) { for (Map.Entry<Integer, ClothVO>
+			  entry : map.entrySet()) { Integer key = entry.getKey(); ClothVO value =
+			  entry.getValue(); map3.putAll(map); } } System.out.println(map3);
+			  //System.out.println(list2);
+			 
 
 			// 히스토리 regdate 추출
 			// List<ClothHistoryVO> list3 = new ArrayList<ClothHistoryVO>();

@@ -1,5 +1,8 @@
 package web.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import spring.biz.cloth.service.ClothService;
+import spring.biz.cloth.vo.ClothVO;
 import spring.biz.user.service.UserService;
 import spring.biz.user.vo.UserVO;
 import util.AES256Util;
@@ -21,12 +26,19 @@ import util.AES256Util;
 public class LoginController {
 	@Autowired
 	UserService service;
+	@Autowired
+	ClothService clothservice;
 	
 	@Value("${secretkey}") 
 	private String key;
 	
 	@RequestMapping(value = "/index.do",method = RequestMethod.GET)
-	public String index() {
+	public String index(HttpServletRequest request) {
+		
+		UserVO vo = (UserVO) request.getSession().getAttribute("login");
+		String userid=vo.getUserid();
+		
+		List<ClothVO> map = clothservice.recommendCloth(userid, "1");
 		return "/index";
 	}
 	
