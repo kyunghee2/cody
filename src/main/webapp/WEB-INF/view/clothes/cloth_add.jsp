@@ -48,16 +48,14 @@
 			
 			var reader = new FileReader();
 			reader.onload = function (e) {
-				$("#input_img").attr("src", e.target.result);	
-		
+				$("#input_img").attr("src", e.target.result);				
 			}
 			reader.readAsDataURL(f);
-			log("이미지 화면에 뜸");
 		});
 	}
 	
 	/*데이터 전송*/
-
+/* 
 	    function uploadFile(){
           var form = $("#file_form")[0];
           var formData = new FormData(form);
@@ -66,13 +64,13 @@
 
           $.ajax({
               type: 'POST',
-              url: "http://localhost:9090/cody/upload/",
+              url: "/clothes/cloth_add.do",
               data: formData,
               processData: false,
               contentType: false,
               success: function(data){
             	  if(data.result){
-					log('success');
+					console.log('success');
 					alert("이미지 업로드 성공!");
             	  }else{
             		  alert(data.result);
@@ -82,7 +80,7 @@
             	 alert(error,status);
              }
               }); 
-      }  
+      }   */
 
 
 	
