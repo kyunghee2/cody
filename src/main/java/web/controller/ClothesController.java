@@ -24,9 +24,10 @@ import spring.biz.user.vo.UserVO;
 
 @Controller
 public class ClothesController {
-	
+		
 	@Autowired
 	   ClothService clothservice;
+
 
 	/*cloth_add.do 페이지*/
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.GET)
@@ -34,7 +35,7 @@ public class ClothesController {
 		return "/clothes/cloth_add";
 	}
 	
-	/*옷 이미지 등록*/
+	/*옷 이미지 upload폴더에 등록*/
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.POST)
 	public String cloth_add(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
 		String fileName = file.getOriginalFilename(); /*클라이언트가 선택한 파일이름 불러옴*/

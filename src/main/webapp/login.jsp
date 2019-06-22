@@ -20,8 +20,8 @@
 <body>
 <form class="form-signin" action="login.do" method="POST">
       <div class="text-center mb-4">
-        <h1 class="h3 mb-3 font-weight-normal">Cody Login</h1>
-        <p></p>
+      <!--   <h1 class="h3 mb-3 font-weight-normal">Cody Login</h1> -->
+      <img alt="로고이미지" src="">
       </div>
 
       <div class="form-label-group">
@@ -37,7 +37,6 @@
 	  	<span class="msg">${msg}</span>
 	  </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      
     </form>
 </body>
 </html>
