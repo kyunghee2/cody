@@ -49,13 +49,11 @@ public class ClothesController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-		}
+		}		
 		request.setAttribute("imgname",fileName);
 		return "/clothes/myCloth_list";
 	}
 	
-	
-
 	
 	/*myCloth_list.do 페이지*/
 	

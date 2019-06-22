@@ -73,59 +73,64 @@ public class ClothServiceImpl implements ClothService {
 	}
 
 	@Override
-	public List<ClothVO> recommendCloth(String userid,String kind) {
-	
+	public List<ClothVO> recommendCloth(String userid, String kind) {
+
 		Calendar calendar = Calendar.getInstance();
 
 		int mon = calendar.get(Calendar.MONTH);
 		int day = calendar.get(Calendar.DAY_OF_MONTH);
 		String d = mon + "" + day;
 		int season = Integer.parseInt(d);
-		String season2="";
-		
-		
-		List<ClothVO> list = new ArrayList<ClothVO>();		
-		List<ClothVO> list2 = new ArrayList<ClothVO>();		
-		
+		String season2 = "";
+
+		List<ClothVO> list = new ArrayList<ClothVO>();
+		List<ClothVO> list2 = new ArrayList<ClothVO>();
+
 		if (season >= 316 && season <= 514) {
 			System.out.println("봄");
-			season2="1";
-		}
-		else if (season >= 515 && season <= 915) {
+			season2 = "1";
+		} else if (season >= 515 && season <= 915) {
 			System.out.println("여름");
-			season2="1";		
-		}
-		else if (season >= 916 && season <= 1114) {
+			season2 = "1";
+		} else if (season >= 916 && season <= 1114) {
 			System.out.println("가을");
-			season2="3";
-		}
-		else if (season >= 1115 && season <= 315) {
+			season2 = "3";
+		} else if (season >= 1115 && season <= 315) {
 			System.out.println("겨울");
-			season2="4";
+			season2 = "4";
 		}
-		
+
 		for (ClothVO clothvo : dao.recommendCloth(userid, kind, season2)) {
 
-			list.add(clothvo);			
-		}
-		
-		Collections.shuffle(list);
-		
-		for(int i=0;i<5;i++) {
-			ClothVO get_list = list.get(i);
-			list2.add(get_list);
-		}
-		
-		return list2;
-	}
+			list.add(clothvo);
 
-	@Override
-	public String outerwear(String tempMax, String temMin) {
-		// TODO Auto-generated method stub
-		return null;
+		}
+		if (list.size() >= 5) {
+			Collections.shuffle(list);
+
+			for (int i = 0; i < 5; i++) {
+				ClothVO get_list = list.get(i);
+				list2.add(get_list);
+			}
+			System.out.println(list2);
+			return list2;
+		} else {
+			return list;
+		}
+
 	}
 	
-	
+	  @Override 
+	  public String outerwear() {
+	  
+		  String url = "/db/weather.do";
+	  
+		  String msg="sfda";
+	  
+		  return msg; 
+		  
+	  }
+	  
+	 
 
-	
 }
