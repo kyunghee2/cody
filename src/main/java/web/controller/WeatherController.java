@@ -16,7 +16,6 @@ public class WeatherController {
 	
 	@RequestMapping(value = "/weather.do")
 	public ResponseEntity<String> getWeather(String lat, String lon) {
-		return new ResponseEntity<String>(new Weather().getWeather(lat, lon), HttpStatus.OK);
+		return new ResponseEntity<String>(new Weather().getWeatherFromDB(), HttpStatus.OK);
 	}
-	
 }
