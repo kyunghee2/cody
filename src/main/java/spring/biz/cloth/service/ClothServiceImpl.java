@@ -121,7 +121,9 @@ public class ClothServiceImpl implements ClothService {
 
 	@Override
 	public String outerwear(String tempMax, String temMin) {
-		// TODO Auto-generated method stub
+		
+		String url = "/db/weather.do";
+		
 		return null;
 	}
 	
