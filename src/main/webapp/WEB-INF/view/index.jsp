@@ -192,8 +192,7 @@
 
 		function getLocation() {
 			if (navigator.geolocation) {
-				navigator.geolocation
-						.getCurrentPosition(geoPosition, showError);
+				navigator.geolocation.getCurrentPosition(geoPosition, showError);
 			} else {
 				log("브라우저에서 위치정보를 가져올 수 없습니다.");
 			}
@@ -242,6 +241,11 @@
 			$("#eicon_area").html("");
 			var pm10Grade_txt = "좋음";
 			
+			console.log("json.weatherID:"+json.weatherID);
+			if (json.weatherID != undefined) {
+				
+				$("#backgroundImage:after").css("background-image","url('./img/weather_2.jpg')");
+			}
 			if (json.pm10Grade != undefined) {
 				var pm10Grade = json.pm10Grade;//미세먼지
 				var pm10Grade_img = ""; 
