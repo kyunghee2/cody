@@ -1,5 +1,28 @@
 @charset "UTF-8";
 
+#backgroundImage:after {
+	background-image:  url("../img/weather_1.jpg");
+	top:0;
+	left:0;
+	position: absolute;
+	filter:alpha(opacity=40);
+	opacity: 0.4!important;
+	z-index: -1;
+	content: "";
+	width: 100%;
+	height: 200%;
+	background-size: cover;
+}
+	
+#backgroundImage h1 {
+	text-align: center;
+}	
+
+#today {
+	text-align: center;
+	margin-top: 30px;
+	font-weight: normal;
+}
 
 .main_img{
 	height:186px;
@@ -16,4 +39,7 @@
     padding: 10px;
     border-style: solid;
     border-width: 1px;
+}
+.left-subtitle{
+	    margin-bottom: 50px;
 }

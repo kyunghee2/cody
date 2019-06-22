@@ -25,9 +25,15 @@ public class LoginController {
 	@Value("${secretkey}") 
 	private String key;
 	
+	@RequestMapping(value = "/index.do",method = RequestMethod.GET)
+	public String index() {
+		return "/index";
+	}
+	
 	@RequestMapping(value = "/login.do",method = RequestMethod.GET)
 	public String login() {
-		return "login";// view페이지 리턴
+		//return "/login";// view페이지 리턴
+		return "redirect:login.jsp";
 	}
 	@RequestMapping(value = "/login.do",method = RequestMethod.POST)
 	public String loginProc(UserVO vo,HttpServletRequest request) throws Exception {
@@ -39,10 +45,12 @@ public class LoginController {
 			request.getSession().setAttribute("User", user);
 			request.getSession().setAttribute("login", user);
 			
-			return "redirect:index.jsp";
+			//return "redirect:index.jsp";
+			return "redirect:index.do";
 		}else {
 			request.setAttribute("msg", "로그인 정보를 다시 입력하세요.");
-			return "login";
+			//return "login";
+			return "redirect:login.do";
 		}
 	}
 	@RequestMapping("/logout.do")
@@ -52,8 +60,10 @@ public class LoginController {
 			session.invalidate();
 		
 		request.setAttribute("msg", "로그아웃 되었습니다.");
-		return "login";
+	
 		//return "redirect:index.jsp";
+		System.out.println("로그아웃 되었습니다.");
+		return "redirect:login.do";
 	}
 	@ExceptionHandler(Exception.class)
 	public String Ex(Exception exception,Model model) {
