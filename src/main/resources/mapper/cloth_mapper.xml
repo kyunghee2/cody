@@ -10,7 +10,24 @@
 			values ((select nvl(max(clothid),0)+1 from cloth), #{userid},
 			 #{imgpath}, #{imgname}, #{season}, #{kind}, #{color})
 	</insert>
-
+	
+	<select id="recommendcloth" resultType="clothvo">
+		select * from cloth 
+		where userid = #{userid}
+			and clothid not in (select clothid from cloth_history where regdate like (sysdate-1) )
+			<if test="kind != null">and kind = #{kind}</if>
+			<if test="season != null">and season like '%'||#{season}||'%'</if>
+		<!-- <where>
+			userid = #{userid}
+			and clothid not in (select clothid from cloth_history where regdate >= sysdate-2 and regdate < sysdate-1 )
+			<if test="kind != null">and kind = #{kind}</if>
+			<if test="season != null">and season like '%'||#{season}||'%'</if>
+			
+		</where> -->
+		
+	
+	</select>
+	
 	<select id="getclothes" resultType="clothvo"> <!-- 완료 -->
 		select * from cloth 
 		<where>
@@ -19,6 +36,7 @@
 			<if test="season != null">and season like '%'||#{season}||'%'</if>
 		</where>
 	</select>
+	
 	
 	<select id="getclothid" resultType="clothvo"> <!-- 완료 -->
 		select * from cloth where clothid = #{clothid}
