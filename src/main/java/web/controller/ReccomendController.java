@@ -35,11 +35,6 @@ public class ReccomendController {
 	@ResponseBody
 	public Map<Integer, ClothVO> getRecommendCloth(HttpServletRequest request) {
 		
-		
-		
-		
-		
-		
 		return null;
 			
 	}
