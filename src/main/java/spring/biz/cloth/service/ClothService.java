@@ -19,4 +19,6 @@ public interface ClothService {
 	
 	int multiRemoveCloth(Map<String, Object> map);
 	
+	List<ClothVO> recommendCloth(String userid, String kind, String season);
+	
 }

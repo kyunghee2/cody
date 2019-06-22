@@ -54,4 +54,13 @@ public class ClothDAO_MyBatis implements ClothDAO{
 	public int multiRemoveCloth(Map<String, Object> map) {
 		return sqlSession.delete("clothMapper.multiremovecloth", map);
 	}
+
+	@Override
+	public List<ClothVO> recommendCloth(String userid, String kind, String season) {
+		HashMap<String , String> map = new HashMap<String, String>();
+	    map.put("userid", userid);
+	    map.put("season", season);
+	    map.put("kind", kind);
+		return sqlSession.selectList("clothMapper.recommendcloth",map);
+	}
 }
