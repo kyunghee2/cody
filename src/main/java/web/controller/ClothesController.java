@@ -87,20 +87,23 @@ public class ClothesController {
 	}
 	
 	/*multi remove */
-	@RequestMapping("/clothes/clothesremove.do")
-	public String deleteUserProc(@RequestParam("clothidList") List<Integer> clothidlist) {
+	@RequestMapping(value ="/clothes/clothesremove.do", method = RequestMethod.POST)
+	public String deleteClothes(@RequestParam("clothidlist") List<Integer> clothidlist) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<ClothVO> list = new ArrayList<ClothVO>();
 		
 		for(int clothid : clothidlist) {
-			ClothVO item = new ClothVO();
-			item.setClothid(clothid);
-			list.add(item);
+			ClothVO cloth = new ClothVO();
+			cloth.setClothid(clothid);
+			list.add(cloth);
 		}
 		map.put("list", list);
 
 		clothservice.multiRemoveCloth(map);
 		return "redirect:/clothes/myCloth_list";
 	}
+	
+	
+	
 
 }
