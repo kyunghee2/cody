@@ -27,8 +27,10 @@ public class Weather {
 		Weather w = new Weather();
 		String lat = "37.50065903853966";
 		String lon = "127.03946862393614";
-		System.out.println(w.getWeather(lat, lon));
-		System.out.println(insertWeather(map));
+		w.getWeather(lat, lon);
+		//System.out.println(w.getWeather(lat, lon));		
+		System.out.println("updated row:" +insertWeather(map));
+		Thread.sleep(HOUR);
 	}
 
 	private void dust() {
