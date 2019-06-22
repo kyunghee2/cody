@@ -29,6 +29,7 @@ public class Weather {
 		String lat = "37.50065903853966";
 		String lon = "127.03946862393614";
 		System.out.println(w.getWeather(lat, lon));
+		
 	}
 
 	private void dust() {
@@ -134,8 +135,8 @@ public class Weather {
 		int row = 0;
 
 		
-		
-		try {
+
+ try {
 			con = JDBCUtil.getConnection();
 
 			st = con.prepareStatement(select);
