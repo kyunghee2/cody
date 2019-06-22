@@ -49,6 +49,7 @@ public class Recommend {
 			Map<Integer, ClothVO> map1 = new HashMap<Integer, ClothVO>();
 			Map<Integer, ClothVO> map2 = new HashMap<Integer, ClothVO>();
 			Map<Integer, ClothVO> map3 = new HashMap<Integer, ClothVO>();
+			
 
 			System.out.println("여름");
 			List<ClothVO> list = new ArrayList<ClothVO>();
