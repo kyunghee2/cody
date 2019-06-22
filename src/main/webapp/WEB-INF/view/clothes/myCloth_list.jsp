@@ -20,7 +20,7 @@
 <body id="boby">
 	<%@include file="/layout/header.jsp"%>
 	<!-- 사용자 리스트를 클라이언트에게 보여주기 위하여 출력. -->
-
+${cloth.imgpath}${cloth.imgname}
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2"></div>
@@ -31,9 +31,9 @@
 					<button class="btn" onclick="filterSelection('cars')">하의</button>
 
 
-					<a class="btn btn-outline-dark" role="button" id="delete">옷삭제</a> <a
-						href="http://localhost:9090/cody/clothes/cloth_add.do"
-						class="btn btn-outline-dark" role="button" id="submitclo">옷등록</a>
+					<a class="btn btn-outline-dark" role="button" id="delete">옷삭제</a>
+					<a href="http://localhost:9090/cody/clothes/cloth_add.do" 
+					class="btn btn-outline-dark" role="button" id="submitclo">옷등록</a>
 				</div>
 
 				<!-- Portfolio Gallery Grid -->
