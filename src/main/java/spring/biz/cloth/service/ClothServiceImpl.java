@@ -123,6 +123,7 @@ public class ClothServiceImpl implements ClothService {
 
 	}
 
+	
 	@Override
 	public String outerwear() {
 		Calendar calendar = Calendar.getInstance();

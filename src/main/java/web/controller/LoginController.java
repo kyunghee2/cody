@@ -32,6 +32,7 @@ public class LoginController {
 	@Value("${secretkey}") 
 	private String key;
 	
+	
 	@RequestMapping(value = "/index.do",method = RequestMethod.GET)
 	public String index(HttpServletRequest request) {
 		
