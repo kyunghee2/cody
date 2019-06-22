@@ -27,8 +27,7 @@ public class ClothesController {
 		
 	@Autowired
 	   ClothService clothservice;
-
-
+	
 	/*cloth_add.do 페이지*/
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.GET)
 	public String cloth_add() {

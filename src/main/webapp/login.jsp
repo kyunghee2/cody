@@ -37,6 +37,9 @@
 	  	<span class="msg">${msg}</span>
 	  </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+      <br>
+      <a href="./user/join.do">회원가입</a>
     </form>
 </body>
 </html>
