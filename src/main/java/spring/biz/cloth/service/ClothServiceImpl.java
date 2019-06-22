@@ -117,6 +117,15 @@ public class ClothServiceImpl implements ClothService {
 		}
 		
 		return list2;
-		
 	}
+
+	@Override
+	public String outerwear(String tempMax, String temMin) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+	
 }
