@@ -33,22 +33,24 @@ public class LoginController {
 	@Value("${secretkey}") 
 	private String key;
 	
+	
+	
 	@RequestMapping(value = "/index.do",method = RequestMethod.GET)
 	public ModelAndView index(HttpServletRequest request) {
 		
 		UserVO vo = (UserVO) request.getSession().getAttribute("login");
 		String userid=vo.getUserid();
+
 		ModelAndView view = new ModelAndView();
 		List<ClothVO> list_top = clothservice.recommendCloth(userid, "1");
 		List<ClothVO> list_bottom = clothservice.recommendCloth(userid, "2");
-		//request.setAttribute("list_top", list_top);//상의
-		//request.setAttribute("list_bottom", list_bottom);//하의
 		view.addObject("list_top", list_top);
 		view.addObject("list_bottom", list_bottom);
 		view.setViewName("index");
 		System.out.println(list_top);
 		//최근 입었던옷
 		return view;
+
 	}
 	
 	@RequestMapping(value = "/login.do",method = RequestMethod.GET)
