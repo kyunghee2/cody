@@ -165,7 +165,7 @@
 			<div class="form-group row">
 						<div class="col-sm-10">
 							<button id="add_cloth_img" type="submit" class="btn btn-primary">옷 등록하기</button>
-							<button id="go_to_myCloth_list" type="submit" class="btn btn-success">내 옷장가기</button>
+							<input type="button" id="go_to_myCloth_list" onclick="location.href='http://localhost:9090/cody/clothes/myCloth_list.do'" value="내 옷장가기"></input>
 						</div>
 			</div>
 			
