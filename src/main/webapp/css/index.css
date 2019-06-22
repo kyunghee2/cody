@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-#backgroundImage:after {
-	background-image:  url("../img/weather_2.jpg");
+ #backgroundImage:after { 
+	background-image:  url("../img/weather_1.jpg");
 	top:0;
 	left:0;
 	position: absolute;
@@ -42,4 +42,12 @@
 }
 .left-subtitle{
 	    margin-bottom: 50px;
+}
+.main-title{
+	    margin-top: 60px;
+}
+.cloth_selected {
+	border-style: solid;
+	border-color: black;
+    border-width: medium;
 }

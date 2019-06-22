@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 	<div id="backgroundImage">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12 main-title">
 					<h1>오늘의 코디</h1>
 					<div id="today"></div>
 					<br>
@@ -65,32 +66,26 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">상의</div>
 						<div class="panel-body">
-							<div class="row text-center text-lg-left">
+							<div class="row text-center text-lg-left" id="cloth_top_list">
+								<c:forEach var="cloth" items="${list_top}">									
+									<div class="col-lg-3 col-md-4 col-6 ">
+										<a href="#" class="d-block mb-4 h-100"> <img
+											class="img-fluid img-thumbnail cloth_top"
+											src="${cloth.imgpath}${cloth.imgname}" alt="">
+										</a>
+									</div>									
+								</c:forEach>
+								<c:set var= "other" value="${4-fn:length(list_top) }"/>
 
-								<div class="col-lg-3 col-md-4 col-6">
-									<a href="#" class="d-block mb-4 h-100"> <img
-										class="img-fluid img-thumbnail"
-										src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
-									</a>
-								</div>
-								<div class="col-lg-3 col-md-4 col-6">
-									<a href="#" class="d-block mb-4 h-100"> <img
-										class="img-fluid img-thumbnail"
-										src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
-									</a>
-								</div>
-								<div class="col-lg-3 col-md-4 col-6">
-									<a href="#" class="d-block mb-4 h-100"> <img
-										class="img-fluid img-thumbnail"
-										src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
-									</a>
-								</div>
-								<div class="col-lg-3 col-md-4 col-6">
-									<a href="#" class="d-block mb-4 h-100"> <img
-										class="img-fluid img-thumbnail"
-										src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">
-									</a>
-								</div>
+								<c:forEach var = "i" begin = "1" end = "${other}">
+						            <div class="col-lg-3 col-md-4 col-6 ">
+										<a href="#" class="d-block mb-4 h-100"> <img
+											class="img-fluid img-thumbnail cloth_top"
+											src="./img/noimage.gif" alt="">
+										</a>
+									</div>	
+						        </c:forEach>
+								
 							</div>
 
 						</div>
@@ -104,32 +99,27 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">하의</div>
 						<div class="panel-body">
-							<div class="row text-center text-lg-left">
+							<div class="row text-center text-lg-left " id="cloth_bottom_list">
+								
+								<c:forEach var="cloth" items="${list_bottom}">									
+									<div class="col-lg-3 col-md-4 col-6 ">
+										<a href="#" class="d-block mb-4 h-100"> <img
+											class="img-fluid img-thumbnail cloth_top"
+											src="${cloth.imgpath}${cloth.imgname}" alt="">
+										</a>
+									</div>									
+								</c:forEach>
+								<c:set var= "other2" value="${4-fn:length(list_bottom) }"/>
 
-								<div class="col-lg-3 col-md-4 col-6">
-									<a href="#" class="d-block mb-4 h-100"> <img
-										class="img-fluid img-thumbnail"
-										src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
-									</a>
-								</div>
-								<div class="col-lg-3 col-md-4 col-6">
-									<a href="#" class="d-block mb-4 h-100"> <img
-										class="img-fluid img-thumbnail"
-										src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
-									</a>
-								</div>
-								<div class="col-lg-3 col-md-4 col-6">
-									<a href="#" class="d-block mb-4 h-100"> <img
-										class="img-fluid img-thumbnail"
-										src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
-									</a>
-								</div>
-								<div class="col-lg-3 col-md-4 col-6">
-									<a href="#" class="d-block mb-4 h-100"> <img
-										class="img-fluid img-thumbnail"
-										src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">
-									</a>
-								</div>
+								<c:forEach var = "i" begin = "1" end = "${other2}">
+						            <div class="col-lg-3 col-md-4 col-6 ">
+										<a href="#" class="d-block mb-4 h-100"> <img
+											class="img-fluid img-thumbnail cloth_top"
+											src="./img/noimage.gif" alt="">
+										</a>
+									</div>	
+						        </c:forEach>
+						        
 							</div>
 
 
@@ -179,7 +169,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- <script src="//code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script> -->
 	<script src="./plugin/slick/slick.min.js" type="text/javascript"
 		charset="utf-8"></script>
 	<script type="text/javascript">
@@ -188,6 +177,33 @@
 			getToday();
 			getLocation();
 
+			$(".cloth_top,.cloth_bottom").click(function() {
+				if (!$(this).hasClass("cloth_selected"))
+					$(this).addClass("cloth_selected");
+				else
+					$(this).removeClass("cloth_selected");
+			});
+			$("#history_add").click(function() {
+				
+				if (!$(".cloth_top").hasClass("cloth_selected")) {
+					alert("선택된 항목이 없습니다.");
+				}else{
+					$.ajax({
+						url : './api/weather.do?lat=' + p_lat + '&lon=' + p_lon,
+						type : "GET",
+						//data:$('form').serializeArray(),
+						success : function(data) {
+							var json = $.parseJSON(data);
+							log(json);
+							weaderRender(json);
+						},
+						error : function(e) {
+							log(e);
+						}
+					});
+				}
+				
+			});
 		});
 
 		function getLocation() {
@@ -224,7 +240,7 @@
 		function getWeather(p_lat, p_lon) {
 
 			$.ajax({
-				url : './weather.do?lat=' + p_lat + '&lon=' + p_lon,
+				url : './api/weather.do?lat=' + p_lat + '&lon=' + p_lon,
 				type : "GET",
 				//data:$('form').serializeArray(),
 				success : function(data) {
@@ -240,11 +256,39 @@
 		function weaderRender(json) {
 			$("#eicon_area").html("");
 			var pm10Grade_txt = "좋음";
+			var ranFlag = false;
 			
-			console.log("json.weatherID:"+json.weatherID);
+			//console.log("json.weatherID:"+json.weatherID);
 			if (json.weatherID != undefined) {
+				var bimg = "";
+				var weatherID = json.weatherID;
+				//console.log("=====================");
+				//console.log(weatherID.substring(0,1));
+				var t = weatherID.substring(0,1);
 				
-				$("#backgroundImage:after").css("background-image","url('./img/weather_2.jpg')");
+				if(t==2 || t==3 || t==5|| t==6){
+					if(t==2 || t==3 || t==5) {
+						bimg = "./img/weather_2.jpg";
+						ranFlag = true;						
+					}
+					else if(t == 6) bimg = "./img/weather_6.jpg";
+					
+					$("#backgroundImage").after().css({
+						'background-image':  'url("'+bimg+'")',
+						'top':'0',
+						'left':'0',
+						'position': 'absolute',
+						'filter':'alpha(opacity=40)',
+						'opacity': '0.4!important',
+						'z-index': '-1',
+						'content': '',
+						'width': '100%',
+						'height': '200%',
+						'background-size': 'cover'
+					});
+				}
+				
+				
 			}
 			if (json.pm10Grade != undefined) {
 				var pm10Grade = json.pm10Grade;//미세먼지
@@ -274,26 +318,24 @@
 				if(pm10Grade_img != ""){
 					var img = $('<img />').attr("src",pm10Grade_img);
 					$("#eicon_area").append(img);
-				}
-				
+				}				
 			}
 			if (json.tempNow != undefined){
 				var tempNow = json.tempNow;
 				$("#tempNow").html(json.tempNow+"℃"); //현재기온
 			}				
-			if (json.humidity != undefined)
+			if (json.humidity != undefined){
 				$("#humidity").html(json.humidity); //습도
-			
-			
-			if(json.rainPercent != undefined){
-				var rainPercent = json.rainPercent;//강수 확률 30%이상이면 우산
-				log(rainPercent);				
-				if(Number(json.rainPercent) >= 30){
-					var img = $('<img />').attr("src","./img/emoticon/emoji23.jpg");
-					$("#eicon_area").appendTo(img);
-					$("#today_msg").html("비올 확율이 있네요. 우산 챙기세요").show();
+				if(Number(json.humidity) >= 90){					
+					ranFlag = true;	
 				}
+			}				
+			if(ranFlag){
+				var img = $('<img />').attr("src","./img/emoticon/emoji23.jpg");
+				$("#eicon_area").appendTo(img);
+				$("#today_msg").html("우산 챙기세요~").show();
 			}
+			
 			
 		}
 		function getToday() {
