@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -10,10 +11,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <title>옷 장</title>
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
 <link rel="stylesheet" href="../css/clotheslist.css" type="text/css">
 <link rel="stylesheet" href="../css/cody.css" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap"
+	rel="stylesheet">
 <script src="../js/bootstrap.js"></script>
 </head>
 
@@ -29,45 +34,71 @@
 					<button class="btn" onclick="filterSelection('nature')">상의</button>
 					<button class="btn" onclick="filterSelection('cars')">하의</button>
 
-					<form action="/clothes/clothesremove.do">
-						<input type="submit" class="btn btn-outline-dark" role="button"
-							id="delete">옷삭제</a> <a
-							href="http://localhost:9090/cody/clothes/cloth_add.do"
-							class="btn btn-outline-dark" role="button" id="submitclo">옷등록</a>
+					<a class="btn btn-outline-dark" role="button" id="delete"
+						style="float: right;">옷삭제</a> <a
+						href="http://localhost:9090/cody/clothes/cloth_add.do"
+						class="btn btn-outline-dark" role=z` "button" id="submitclo"
+						style="float: right;">옷등록</a>
 				</div>
+
 
 				<!-- Portfolio Gallery Grid -->
 				<div class="row">
 					<c:forEach var="cloth" items="${clothes}">
-						<c:if test="${cloth.kind==1}">
+						<c:if test="${cloth.kind eq '1'}">
 							<div class="column nature" key="${cloth.clothid}">
 								<div class="content">
 									<img src="${cloth.imgpath}${cloth.imgname}" class="image"
 										alt="Mountains" style="width: 100%" id="img1">
-									<h4>Mountains</h4>
-									<h3>${cloth.clothid}</h3>
-									<h3>${cloth.imgname}</h3>
-									<p>Lorem ipsum dolor..</p>
+									<c:forTokens items="${cloth.season}" delims="," var="season" style=white-space:nowrap; >
+										<c:if test="${season eq '1'}">
+											<h5 class="tid fontA">여름</h4>
+										</c:if>
+										<c:if test="${season eq '2'}">
+											<h5 class="tid fontA">봄</h4>
+										</c:if>
+										<c:if test="${season eq '3'}">
+											<h5 class="tid fontA">가을</h4>
+										</c:if>
+										<c:if test="${season eq '4'}">
+											<h5 class="tid fontA">겨울</h4>
+										</c:if>
+									</c:forTokens>
+
+
+									<h4 class="tid fontA">${cloth.color}</h4>
 								</div>
+
 							</div>
+
 						</c:if>
-					</c:forEach>
 
-					<!-- <-- 상의~~하의 -->
+						<!-- <-- 상의~~하의 -->
 
-					<c:forEach var="cloth" items="${clothes}">
-						<c:if test="${cloth.kind==2}">
+						<c:if test="${cloth.kind eq '2'}">
 							<div class="column cars">
 								<div class="content">
 									<img src="${cloth.imgpath}${cloth.imgname}" class="image"
 										alt="Mountains" style="width: 100%" id="img1">
-									<h4>Retro</h4>
-									<p>Lorem ipsum dolor..</p>
+									<c:forTokens items="${cloth.season}" delims="," var="season">
+										<c:if test="${season eq '1'}">
+											<h5 class="tid fontA">봄</h4>
+										</c:if>
+										<c:if test="${season eq '2'}">
+											<h5 class="tid fontA">여름</h4>
+										</c:if>
+										<c:if test="${season eq '3'}">
+											<h5 class="tid fontA">가을</h4>
+										</c:if>
+										<c:if test="${season eq '4'}">
+											<h5 class="tid fontA">겨울</h4>
+										</c:if>
+									</c:forTokens>
 								</div>
 							</div>
 						</c:if>
+						</form>
 					</c:forEach>
-					</form>
 					<!-- END GRID -->
 				</div>
 			</div>
@@ -137,7 +168,6 @@
 			});
 		}
 
-		
 		$(document).ready(function() {
 			$(".column").click(function() {
 				if (!$(this).hasClass("cloth_selected"))
@@ -158,7 +188,6 @@
 							console.log("keys:" + list);
 							$(".cloth_selected").remove();
 						}
-
 					}
 				}
 			});
