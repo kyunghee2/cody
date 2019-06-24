@@ -8,15 +8,15 @@ public class ClothHistoryVO {
 	private int clothid;
 	private Date regdate;
 	private String userid;
-	private int temp;
-	private int humidity;
-	private int dust;
+	private String temp;
+	private String humidity;
+	private String dust;
 	
 	
 	public ClothHistoryVO() {
 		super();
 	}
-	public ClothHistoryVO(String kind, int clothid, Date regdate, String userid, int temp, int humidity, int dust) {
+	public ClothHistoryVO(String kind, int clothid, Date regdate, String userid, String temp, String humidity, String dust) {
 		super();
 		this.kind = kind;
 		this.clothid = clothid;
@@ -50,22 +50,22 @@ public class ClothHistoryVO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public int getTemp() {
+	public String getTemp() {
 		return temp;
 	}
-	public void setTemp(int temp) {
+	public void setTemp(String temp) {
 		this.temp = temp;
 	}
-	public int getHumidity() {
+	public String getHumidity() {
 		return humidity;
 	}
-	public void setHumidity(int humidity) {
+	public void setHumidity(String humidity) {
 		this.humidity = humidity;
 	}
-	public int getDust() {
+	public String getDust() {
 		return dust;
 	}
-	public void setDust(int dust) {
+	public void setDust(String dust) {
 		this.dust = dust;
 	}
 

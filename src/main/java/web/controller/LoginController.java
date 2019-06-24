@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.biz.cloth.service.ClothHistoryService;
 import spring.biz.cloth.service.ClothService;
+import spring.biz.cloth.vo.ClothHistoryVO;
 import spring.biz.cloth.vo.ClothVO;
 import spring.biz.user.service.UserService;
 import spring.biz.user.vo.UserVO;
@@ -29,6 +31,8 @@ public class LoginController {
 	UserService service;
 	@Autowired
 	ClothService clothservice;
+	@Autowired
+	ClothHistoryService clothHistoryService;
 	
 	@Value("${secretkey}") 
 	private String key;
@@ -44,10 +48,16 @@ public class LoginController {
 		ModelAndView view = new ModelAndView();
 		List<ClothVO> list_top = clothservice.recommendCloth(userid, "1");
 		List<ClothVO> list_bottom = clothservice.recommendCloth(userid, "2");
+		List<ClothHistoryVO> list_lately = clothHistoryService.getClothDate(userid, "");
+
 		view.addObject("list_top", list_top);
 		view.addObject("list_bottom", list_bottom);
+		view.addObject("list_lately", list_lately);
+		view.addObject("userid", userid);
 		view.setViewName("index");
 		System.out.println(list_top);
+		//System.out.println(history_top);
+		//System.out.println(outwear_msg);
 		//최근 입었던옷
 		return view;
 
