@@ -36,13 +36,13 @@
 					</div>
 
 					<div class="left-subtitle">
-						<label>온도</label>&nbsp;<span id="tempNow" class="weather_val"></span>
+						<label>온도</label>&nbsp;<span id="s_tempNow" class="weather_val"></span>
 					</div>
 					<div class="left-subtitle">
-						<label>습도</label>&nbsp;<span id="humidity" class="weather_val"></span>
+						<label>습도</label>&nbsp;<span id="s_humidity" class="weather_val"></span>
 					</div>
 					<div class="left-subtitle">
-						<label>미세먼지</label>&nbsp;<span id="pm10Grade" class="weather_val"></span>
+						<label>미세먼지</label>&nbsp;<span id="s_pm10Grade" class="weather_val"></span>
 					</div>
 
 					<div id="eicon_area"></div>
@@ -69,8 +69,8 @@
 							<div class="row text-center text-lg-left" id="cloth_top_list">
 								<c:forEach var="cloth" items="${list_top}">									
 									<div class="col-lg-3 col-md-4 col-6 ">
-										<a href="#" class="d-block mb-4 h-100"> <img
-											class="img-fluid img-thumbnail cloth_top"
+										<a href="#" class="d-block mb-4 h-100"> <img key="${cloth.clothid}"
+											class="img-fluid img-thumbnail cloth_top" 
 											src="${cloth.imgpath}${cloth.imgname}" alt="">
 										</a>
 									</div>									
@@ -79,7 +79,7 @@
 
 								<c:forEach var = "i" begin = "1" end = "${other}">
 						            <div class="col-lg-3 col-md-4 col-6 ">
-										<a href="#" class="d-block mb-4 h-100"> <img
+										<a href="#" class="d-block mb-4 h-100"> <img key=""
 											class="img-fluid img-thumbnail cloth_top"
 											src="./img/noimage.gif" alt="">
 										</a>
@@ -103,8 +103,8 @@
 								
 								<c:forEach var="cloth" items="${list_bottom}">									
 									<div class="col-lg-3 col-md-4 col-6 ">
-										<a href="#" class="d-block mb-4 h-100"> <img
-											class="img-fluid img-thumbnail cloth_top"
+										<a href="#" class="d-block mb-4 h-100"> <img key="${cloth.clothid}"
+											class="img-fluid img-thumbnail cloth_bottom"
 											src="${cloth.imgpath}${cloth.imgname}" alt="">
 										</a>
 									</div>									
@@ -113,8 +113,8 @@
 
 								<c:forEach var = "i" begin = "1" end = "${other2}">
 						            <div class="col-lg-3 col-md-4 col-6 ">
-										<a href="#" class="d-block mb-4 h-100"> <img
-											class="img-fluid img-thumbnail cloth_top"
+										<a href="#" class="d-block mb-4 h-100"> <img key=""
+											class="img-fluid img-thumbnail cloth_bottom"
 											src="./img/noimage.gif" alt="">
 										</a>
 									</div>	
@@ -137,7 +137,7 @@
 								<c:forEach var="cloth" items="${list_lately}">									
 									<div class="col-lg-3 col-md-4 col-6 ">
 										<a href="#" class="d-block mb-4 h-100"> <img
-											class="img-fluid img-thumbnail cloth_top"
+											class="img-fluid img-thumbnail cloth_lately"
 											src="${cloth.imgpath}${cloth.imgname}" alt="">
 										</a>
 									</div>									
@@ -147,7 +147,7 @@
 								<c:forEach var = "i" begin = "1" end = "${other2}">
 						            <div class="col-lg-3 col-md-4 col-6 ">
 										<a href="#" class="d-block mb-4 h-100"> <img
-											class="img-fluid img-thumbnail cloth_top"
+											class="img-fluid img-thumbnail cloth_lately"
 											src="./img/noimage.gif" alt="">
 										</a>
 									</div>	
@@ -164,6 +164,13 @@
 			</div>
 		</div>
 	</div>
+	<form id="form1" action="">
+	<input type="hidden" id="clothidlist" name="clothidlist">
+	<input type="hidden" id="temp" name="temp">
+	<input type="hidden" id="humidity" name="humidity">
+	<input type="hidden" id="dust" name="dust">
+	<input type="hidden" id="userid" name="userid" value="${userid}">
+	</form>
 	<script src="./plugin/slick/slick.min.js" type="text/javascript"
 		charset="utf-8"></script>
 	<script type="text/javascript">
@@ -178,29 +185,42 @@
 				else
 					$(this).removeClass("cloth_selected");
 			});
-			$("#history_add").click(function() {
-				
-				if (!$(".cloth_top").hasClass("cloth_selected")) {
+			$("#history_add").click(function(e) {
+				e.preventDefault();
+				if (!$(".cloth_top, .cloth_bottom").hasClass("cloth_selected")) {
 					alert("선택된 항목이 없습니다.");
-				}else{
-					$.ajax({
-						url : './api/weather.do?lat=' + p_lat + '&lon=' + p_lon,
-						type : "GET",
-						//data:$('form').serializeArray(),
-						success : function(data) {
-							var json = $.parseJSON(data);
-							log(json);
-							weaderRender(json);
-						},
-						error : function(e) {
-							log(e);
-						}
-					});
+					return false;
 				}
+				var arrSel = [];
+				$.each( $(".cloth_top"), function( key, value ) {
+				  var key = $(this).attr("key");
+				  if(key != ""){
+					  arrSel.push(key);
+				  }
+				});
+				$("#clothidlist").val(arrSel.join(","));
+				
+				//console.log($('#form1').serializeArray());
+				 $.ajax({
+					url : "./clothes/clothhistoryadd.do",
+					type : "POST",
+					data:$('#form1').serializeArray(),				
+					success : function(data) {
+						if(data.result !=undefined || data.result=="1"){
+							alert("저장되었습니다.");
+						}else{
+							alert("저장실패.");
+						}
+					},
+					error : function(e) {
+						log(e);
+					}
+				}); 
+				
 				
 			});
 		});
-
+		
 		function getLocation() {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(geoPosition, showError);
@@ -287,6 +307,7 @@
 			}
 			if (json.pm10Grade != undefined) {
 				var pm10Grade = json.pm10Grade;//미세먼지
+				
 				var pm10Grade_img = ""; 
 				switch (pm10Grade) {
 				case "1":
@@ -309,7 +330,8 @@
 					pm10Grade_txt = "";
 					break;
 				}
-				$("#pm10Grade").html(pm10Grade_txt);
+				$("#s_pm10Grade").html(pm10Grade_txt);
+				$("#dust").val(pm10Grade);
 				if(pm10Grade_img != ""){
 					var img = $('<img />').attr("src",pm10Grade_img);
 					$("#eicon_area").append(img);
@@ -317,10 +339,12 @@
 			}
 			if (json.tempNow != undefined){
 				var tempNow = json.tempNow;
-				$("#tempNow").html(json.tempNow+"℃"); //현재기온
+				$("#s_tempNow").html(json.tempNow+"℃"); //현재기온
+				$("#temp").val(json.tempNow);
 			}				
 			if (json.humidity != undefined){
-				$("#humidity").html(json.humidity); //습도
+				$("#s_humidity").html(json.humidity); //습도
+				$("#humidity").val(json.humidity);
 				if(Number(json.humidity) >= 90){					
 					ranFlag = true;	
 				}

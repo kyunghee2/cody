@@ -4,9 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="clothHistoryMapper">
 
-	<insert id="addclothhistory">
+	<!-- <insert id="addclothhistory">
 		insert into cloth_history (kind, clothid, userid, temp, humidity, dust) 
 							values (#{kind}, #{clothid}, #{userid}, #{temp}, #{humidity}, #{dust})
+	</insert> -->
+	<insert id="addclothhistory">
+		insert into cloth_history (kind, clothid, userid, temp, humidity, dust) 
+		select kind, #{clothid}, #{userid}, #{temp}, #{humidity}, #{dust}
+		from cloth
+		where clothid=#{clothid}
 	</insert>
 	<select id="getclothhistorylist" resultType="clothhistoryvo">
 		select * from cloth_history

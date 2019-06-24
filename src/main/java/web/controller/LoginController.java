@@ -53,6 +53,7 @@ public class LoginController {
 		view.addObject("list_top", list_top);
 		view.addObject("list_bottom", list_bottom);
 		view.addObject("list_lately", list_lately);
+		view.addObject("userid", userid);
 		view.setViewName("index");
 		System.out.println(list_top);
 		//System.out.println(history_top);
