@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.biz.cloth.service.ClothHistoryService;
 import spring.biz.cloth.vo.ClothHistoryVO;
+import spring.biz.cloth.vo.ClothVO;
 
 @Controller
 public class ClothHistoryController {
@@ -49,6 +50,15 @@ public class ClothHistoryController {
 		map.put("result", result);
 		return map;
 		//return new ResponseEntity<Map<String,String>>(map, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/clothes/cloth_recommend.do", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<Integer, ClothVO> getRecommendCloth(HttpServletRequest request) {
+		
+		
+		return null;
+			
 	}
 
 }

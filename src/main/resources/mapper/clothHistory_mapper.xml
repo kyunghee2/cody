@@ -24,6 +24,7 @@
 			select a.kind, a.CLOTHID, a.REGDATE, a.USERID, TEMP, HUMIDITY, DUST, b.imgpath, b.imgname
 			from cloth_history a inner join cloth b on a.clothid = b.clothid			
 			
+			
 			<where>
 			a.userid = #{userid} 
 			<if test="kind != null and kind != '' ">and a.kind = #{kind}</if>

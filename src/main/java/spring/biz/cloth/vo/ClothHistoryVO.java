@@ -46,6 +46,7 @@ public class ClothHistoryVO {
 		this.imgpath = imgpath;
 		this.imgname = imgname;
 	}
+	
 	public String getKind() {
 		return kind;
 	}
