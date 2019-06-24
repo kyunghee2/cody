@@ -108,10 +108,10 @@ public class ClothServiceImpl implements ClothService {
 			list.add(clothvo);
 
 		}
-		if (list.size() >= 5) {
+		if (list.size() >= 4) {
 			Collections.shuffle(list);
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 4; i++) {
 				ClothVO get_list = list.get(i);
 				list2.add(get_list);
 			}
