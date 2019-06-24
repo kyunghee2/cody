@@ -28,6 +28,11 @@ public class UserController {
 	@Value("${secretkey}") 
 	private String key;
 	
+	@RequestMapping(value = "/api/user/user.do", method = RequestMethod.GET)
+	public UserVO getUser(@RequestParam("uid") String id) {		
+		return service.getUser(id);
+	}
+	
 	@RequestMapping(value = "/user/join.do", method = RequestMethod.GET)
 	public String addJoin() {	
 		return "user/user_join";

@@ -40,8 +40,8 @@ public class ClothHistoryServiceImpl implements ClothHistoryService{
 	}
 
 	@Override
-	public List<ClothHistoryVO> getClothHistoryList() {
-		return dao.getClothHistoryList();
+	public List<ClothHistoryVO> getClothHistoryList(String clothid,String userid) {
+		return dao.getClothHistoryList(clothid,userid);
 	}
 	@Override
 	public List<ClothHistoryVO> getClothDate(String userid,String kind) {

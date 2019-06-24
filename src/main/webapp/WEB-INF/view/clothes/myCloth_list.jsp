@@ -19,6 +19,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap"
 	rel="stylesheet">
+
 <script src="../js/bootstrap.js"></script>
 </head>
 
@@ -33,10 +34,11 @@
 					<button class="btn" onclick="filterSelection('all')">모두보기</button>
 					<button class="btn" onclick="filterSelection('nature')">상의</button>
 					<button class="btn" onclick="filterSelection('cars')">하의</button>
-
-					<a class="btn btn-outline-dark" role="button" id="delete"
-						style="float: right;">옷삭제</a> <a
-						href="${pageContext.request.contextPath}/clothes/cloth_add.do"
+	
+	
+						 <a class="btn btn-outline-dark" role="button" id="delete"
+						style="float: right;">옷삭제</a> 
+						<a href="${pageContext.request.contextPath}/clothes/cloth_add.do"
 						class="btn btn-outline-dark" role=z` "button" id="submitclo"
 						style="float: right;">옷등록</a>
 				</div>
@@ -75,7 +77,7 @@
 						<!-- <-- 상의~~하의 -->
 
 						<c:if test="${cloth.kind eq '2'}">
-							<div class="column cars">
+							<div class="column cars" key="${cloth.clothid}">
 								<div class="content">
 									<img src="..${cloth.imgpath}${cloth.imgname}" class="image"
 										alt="Mountains" style="width: 100%" id="img1">
@@ -105,17 +107,9 @@
 			<div class="col-md-2"></div>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
+<form id="form1" action="">
+<input type="hidden" id="clothidlist" name="clothidlist">
+</form>
 
 	<script>
 		filterSelection("all")
@@ -174,22 +168,54 @@
 				else
 					$(this).removeClass("cloth_selected");
 			});
-
-			$("#delete").click(function() {
+			
+			
+			$("#delete").click(function(e) {
+				e.preventDefault();
 				if (!$(".column").hasClass("cloth_selected")) {
 					alert("선택된 항목이 없습니다.");
-				} else {
-					var c = confirm("정말 삭제 하시겠습니까?");
-					if (c == true) {
-
-						if ($(".column").hasClass("cloth_selected")) {
-							list.push($(".cloth_selected").attr("key"));
-							console.log("keys:" + list);
-							$(".cloth_selected").remove();
-						}
-					}
+					return false;
 				}
+
+				var c = confirm("삭제 하시겠습니까?");
+				if (c) {
+					var arrSel = [];
+					$.each( $(".column"), function( key, value ) {
+						if ($(this).hasClass("cloth_selected")){
+							var key = $(this).attr("key");
+							if(key != ""){
+							  arrSel.push(key);
+							}
+						}
+					  
+					});
+					console.log(arrSel);
+					$("#clothidlist").val(arrSel.join(","));
+								
+					 if(arrSel.length > 0){
+						$.ajax({
+							url : "./clothesremove.do",
+							type : "POST",
+							data:$('#form1').serializeArray(),				
+							success : function(data) {
+								if(data.result !=undefined || data.result==1){
+									alert("삭제 되었습니다.");
+									location.reload();
+								}else{
+									alert("삭제 실패.");
+								}
+							},
+							error : function(e) {
+								log(e);
+							}
+						}); 
+					} 
+					
+				}
+				
+				
 			});
+									
 		});
 	</script>
 </body>

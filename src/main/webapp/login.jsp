@@ -37,10 +37,9 @@
 	  <div>
 	  	<span class="msg">${msg}</span>
 	  </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-
-      <br>
-      <a href="./user/join.do">회원가입</a>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+	  <button class="btn btn-lg btn-info btn-block" type="button" onclick="location.href='./user/join.do';">회원가입</button>
+     
     </form>
 </body>
 </html>
