@@ -137,6 +137,7 @@
 			});
 		}
 
+		
 		$(document).ready(function() {
 			$(".column").click(function() {
 				if (!$(this).hasClass("cloth_selected"))

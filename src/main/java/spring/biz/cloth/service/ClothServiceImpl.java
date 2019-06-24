@@ -10,6 +10,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 import spring.biz.cloth.dao.ClothDAO;
 import spring.biz.cloth.vo.ClothVO;
 import spring.biz.user.vo.UserVO;
+import weather.Weather;
 
 @Service("clothservice")
 public class ClothServiceImpl implements ClothService {
@@ -119,18 +122,53 @@ public class ClothServiceImpl implements ClothService {
 		}
 
 	}
+
 	
-	  @Override 
-	  public String outerwear() {
-	  
-		  String url = "/db/weather.do";
-	  
-		  String msg="sfda";
-	  
-		  return msg; 
-		  
-	  }
-	  
-	 
+	
+	@Override
+	public String outerwear() {
+		Calendar calendar = Calendar.getInstance();
+		int mon = calendar.get(Calendar.MONTH);
+		int day = calendar.get(Calendar.DAY_OF_MONTH);
+		String d = mon + "" + day;
+		int season = Integer.parseInt(d);
+		String season2 = "";
+		
+		Weather w = new Weather();
+		System.out.println( w.getWeatherFromDB() );
+		String str = w.getWeatherFromDB();
+		JSONParser jsonParser = new JSONParser();
+		String tempmax = null;
+		String tempmin = null;
+		double m = 0;
+		double n = 0;
+		double dif = 0;
+		String msg = null;
+		try {
+			JSONObject object = (JSONObject) jsonParser.parse(str);
+			tempmax =  (String) object.get("tempMax");
+			tempmin = (String) object.get("tempMin");
+			
+			
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		m = Double.parseDouble(tempmax);
+		n = Double.parseDouble(tempmin);
+		
+		if(season >= 1115 && season <= 315) {
+			//겨울
+		}else {
+			//겨울외
+			dif = m -n;
+			if(dif >= 2) {
+				 msg = "일교차가 커요~~ 겉옷 챙겨가세요!!";
+			}
+			
+		}
+		
+		return msg;
+
+	}
 
 }
