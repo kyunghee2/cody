@@ -9,4 +9,5 @@ public interface ClothHistoryService {
 	int addClothHistory(ClothHistoryVO clothhistory); 
 	List<ClothHistoryVO> getClothHistoryList();
 	List<ClothHistoryVO> getClothDate(String userid, String kind );
+	
 }

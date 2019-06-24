@@ -12,6 +12,7 @@
 		select * from cloth_history
 	</select>
 	<select id="getclothhistorydate" parameterType="map" resultType="clothhistoryvo">
+
 		select *
 		from (
 			select * 
@@ -26,7 +27,7 @@
 		<where>
 			rownum < 10
 		</where>
-		 
+	
 	</select>
 	
 </mapper>
