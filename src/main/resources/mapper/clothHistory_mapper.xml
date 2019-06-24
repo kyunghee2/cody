@@ -14,8 +14,9 @@
 		from cloth
 		where clothid=#{clothid}
 	</insert>
-	<select id="getclothhistorylist" resultType="clothhistoryvo">
+	<select id="getclothhistorylist" parameterType="map" resultType="clothhistoryvo">
 		select * from cloth_history
+		where clothid=#{clothid} and userid = #{userid} 
 	</select>
 	<select id="getclothhistorydate" parameterType="map" resultType="clothhistoryvo">
 

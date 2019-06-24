@@ -1,6 +1,7 @@
 package web.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,11 @@ public class ClothHistoryController {
 			vo.setDust(dust);	
 			vo.setUserid(userid);
 			
-			result = Integer.toString(clothHistoryService.addClothHistory(vo));						
+			List<ClothHistoryVO> list = clothHistoryService.getClothHistoryList(clothid,userid);
+			if(list.size()==0) {
+				result = Integer.toString(clothHistoryService.addClothHistory(vo));		
+			}
+							
 		}
 		map.put("result", result);
 		return map;

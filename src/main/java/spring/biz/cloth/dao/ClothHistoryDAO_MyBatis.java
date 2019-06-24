@@ -23,8 +23,11 @@ public class ClothHistoryDAO_MyBatis implements ClothHistoryDAO{
 	}
 	
 	@Override
-	public List<ClothHistoryVO> getClothHistoryList() {
-		return sqlSession.selectList("clothHistoryMapper.getclothhistorylist");
+	public List<ClothHistoryVO> getClothHistoryList(String clothid,String userid) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("clothid", clothid);
+		map.put("userid", userid);
+		return sqlSession.selectList("clothHistoryMapper.getclothhistorylist",map);
 	}
 
 	@Override
