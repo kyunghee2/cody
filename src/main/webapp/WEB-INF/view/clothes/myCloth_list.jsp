@@ -19,7 +19,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap"
 	rel="stylesheet">
-$(function)
+
 <script src="../js/bootstrap.js"></script>
 </head>
 
@@ -77,7 +77,7 @@ $(function)
 						<!-- <-- 상의~~하의 -->
 
 						<c:if test="${cloth.kind eq '2'}">
-							<div class="column cars">
+							<div class="column cars" key="${cloth.clothid}">
 								<div class="content">
 									<img src="..${cloth.imgpath}${cloth.imgname}" class="image"
 										alt="Mountains" style="width: 100%" id="img1">
@@ -189,9 +189,10 @@ $(function)
 						}
 					  
 					});
+					console.log(arrSel);
 					$("#clothidlist").val(arrSel.join(","));
-										
-					if(arrSel.length > 0){
+								
+					 if(arrSel.length > 0){
 						$.ajax({
 							url : "./clothesremove.do",
 							type : "POST",
@@ -208,7 +209,7 @@ $(function)
 								log(e);
 							}
 						}); 
-					}
+					} 
 					
 				}
 				
