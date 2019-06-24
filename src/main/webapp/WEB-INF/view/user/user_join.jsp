@@ -96,6 +96,11 @@
 <input type="hidden" id="idCheck" name="idCheck" value=""> 
 <script>
 $(function(){
+	
+	$("#userid").change(function(e){
+		e.preventDefault();
+		$("#idCheck").val("");
+	});
 	$("#btnIdCheck").click(function(e){
 		e.preventDefault();
 		var id = $("#userid").val();
@@ -129,7 +134,7 @@ function join(){
 		$(".with-errors").html("ID중복체크 해주세요");
 		return false;
 	}
-	if(!check){
+	if(check=="false"){
 		$(".with-errors").html("ID가 중복됩니다.");
 		return false;
 	}else{

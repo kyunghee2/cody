@@ -3,8 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userMapper">
-   <select id="getIdCheck" resultMap="hashMap">
-  	select userid from userinfo where userid = #{userid}
+   <select id="getIdCheck" resultType="uservo">
+  	select userid, name, '' userpwd, email, gender 
+  	from userinfo where userid = #{userid}
    
    </select>
    <select id="login" parameterType="spring.biz.user.vo.UserVO" resultType="uservo">
