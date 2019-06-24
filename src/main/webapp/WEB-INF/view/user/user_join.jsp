@@ -33,18 +33,19 @@
 									<button class="btn btn-outline-secondary" type="button" id="btnIdCheck">중복체크</button>
 								</div>
 							</div>
+							<div class="help-block with-errors"></div>
 						</div>
 					</div>
 
 					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-2 col-form-label">이름</label>
+						<label for="inputEmail3" class="col-sm-2 col-form-label">이름 *</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="name" name="name"
 								placeholder="이름" required>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="inputPassword3" class="col-sm-2 col-form-label">비밀번호</label>
+						<label for="inputPassword3" class="col-sm-2 col-form-label">비밀번호 *</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" id="userpwd"
 								name="userpwd" placeholder="Password" required>
@@ -82,7 +83,7 @@
 
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<button type="submit" class="btn btn-primary">회원가입</button>
+							<button type="submit" class="btn btn-primary" onclick="return join();">회원가입</button>
 						</div>
 					</div>
 				</form>
@@ -92,25 +93,50 @@
 			<div class="col-md-2"></div>
 		</div>
 	</div>
+<input type="hidden" id="idCheck" name="idCheck" value=""> 
 <script>
 $(function(){
 	$("#btnIdCheck").click(function(e){
 		e.preventDefault();
 		var id = $("#userid").val();
 		
-		$.ajax({
-			url : "./api/user/user.do?uid="+id,
-			type : "GET",						
-			success : function(data) {
-				console.log(data);
-			},
-			error : function(e) {
-				log(e);
-			}
-		}); 
-		
+		if(id != ""){
+			$.ajax({
+				url : "../api/userIdCheck.do?uid="+id,
+				type : "GET",						
+				success : function(data) {
+					if(data != ""){
+						$(".with-errors").html("ID가 중복됩니다.");
+						$("#idCheck").val(false);
+					}else{
+						$(".with-errors").html("");
+						$("#idCheck").val(true);
+					}
+				},
+				error : function(e) {
+					console.log(e);
+				}
+			}); 
+		}
+				
 	});
 });
+function join(){
+	var check = $("#idCheck").val();
+	//console.log(check);
+	$(".with-errors").html("");
+	if(check==""){
+		$(".with-errors").html("ID중복체크 해주세요");
+		return false;
+	}
+	if(!check){
+		$(".with-errors").html("ID가 중복됩니다.");
+		return false;
+	}else{
+		return true;
+	}
+	
+}
 
 </script>
 

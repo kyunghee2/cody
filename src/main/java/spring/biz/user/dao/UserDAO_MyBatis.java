@@ -52,4 +52,8 @@ public class UserDAO_MyBatis implements UserDAO{
 		
 		return sqlSession.selectList("userMapper.search", map);
 	}
+	@Override
+	public UserVO getIdCheck(String uid) {
+		return sqlSession.selectOne("userMapper.getIdCheck",uid);
+	}
 }

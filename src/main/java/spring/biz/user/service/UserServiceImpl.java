@@ -80,5 +80,7 @@ public class UserServiceImpl implements UserService {
 	public List<UserVO> searchUser(String condition, String keyword) {
 		return dao.searchUser(condition, keyword);
 	}
-
+	public UserVO getIdCheck(String uid) {
+		return dao.getUser(uid);
+	}
 }

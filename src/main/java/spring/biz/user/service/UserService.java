@@ -18,4 +18,6 @@ public interface UserService {
 	int removeUser(String uid);
 	
 	List<UserVO> searchUser(String condition,String keyword);
+	
+	UserVO getIdCheck(String uid);
 }
