@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -34,24 +35,52 @@ public class ClothesController {
 		return "/clothes/cloth_add";
 	}
 	
-	/*옷 이미지 upload폴더에 등록*/
+	/*옷 이미지 등록*/
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.POST)
-	public String cloth_add(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+	public String cloth_add(@RequestParam("file") MultipartFile file, @ModelAttribute("cloth") ClothVO cloth, HttpServletRequest request) {
 		String fileName = file.getOriginalFilename(); /*클라이언트가 선택한 파일이름 불러옴*/
-		String path = request.getRealPath("/upload/"); /*upload폴더 만든거 , 실제 서비스가 되면 저장되는 폴더*/
+				
+		String kind = request.getParameter("kind");
+		UserVO user = (UserVO) request.getSession().getAttribute("login");
+		String userid = user.getUserid();
+		String detailpath = userid + "/" + kind + "/";
+		String path = request.getRealPath("/upload/" + detailpath); /*upload폴더 만든거 , 실제 서비스가 되면 저장되는 폴더*/
 		
+		File destdir = new File(path); // 디렉토리 가져오기
 		System.out.println(path);
+		
+		if(!destdir.exists()) {
+			destdir.mkdirs(); // 디렉토리 존재하지 않는다면 생성
+		}
+		
+		File f = new File(path + fileName); /*java.io.File -import*/ /*경로에 이이름으로*/
+		
 		if(!file.isEmpty()) {
-			File f = new File(path+fileName); /*java.io.File -import*/ /*경로에 이이름으로*/
-			/*파일 복사*/
-			try {
-				file.transferTo(f);
-			} catch (Exception e) {
-				e.printStackTrace();
-			} 
-		}		
-		request.setAttribute("imgname",fileName);
+			boolean fileexists = f.exists(); // 파일 존재 유무 검사
+			
+			if(fileexists) { // 중복된 파일이 있다면
+				UUID uuid = UUID.randomUUID();
+				fileName = uuid.toString() + fileName;
+				f = new File(path + fileName);	
+			}
+		}
+		/*파일 복사*/
+		try {
+			file.transferTo(f);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			 
+		
+		System.out.println("완");
+		request.setAttribute("imgname", fileName);
+		cloth.setUserid(userid);
+		cloth.setImgpath(path);
+		cloth.setImgname(fileName);
+		
+		clothservice.addCloth(cloth);		
+		
 		return "/clothes/myCloth_list";
+
 	}
 	
 	
