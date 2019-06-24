@@ -107,7 +107,7 @@
 				
 	  			<div class="form-group">
 				    <label for="cloth_img_upload">이미지 등록</label>
-				    <input type="file" class="form-control-file" id="cloth_img_upload" name="file">
+				    <input type="file" class="form-control-file" id="cloth_img_upload" name="file" required>
 				 </div>	
 			
 			
@@ -117,7 +117,7 @@
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="spring" name="season" value="1">
+						<input class="form-check-input" type="checkbox" id="spring" name="season" value="1" required>
 						<label class="form-check-label" for="spring">봄</label>
 					</div>	
 					
@@ -143,7 +143,7 @@
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="kind" id="top" value="1">
+					  <input class="form-check-input" type="radio" name="kind" id="top" value="1" required>
 					  <label class="form-check-label" for="cloth_top">상의</label>
 					</div>
 					
@@ -158,14 +158,14 @@
 				<label for="inputEmail3" class="col-sm-2 col-form-label">색상</label>
 				
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="color" id="color" placeholder="ex) 흰색">
+					<input type="text" class="form-control" name="color" id="color" placeholder="ex) 흰색" required>
 				</div>	
 			</div>
 			
 			<div class="form-group row">
 						<div class="col-sm-10">
 							<button id="add_cloth_img" type="submit" class="btn btn-primary">옷 등록하기</button>
-							<input type="button" id="go_to_myCloth_list" onclick="location.href='${pageContext.request.contextPath}/clothes/myCloth_list.do'" value="내 옷장가기"></input>
+							<input type="button" class="btn btn-primary" id="go_to_myCloth_list" onclick="location.href='${pageContext.request.contextPath}/clothes/myCloth_list.do'" value="내 옷장가기"></input>
 						</div>
 			</div>
 			
