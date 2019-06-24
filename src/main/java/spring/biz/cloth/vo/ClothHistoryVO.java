@@ -10,6 +10,7 @@ public class ClothHistoryVO {
 	private String userid;
 	private String temp;
 	private String humidity;
+	
 	public String getImgpath() {
 		return imgpath;
 	}

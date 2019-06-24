@@ -105,4 +105,5 @@ public class LoginController {
 		model.addAttribute("exception", exception);
 		return "error";
 	}
+	
 }
