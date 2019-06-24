@@ -48,10 +48,14 @@ public class LoginController {
 		ModelAndView view = new ModelAndView();
 		List<ClothVO> list_top = clothservice.recommendCloth(userid, "1");
 		List<ClothVO> list_bottom = clothservice.recommendCloth(userid, "2");
+		List<ClothHistoryVO> history_top = clothhistoryservice.getClothDate(userid, "1");
+		String outwear_msg = clothservice.outerwear();
 		view.addObject("list_top", list_top);
 		view.addObject("list_bottom", list_bottom);
 		view.setViewName("index");
 		System.out.println(list_top);
+		System.out.println(history_top);
+		System.out.println(outwear_msg);
 		//최근 입었던옷
 		return view;
 
