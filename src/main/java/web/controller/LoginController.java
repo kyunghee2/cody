@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import spring.biz.cloth.service.ClothHistoryService;
 import spring.biz.cloth.service.ClothService;
@@ -39,15 +40,21 @@ public class LoginController {
 	
 	
 	@RequestMapping(value = "/index.do",method = RequestMethod.GET)
-	public String index(HttpServletRequest request) {
+	public ModelAndView index(HttpServletRequest request) {
 		
 		UserVO vo = (UserVO) request.getSession().getAttribute("login");
 		String userid=vo.getUserid();
-		
-		List<ClothVO> map = clothservice.recommendCloth(userid, "1");
-		String msg = clothservice.outerwear();
-		List<ClothHistoryVO> history = clothhistoryservice.getClothDate(userid, "1");
-		return "/index";
+
+		ModelAndView view = new ModelAndView();
+		List<ClothVO> list_top = clothservice.recommendCloth(userid, "1");
+		List<ClothVO> list_bottom = clothservice.recommendCloth(userid, "2");
+		view.addObject("list_top", list_top);
+		view.addObject("list_bottom", list_bottom);
+		view.setViewName("index");
+		System.out.println(list_top);
+		//최근 입었던옷
+		return view;
+
 	}
 	
 	@RequestMapping(value = "/login.do",method = RequestMethod.GET)
