@@ -16,13 +16,22 @@
 	</properties>
 
 	<repositories>
+
 		<!-- 오라클 드라이버 -->
 		<repository>
 			<id>codelds</id>
 			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
 		</repository>
 	</repositories>
+	
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
 		<dependency>
 		    <groupId>commons-codec</groupId>
