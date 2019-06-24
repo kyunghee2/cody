@@ -98,6 +98,7 @@
 						</c:if>
 						</form>
 					</c:forEach>
+					
 					<!-- END GRID -->
 				</div>
 			</div>
