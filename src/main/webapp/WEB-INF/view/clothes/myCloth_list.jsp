@@ -20,7 +20,6 @@
 <body id="boby">
 	<%@include file="/layout/header.jsp"%>
 	<!-- 사용자 리스트를 클라이언트에게 보여주기 위하여 출력. -->
-${cloth.imgpath}${cloth.imgname}
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2"></div>
@@ -30,21 +29,24 @@ ${cloth.imgpath}${cloth.imgname}
 					<button class="btn" onclick="filterSelection('nature')">상의</button>
 					<button class="btn" onclick="filterSelection('cars')">하의</button>
 
-
-					<a class="btn btn-outline-dark" role="button" id="delete">옷삭제</a>
-					<a href="http://localhost:9090/cody/clothes/cloth_add.do" 
-					class="btn btn-outline-dark" role="button" id="submitclo">옷등록</a>
+					<form action="/clothes/clothesremove.do">
+						<input type="submit" class="btn btn-outline-dark" role="button"
+							id="delete">옷삭제</a> <a
+							href="http://localhost:9090/cody/clothes/cloth_add.do"
+							class="btn btn-outline-dark" role="button" id="submitclo">옷등록</a>
 				</div>
 
 				<!-- Portfolio Gallery Grid -->
 				<div class="row">
 					<c:forEach var="cloth" items="${clothes}">
 						<c:if test="${cloth.kind==1}">
-							<div class="column nature">
+							<div class="column nature" key="${cloth.clothid}">
 								<div class="content">
 									<img src="${cloth.imgpath}${cloth.imgname}" class="image"
 										alt="Mountains" style="width: 100%" id="img1">
 									<h4>Mountains</h4>
+									<h3>${cloth.clothid}</h3>
+									<h3>${cloth.imgname}</h3>
 									<p>Lorem ipsum dolor..</p>
 								</div>
 							</div>
@@ -65,7 +67,7 @@ ${cloth.imgpath}${cloth.imgname}
 							</div>
 						</c:if>
 					</c:forEach>
-
+					</form>
 					<!-- END GRID -->
 				</div>
 			</div>
@@ -87,6 +89,7 @@ ${cloth.imgpath}${cloth.imgname}
 
 	<script>
 		filterSelection("all")
+		var list = new Array();
 		function filterSelection(c) {
 			var x, i;
 			x = document.getElementsByClassName("column");
@@ -148,8 +151,13 @@ ${cloth.imgpath}${cloth.imgname}
 				} else {
 					var c = confirm("정말 삭제 하시겠습니까?");
 					if (c == true) {
-						if ($(".column").hasClass("cloth_selected"))
+
+						if ($(".column").hasClass("cloth_selected")) {
+							list.push($(".cloth_selected").attr("key"));
+							console.log("keys:" + list);
 							$(".cloth_selected").remove();
+						}
+
 					}
 				}
 			});

@@ -101,7 +101,5 @@ public class ClothesController {
 		return "redirect:/clothes/myCloth_list";
 	}
 	
-	
-	
 
 }
