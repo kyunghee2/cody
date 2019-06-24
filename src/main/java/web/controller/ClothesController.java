@@ -43,8 +43,11 @@ public class ClothesController {
 		String kind = request.getParameter("kind");
 		UserVO user = (UserVO) request.getSession().getAttribute("login");
 		String userid = user.getUserid();
-		String detailpath = userid + "/" + kind + "/";
-		String path = request.getRealPath("/upload/" + detailpath); /*upload폴더 만든거 , 실제 서비스가 되면 저장되는 폴더*/
+		String detailpath = "./upload/" + userid + "/" + kind + "/";
+		/*절대경로*/
+		String path = request.getRealPath(detailpath); /*upload폴더 만든거 , 실제 서비스가 되면 저장되는 폴더*/
+		/*상대경로*/
+//		String path1 = request.getSession();
 		
 		File destdir = new File(path); // 디렉토리 가져오기
 		System.out.println(path);
@@ -74,7 +77,7 @@ public class ClothesController {
 		System.out.println("완");
 		request.setAttribute("imgname", fileName);
 		cloth.setUserid(userid);
-		cloth.setImgpath(path);
+		cloth.setImgpath(detailpath);
 		cloth.setImgname(fileName);
 		
 		clothservice.addCloth(cloth);		

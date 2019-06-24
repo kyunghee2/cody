@@ -31,7 +31,7 @@
 			order by regdate desc
 		) a
 		<where>
-			 <![CDATA[ AND rownum <= 5 ]]> 
+			 <![CDATA[ rownum <= 4 ]]> 
 		</where>
 	
 	
