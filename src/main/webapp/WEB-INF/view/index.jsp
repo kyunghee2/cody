@@ -191,38 +191,42 @@
 					alert("선택된 항목이 없습니다.");
 					return false;
 				}
-				var arrSel = [];
-				$.each( $(".cloth_top"), function( key, value ) {
-					if (!$(this).hasClass("cloth_selected")){
-						var key = $(this).attr("key");
-						if(key != ""){
-						  arrSel.push(key);
-						}
-					}
-				  
-				});
-				$("#clothidlist").val(arrSel.join(","));
-				
-				console.log(arrSel);
-				//console.log($('#form1').serializeArray());
-				if(arrSel.length > 0){
-					$.ajax({
-						url : "./clothes/clothhistoryadd.do",
-						type : "POST",
-						data:$('#form1').serializeArray(),				
-						success : function(data) {
-							if(data.result !=undefined || data.result=="1"){
-								alert("저장되었습니다.");
-							}else{
-								alert("저장실패.");
+
+				var c = confirm("히스토리 저장 하시겠습니까?");
+				if (c) {
+					var arrSel = [];
+					$.each( $(".cloth_top,.cloth_bottom"), function( key, value ) {
+						if ($(this).hasClass("cloth_selected")){
+							var key = $(this).attr("key");
+							if(key != ""){
+							  arrSel.push(key);
 							}
-						},
-						error : function(e) {
-							log(e);
 						}
-					}); 
+					  
+					});
+					$("#clothidlist").val(arrSel.join(","));
+					
+					//console.log(arrSel);
+					//console.log($('#form1').serializeArray());
+					if(arrSel.length > 0){
+						$.ajax({
+							url : "./clothes/clothhistoryadd.do",
+							type : "POST",
+							data:$('#form1').serializeArray(),				
+							success : function(data) {
+								if(data.result !=undefined || data.result=="1"){
+									alert("저장되었습니다.");
+								}else{
+									alert("저장실패.");
+								}
+							},
+							error : function(e) {
+								log(e);
+							}
+						}); 
+					}
 				}
-				 
+				
 				
 			});
 		});
