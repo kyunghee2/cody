@@ -123,8 +123,6 @@ public class ClothServiceImpl implements ClothService {
 
 	}
 
-	
-	
 	@Override
 	public String outerwear() {
 		Calendar calendar = Calendar.getInstance();
@@ -133,9 +131,9 @@ public class ClothServiceImpl implements ClothService {
 		String d = mon + "" + day;
 		int season = Integer.parseInt(d);
 		String season2 = "";
-		
+
 		Weather w = new Weather();
-		System.out.println( w.getWeatherFromDB() );
+		System.out.println(w.getWeatherFromDB());
 		String str = w.getWeatherFromDB();
 		JSONParser jsonParser = new JSONParser();
 		String tempmax = null;
@@ -146,27 +144,26 @@ public class ClothServiceImpl implements ClothService {
 		String msg = null;
 		try {
 			JSONObject object = (JSONObject) jsonParser.parse(str);
-			tempmax =  (String) object.get("tempMax");
+			tempmax = (String) object.get("tempMax");
 			tempmin = (String) object.get("tempMin");
-			
-			
+
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
 		m = Double.parseDouble(tempmax);
 		n = Double.parseDouble(tempmin);
-		
-		if(season >= 1115 && season <= 315) {
-			//겨울
-		}else {
-			//겨울외
-			dif = m -n;
-			if(dif >= 2) {
-				 msg = "일교차가 커요~~ 겉옷 챙겨가세요!!";
+
+		if (season >= 1115 && season <= 315) {
+			// 겨울
+		} else {
+			// 겨울외
+			dif = m - n;
+			if (dif >= 2) {
+				msg = "일교차가 커요~~ 겉옷 챙겨가세요!!";
 			}
-			
+
 		}
-		
+
 		return msg;
 
 	}

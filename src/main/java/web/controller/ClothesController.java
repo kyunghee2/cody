@@ -36,7 +36,7 @@ public class ClothesController {
 	public String cloth_add() {
 		return "/clothes/cloth_add";
 	}
-
+	
 	/* 옷 이미지 등록 */
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.POST)
 	public String cloth_add(@RequestParam("file") MultipartFile file, @ModelAttribute("cloth") ClothVO cloth,
