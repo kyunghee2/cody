@@ -142,7 +142,7 @@
 										</a>
 									</div>									
 								</c:forEach>
-								<%-- <c:set var= "other2" value="${4-fn:length(list_lately)}"/>
+							    <c:set var= "other2" value="${4-fn:length(list_lately)}"/>
 
 								<c:forEach var = "i" begin = "1" end = "${other2}">
 						            <div class="col-lg-3 col-md-4 col-6 ">
@@ -151,7 +151,7 @@
 											src="./img/noimage.gif" alt="">
 										</a>
 									</div>	
-						        </c:forEach> --%>
+						        </c:forEach> 
 						        
 								<!-- list <end> -->
 							</div>
@@ -179,7 +179,8 @@
 			getToday();
 			getLocation();
 
-			$(".cloth_top,.cloth_bottom").click(function() {
+			$(".cloth_top,.cloth_bottom").click(function(e) {
+				e.preventDefault();
 				if (!$(this).hasClass("cloth_selected"))
 					$(this).addClass("cloth_selected");
 				else
@@ -192,8 +193,8 @@
 					return false;
 				}
 				var arrSel = [];
-				$.each( $(".cloth_top"), function( key, value ) {
-					if (!$(this).hasClass("cloth_selected")){
+				$.each( $(".cloth_top,.cloth_bottom"), function( key, value ) {
+					if ($(this).hasClass("cloth_selected")){
 						var key = $(this).attr("key");
 						if(key != ""){
 						  arrSel.push(key);
@@ -203,7 +204,7 @@
 				});
 				$("#clothidlist").val(arrSel.join(","));
 				
-				console.log(arrSel);
+				//console.log(arrSel);
 				//console.log($('#form1').serializeArray());
 				if(arrSel.length > 0){
 					$.ajax({
