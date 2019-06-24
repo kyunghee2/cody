@@ -25,7 +25,7 @@ public class ClothHistoryController {
 	ClothHistoryService clothHistoryService;
 
 	// 옷 히스토리 저장
-	@RequestMapping(value ="/clothes/clothhistoryadd.do", method = RequestMethod.POST)
+	@RequestMapping(value ="/api/clothes/clothhistoryadd.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> addClothHistory(HttpServletRequest request) {
 		String clothidlist = request.getParameter("clothidlist");
@@ -54,16 +54,7 @@ public class ClothHistoryController {
 		}
 		map.put("result", result);
 		return map;
-		//return new ResponseEntity<Map<String,String>>(map, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/clothes/cloth_recommend.do", method = RequestMethod.GET)
-	@ResponseBody
-	public Map<Integer, ClothVO> getRecommendCloth(HttpServletRequest request) {
-		
-		
-		return null;
-			
-	}
 
 }

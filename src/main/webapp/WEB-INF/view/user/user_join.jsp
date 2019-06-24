@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
 </head>
 <body>
-<%@include file="/layout/header.jsp" %>
-<br>
+	<%@include file="/layout/header.jsp"%>
+	<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2"></div>
@@ -22,24 +22,32 @@
 				<br>
 				<form action="./add.do" method="POST" name="form1">
 					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
+						<label for="inputEmail3" class="col-sm-2 col-form-label">ID *</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="userid" name="userid"
-								placeholder="User ID">
+							<div class="input-group mb-3">
+								<input type="text" class="form-control"
+									placeholder="ID"
+									aria-label="ID"
+									aria-describedby="ID" id="userid" name="userid" required>
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button" id="btnIdCheck">중복체크</button>
+								</div>
+							</div>
 						</div>
 					</div>
+
 					<div class="form-group row">
 						<label for="inputEmail3" class="col-sm-2 col-form-label">이름</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="name" name="name"
-								placeholder="이름">
+								placeholder="이름" required>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="inputPassword3" class="col-sm-2 col-form-label">비밀번호</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="userpwd" name="userpwd"
-								placeholder="Password">
+							<input type="password" class="form-control" id="userpwd"
+								name="userpwd" placeholder="Password" required>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -56,25 +64,22 @@
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="gender"
 										id="gender1" value="0" checked> <label
-										class="form-check-label" for="gridRadios1"> 선택안함
-										 </label>
+										class="form-check-label" for="gridRadios1"> 선택안함 </label>
 								</div>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="gender"
 										id="gender2" value="1"> <label
-										class="form-check-label" for="gridRadios2"> 남
-										 </label>
+										class="form-check-label" for="gridRadios2"> 남 </label>
 								</div>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="gender"
 										id="gender3" value="2"> <label
-										class="form-check-label" for="gridRadios3"> 여
-										</label>
+										class="form-check-label" for="gridRadios3"> 여 </label>
 								</div>
 							</div>
 						</div>
 					</fieldset>
-					
+
 					<div class="form-group row">
 						<div class="col-sm-10">
 							<button type="submit" class="btn btn-primary">회원가입</button>
@@ -87,7 +92,27 @@
 			<div class="col-md-2"></div>
 		</div>
 	</div>
+<script>
+$(function(){
+	$("#btnIdCheck").click(function(e){
+		e.preventDefault();
+		var id = $("#userid").val();
+		
+		$.ajax({
+			url : "./api/user/user.do?uid="+id,
+			type : "GET",						
+			success : function(data) {
+				console.log(data);
+			},
+			error : function(e) {
+				log(e);
+			}
+		}); 
+		
+	});
+});
 
+</script>
 
 </body>
 </html>

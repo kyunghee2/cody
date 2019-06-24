@@ -142,7 +142,7 @@
 										</a>
 									</div>									
 								</c:forEach>
-								<%-- <c:set var= "other2" value="${4-fn:length(list_lately)}"/>
+								<c:set var= "other2" value="${4-fn:length(list_lately)}"/>
 
 								<c:forEach var = "i" begin = "1" end = "${other2}">
 						            <div class="col-lg-3 col-md-4 col-6 ">
@@ -151,7 +151,7 @@
 											src="./img/noimage.gif" alt="">
 										</a>
 									</div>	
-						        </c:forEach> --%>
+						        </c:forEach> 
 						        
 								<!-- list <end> -->
 							</div>
@@ -203,14 +203,14 @@
 							}
 						}
 					  
-					});
+					});									
 					$("#clothidlist").val(arrSel.join(","));
 					
 					//console.log(arrSel);
 					//console.log($('#form1').serializeArray());
 					if(arrSel.length > 0){
 						$.ajax({
-							url : "./clothes/clothhistoryadd.do",
+							url : "./api/clothes/clothhistoryadd.do",
 							type : "POST",
 							data:$('#form1').serializeArray(),				
 							success : function(data) {
@@ -298,7 +298,7 @@
 					}
 					else if(t == 6) bimg = "./img/weather_6.jpg";
 					
-					$("#backgroundImage").after().css({
+					$("#backgroundImage").css({
 						'background-image':  'url("'+bimg+'")',
 						'top':'0',
 						'left':'0',
@@ -311,7 +311,7 @@
 						'height': '200%',
 						'background-size': 'cover'
 					});
-				}
+ 				}
 				
 				
 			}
