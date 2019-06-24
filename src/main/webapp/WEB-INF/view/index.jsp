@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +75,7 @@
 										</a>
 									</div>									
 								</c:forEach>
-								<c:set var= "other" value="${4-fn:length(list_top) }"/>
+								<c:set var="other" value="${4-fn:length(list_top)}"/>
 
 								<c:forEach var = "i" begin = "1" end = "${other}">
 						            <div class="col-lg-3 col-md-4 col-6 ">
@@ -109,7 +109,7 @@
 										</a>
 									</div>									
 								</c:forEach>
-								<c:set var= "other2" value="${4-fn:length(list_bottom) }"/>
+								<c:set var= "other2" value="${4-fn:length(list_bottom)}"/>
 
 								<c:forEach var = "i" begin = "1" end = "${other2}">
 						            <div class="col-lg-3 col-md-4 col-6 ">
@@ -142,7 +142,7 @@
 										</a>
 									</div>									
 								</c:forEach>
-								<c:set var= "other2" value="${4-fn:length(list_lately) }"/>
+								<c:set var= "other2" value="${4-fn:length(list_lately)}"/>
 
 								<c:forEach var = "i" begin = "1" end = "${other2}">
 						            <div class="col-lg-3 col-md-4 col-6 ">
