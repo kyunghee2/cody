@@ -36,7 +36,7 @@
 
 					<a class="btn btn-outline-dark" role="button" id="delete"
 						style="float: right;">옷삭제</a> <a
-						href="http://localhost:9090/cody/clothes/cloth_add.do"
+						href="${pageContext.request.contextPath}/clothes/cloth_add.do"
 						class="btn btn-outline-dark" role=z` "button" id="submitclo"
 						style="float: right;">옷등록</a>
 				</div>
@@ -48,20 +48,20 @@
 						<c:if test="${cloth.kind eq '1'}">
 							<div class="column nature" key="${cloth.clothid}">
 								<div class="content">
-									<img src="${cloth.imgpath}${cloth.imgname}" class="image"
+									<img src="..${cloth.imgpath}${cloth.imgname}" class="image"
 										alt="Mountains" style="width: 100%" id="img1">
 									<c:forTokens items="${cloth.season}" delims="," var="season">
 										<c:if test="${season eq '1'}">
-											너를봄
+											봄
 										</c:if>
 										<c:if test="${season eq '2'}">
-											여름여름해
+											여름
 										</c:if>
 										<c:if test="${season eq '3'}">
-											가을우체국앞에서
+											가을
 										</c:if>
 										<c:if test="${season eq '4'}">
-											겨울을 걷는다
+											겨울
 										</c:if>
 									</c:forTokens>
 
@@ -77,7 +77,7 @@
 						<c:if test="${cloth.kind eq '2'}">
 							<div class="column cars">
 								<div class="content">
-									<img src="${cloth.imgpath}${cloth.imgname}" class="image"
+									<img src="..${cloth.imgpath}${cloth.imgname}" class="image"
 										alt="Mountains" style="width: 100%" id="img1">
 									<c:forTokens items="${cloth.season}" delims="," var="season">
 										<c:if test="${season eq '1'}">

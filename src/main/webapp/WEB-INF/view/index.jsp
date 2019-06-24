@@ -71,7 +71,7 @@
 									<div class="col-lg-3 col-md-4 col-6 ">
 										<a href="#" class="d-block mb-4 h-100"> <img key="${cloth.clothid}"
 											class="img-fluid img-thumbnail cloth_top" 
-											src="${cloth.imgpath}${cloth.imgname}" alt="">
+											src=".${cloth.imgpath}${cloth.imgname}" alt="">
 										</a>
 									</div>									
 								</c:forEach>
@@ -105,7 +105,7 @@
 									<div class="col-lg-3 col-md-4 col-6 ">
 										<a href="#" class="d-block mb-4 h-100"> <img key="${cloth.clothid}"
 											class="img-fluid img-thumbnail cloth_bottom"
-											src="${cloth.imgpath}${cloth.imgname}" alt="">
+											src=".${cloth.imgpath}${cloth.imgname}" alt="">
 										</a>
 									</div>									
 								</c:forEach>
@@ -138,11 +138,11 @@
 									<div class="col-lg-3 col-md-4 col-6 ">
 										<a href="#" class="d-block mb-4 h-100"> <img
 											class="img-fluid img-thumbnail cloth_lately"
-											src="${cloth.imgpath}${cloth.imgname}" alt="">
+											src=".${cloth.imgpath}${cloth.imgname}" alt="">
 										</a>
 									</div>									
 								</c:forEach>
-							    <c:set var= "other2" value="${4-fn:length(list_lately)}"/>
+								<%-- <c:set var= "other2" value="${4-fn:length(list_lately)}"/>
 
 								<c:forEach var = "i" begin = "1" end = "${other2}">
 						            <div class="col-lg-3 col-md-4 col-6 ">
@@ -151,7 +151,7 @@
 											src="./img/noimage.gif" alt="">
 										</a>
 									</div>	
-						        </c:forEach> 
+						        </c:forEach> --%>
 						        
 								<!-- list <end> -->
 							</div>
@@ -179,8 +179,7 @@
 			getToday();
 			getLocation();
 
-			$(".cloth_top,.cloth_bottom").click(function(e) {
-				e.preventDefault();
+			$(".cloth_top,.cloth_bottom").click(function() {
 				if (!$(this).hasClass("cloth_selected"))
 					$(this).addClass("cloth_selected");
 				else
@@ -192,6 +191,7 @@
 					alert("선택된 항목이 없습니다.");
 					return false;
 				}
+
 				var c = confirm("히스토리 저장 하시겠습니까?");
 				if (c) {
 					var arrSel = [];

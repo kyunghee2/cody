@@ -17,10 +17,11 @@
 	}
 </style>
 </head>
-<body>
+<body style="background-color: #213458">
 <form class="form-signin" action="login.do" method="POST">
       <div class="text-center mb-4">
-      <h1 class="h3 mb-3 font-weight-normal">Cody Login</h1>
+     <!--  <h1 class="h3 mb-3 font-weight-normal">Cody Login</h1> -->
+     <img alt="로고이미지" src="img/logo.png" width="300" height="300" >
      
       </div>
 

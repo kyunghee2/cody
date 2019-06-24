@@ -15,7 +15,7 @@
 			<div class="col-md-12">
 			<br>
 			<h1>가입완료</h1>
-			<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/index.do';">로그인 화면으로 이동</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/index.do';">로그인 화면으로 이동</button>
 			
 			</div>
 		</div>
