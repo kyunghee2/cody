@@ -43,7 +43,7 @@ public class ClothesController {
 		String kind = request.getParameter("kind");
 		UserVO user = (UserVO) request.getSession().getAttribute("login");
 		String userid = user.getUserid();
-		String detailpath = "./upload/" + userid + "/" + kind + "/";
+		String detailpath = "/upload/" + userid + "/" + kind + "/";
 		/*절대경로*/
 		String path = request.getRealPath(detailpath); /*upload폴더 만든거 , 실제 서비스가 되면 저장되는 폴더*/
 		/*상대경로*/
@@ -82,7 +82,7 @@ public class ClothesController {
 		
 		clothservice.addCloth(cloth);		
 		
-		return "/clothes/myCloth_list";
+		return "/clothes/cloth_add";
 
 	}
 	
