@@ -25,7 +25,7 @@
 			order by regdate desc
 		) a
 		<where>
-			rownum < 10
+			 <![CDATA[ AND rownum <= 5 ]]> 
 		</where>
 	
 	</select>
