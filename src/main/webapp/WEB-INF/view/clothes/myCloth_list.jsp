@@ -95,6 +95,7 @@
 											겨울
 										</c:if>
 									</c:forTokens>
+									<h4 class="tid fontA">${cloth.color}</h4>
 								</div>
 							</div>
 						</c:if>
