@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import spring.biz.cloth.service.ClothHistoryService;
 import spring.biz.cloth.service.ClothService;
+import spring.biz.cloth.vo.ClothHistoryVO;
 import spring.biz.cloth.vo.ClothVO;
 import spring.biz.user.service.UserService;
 import spring.biz.user.vo.UserVO;
@@ -28,6 +30,8 @@ public class LoginController {
 	UserService service;
 	@Autowired
 	ClothService clothservice;
+	@Autowired
+	ClothHistoryService clothhistoryservice;
 	
 	@Value("${secretkey}") 
 	private String key;
@@ -42,7 +46,7 @@ public class LoginController {
 		
 		List<ClothVO> map = clothservice.recommendCloth(userid, "1");
 		String msg = clothservice.outerwear();
-		
+		List<ClothHistoryVO> history = clothhistoryservice.getClothDate(userid, "1");
 		return "/index";
 	}
 	

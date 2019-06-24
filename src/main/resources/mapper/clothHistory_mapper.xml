@@ -12,7 +12,7 @@
 		select * from cloth_history
 	</select>
 	<select id="getclothhistorydate" parameterType="map" resultType="clothhistoryvo">
-		select * from cloth_history where userid = #{userid} and kind = #{kind} order by regdate
+		select * from cloth_history where userid = #{userid} and kind = #{kind} order by regdate desc
 	</select>
 	
 </mapper>
