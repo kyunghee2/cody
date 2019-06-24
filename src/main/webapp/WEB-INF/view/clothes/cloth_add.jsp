@@ -117,22 +117,22 @@
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="spring" name="season" value="봄">
+						<input class="form-check-input" type="checkbox" id="spring" name="season" value="1">
 						<label class="form-check-label" for="spring">봄</label>
 					</div>	
 					
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="summer" name="season" value="여름">
+						<input class="form-check-input" type="checkbox" id="summer" name="season" value="2">
 						<label class="form-check-label" for="summer">여름</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="fall" name="season" value="가을">
+						<input class="form-check-input" type="checkbox" id="fall" name="season" value="3">
 						<label class="form-check-label" for="fall">가을</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="winter" name="season" value="겨울">
+						<input class="form-check-input" type="checkbox" id="winter" name="season" value="4">
 						<label class="form-check-label" for="winter">겨울</label>
 					</div>
 				</div>
@@ -143,12 +143,12 @@
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="kind" id="cloth" value="top">
+					  <input class="form-check-input" type="radio" name="kind" id="top" value="1">
 					  <label class="form-check-label" for="cloth_top">상의</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="kind" id="cloth" value="bottom">
+					  <input class="form-check-input" type="radio" name="kind" id="bottom" value="2">
 					  <label class="form-check-label" for="cloth_bottom">하의</label>
 					</div>
 				</div>	
