@@ -62,7 +62,8 @@ h1 {
 	background-color: white;
 	cursor: pointer;
 }
-
+ 
+ 
 /* Add a grey background color on mouse-over */
 .btn:hover {
 	background-color: #ddd;

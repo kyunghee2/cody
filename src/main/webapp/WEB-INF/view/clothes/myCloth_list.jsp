@@ -50,21 +50,20 @@
 								<div class="content">
 									<img src="${cloth.imgpath}${cloth.imgname}" class="image"
 										alt="Mountains" style="width: 100%" id="img1">
-									<c:forTokens items="${cloth.season}" delims="," var="season" style=white-space:nowrap; >
+									<c:forTokens items="${cloth.season}" delims="," var="season">
 										<c:if test="${season eq '1'}">
-											<h5 class="tid fontA">여름</h4>
+											너를봄
 										</c:if>
 										<c:if test="${season eq '2'}">
-											<h5 class="tid fontA">봄</h4>
+											여름여름해
 										</c:if>
 										<c:if test="${season eq '3'}">
-											<h5 class="tid fontA">가을</h4>
+											가을우체국앞에서
 										</c:if>
 										<c:if test="${season eq '4'}">
-											<h5 class="tid fontA">겨울</h4>
+											겨울을 걷는다
 										</c:if>
 									</c:forTokens>
-
 
 									<h4 class="tid fontA">${cloth.color}</h4>
 								</div>
@@ -82,16 +81,16 @@
 										alt="Mountains" style="width: 100%" id="img1">
 									<c:forTokens items="${cloth.season}" delims="," var="season">
 										<c:if test="${season eq '1'}">
-											<h5 class="tid fontA">봄</h4>
+											봄 
 										</c:if>
 										<c:if test="${season eq '2'}">
-											<h5 class="tid fontA">여름</h4>
+											여름
 										</c:if>
 										<c:if test="${season eq '3'}">
-											<h5 class="tid fontA">가을</h4>
+											가을
 										</c:if>
 										<c:if test="${season eq '4'}">
-											<h5 class="tid fontA">겨울</h4>
+											겨울
 										</c:if>
 									</c:forTokens>
 								</div>
@@ -105,7 +104,6 @@
 			<div class="col-md-2"></div>
 		</div>
 	</div>
-
 
 
 
