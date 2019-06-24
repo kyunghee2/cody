@@ -143,12 +143,12 @@
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="cloth" id="cloth_top" value="top">
+					  <input class="form-check-input" type="radio" name="kind" id="cloth" value="top">
 					  <label class="form-check-label" for="cloth_top">상의</label>
 					</div>
 					
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="cloth" id="cloth_bottom" value="top">
+					  <input class="form-check-input" type="radio" name="kind" id="cloth" value="bottom">
 					  <label class="form-check-label" for="cloth_bottom">하의</label>
 					</div>
 				</div>	
