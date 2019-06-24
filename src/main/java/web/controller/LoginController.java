@@ -56,6 +56,7 @@ public class LoginController {
 		view.addObject("userid", userid);
 		view.setViewName("index");
 		System.out.println(list_top);
+		System.out.println(list_lately);
 		//System.out.println(history_top);
 		//System.out.println(outwear_msg);
 		//최근 입었던옷

@@ -21,14 +21,14 @@
 
 		select *
 		from (
-			select * 
-			from cloth_history 			
+			select a.kind, a.CLOTHID, a.REGDATE, a.USERID, TEMP, HUMIDITY, DUST, b.imgpath, b.imgname
+			from cloth_history a inner join cloth b on a.clothid = b.clothid			
 			
 			<where>
-			userid = #{userid} 
-			<if test="kind != null">and kind = #{kind}</if>
+			a.userid = #{userid} 
+			<if test="kind != null and kind != '' ">and a.kind = #{kind}</if>
 			</where>			
-			order by regdate desc
+			order by a.regdate desc
 		) a
 		<where>
 			 <![CDATA[ rownum <= 4 ]]> 
