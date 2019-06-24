@@ -12,7 +12,21 @@
 		select * from cloth_history
 	</select>
 	<select id="getclothhistorydate" parameterType="map" resultType="clothhistoryvo">
-		select * from cloth_history where userid = #{userid} and kind = #{kind} order by regdate
+		select *
+		from (
+			select * 
+			from cloth_history 			
+			
+			<where>
+			userid = #{userid} 
+			<if test="kind != null">and kind = #{kind}</if>
+			</where>			
+			order by regdate desc
+		) a
+		<where>
+			rownum < 10
+		</where>
+		 
 	</select>
 	
 </mapper>
