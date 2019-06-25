@@ -317,7 +317,7 @@
 				
 			}
 			if (json.pm10Grade != undefined) {
-				var pm10Grade = json.pm10Grade;//미세먼지
+				var pm10Grade = "4";//json.pm10Grade;//미세먼지
 				
 				var pm10Grade_img = ""; 
 				switch (pm10Grade) {
@@ -346,6 +346,10 @@
 				if(pm10Grade_img != ""){
 					var img = $('<img />').attr("src",pm10Grade_img);
 					$("#eicon_area").append(img);
+					if(pm10Grade >= 3){
+						$("#today_msg").html("마스크 챙기세요~").show();
+					}
+					
 				}				
 			}
 			if (json.tempNow != undefined){
@@ -362,7 +366,7 @@
 			}				
 			if(ranFlag){
 				var img = $('<img />').attr("src","./img/emoticon/emoji23.jpg");
-				$("#eicon_area").appendTo(img);
+				$("#eicon_area").append(img);
 				$("#today_msg").html("우산 챙기세요~").show();
 			}
 			var outermsg = "${outermsg}";
