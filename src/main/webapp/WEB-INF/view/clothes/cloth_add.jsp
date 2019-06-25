@@ -20,9 +20,11 @@
 		$("#cloth_img_upload").on("change", addfiles);
 		
 		$("#add_cloth_img").click(function() {
+
 			var c = confirm("옷을 등록하시겠습니까?");
 			if(c){
 				return true;
+
 			}else{
 				return false;
 			}
