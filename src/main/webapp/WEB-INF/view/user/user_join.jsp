@@ -114,7 +114,7 @@ $(function(){
 						$(".with-errors").html("ID가 중복됩니다.");
 						$("#idCheck").val(false);
 					}else{
-						$(".with-errors").html("");
+						$(".with-errors").html("사용가능한 ID입니다.");
 						$("#idCheck").val(true);
 					}
 				},
@@ -138,7 +138,9 @@ function join(){
 		$(".with-errors").html("ID가 중복됩니다.");
 		return false;
 	}else{
+		
 		return true;
+		
 	}
 	
 }

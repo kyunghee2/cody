@@ -216,6 +216,7 @@
 							success : function(data) {
 								if(data.result !=undefined || data.result=="1"){
 									alert("저장되었습니다.");
+									location.reload();
 								}else{
 									alert("저장실패.");
 								}
