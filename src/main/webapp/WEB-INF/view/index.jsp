@@ -232,11 +232,14 @@
 		});
 		
 		function getLocation() {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(geoPosition, showError);
-			} else {
-				log("브라우저에서 위치정보를 가져올 수 없습니다.");
-			}
+			
+			//크롬 브라우저 정책변경으로 5.0이상은 https만 지원 
+// 			if (navigator.geolocation) {
+// 				navigator.geolocation.getCurrentPosition(geoPosition, showError);
+// 			} else {
+// 				log("브라우저에서 위치정보를 가져올 수 없습니다.");
+// 			}
+			geoPosition("");
 		}
 		function showError(error) {
 			switch (error.code) {
@@ -256,9 +259,11 @@
 		}
 
 		function geoPosition(position) {
-			var lat = position.coords.latitude;
-			var lon = position.coords.longitude
-			//log(position);
+			//var lat = position.coords.latitude;
+			//var lon = position.coords.longitude;			
+			var lat ="37.511168000000005";
+			var lon ="127.029248";
+			//log("lat:"+lat + " lon:"+lon);
 
 			getWeather(lat, lon);
 		}
