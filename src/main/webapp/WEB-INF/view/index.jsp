@@ -317,7 +317,7 @@
 				
 			}
 			if (json.pm10Grade != undefined) {
-				var pm10Grade = "4";//json.pm10Grade;//미세먼지
+				var pm10Grade = json.pm10Grade;//미세먼지
 				
 				var pm10Grade_img = ""; 
 				switch (pm10Grade) {
