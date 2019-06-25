@@ -365,6 +365,10 @@
 				$("#eicon_area").appendTo(img);
 				$("#today_msg").html("우산 챙기세요~").show();
 			}
+			var outermsg = "${outermsg}";
+			if(outermsg != "" && outermsg != undefined){
+				$("#today_msg").html(outermsg);
+			}
 			
 			
 		}

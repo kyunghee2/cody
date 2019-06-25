@@ -50,12 +50,14 @@ public class LoginController {
 		List<ClothVO> list_top = clothservice.recommendCloth(userid, "1");
 		List<ClothVO> list_bottom = clothservice.recommendCloth(userid, "2");
 		List<ClothHistoryVO> list_lately = clothHistoryService.getClothDate(userid, "");
-		
+		String outermsg = clothservice.outerwear();
 		
 		view.addObject("list_top", list_top);
 		view.addObject("list_bottom", list_bottom);
 		view.addObject("list_lately", list_lately);
 		view.addObject("userid", userid);
+		view.addObject("outermsg",outermsg);
+		
 		view.setViewName("index");
 		System.out.println(list_top); 
 		System.out.println(list_lately);

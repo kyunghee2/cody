@@ -158,7 +158,7 @@ public class ClothServiceImpl implements ClothService {
 		} else {
 			// 겨울외
 			dif = m - n;
-			if (dif >= 2) {
+			if (dif >= 12) {
 				msg = "일교차가 커요~~ 겉옷 챙겨가세요!!";
 			}
 
