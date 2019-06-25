@@ -22,7 +22,7 @@
 		$("#add_cloth_img").click(function() {
 			log("파일업로드");
 			if(!("file")){
-				
+				return "/clothes/cloth_add"; 
 			}else{
 				confirm("옷을 등록하시겠습니까?");
 				
