@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="clothMapper">
 
-
 <insert id="addcloth"><!-- 완료 -->
 		insert into cloth (clothid, userid, imgpath, imgname, season, kind, color) 
 			values ((select nvl(max(clothid),0)+1 from cloth), #{userid},
