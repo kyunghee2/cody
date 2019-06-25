@@ -39,5 +39,8 @@
 	
 	
 	</select>
+	<delete id="removeclothhistory"> <!-- 완료 -->	
+		delete from cloth_history where clothid = #{clothid}
+	</delete>
 	
 </mapper>

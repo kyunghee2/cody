@@ -48,5 +48,9 @@ public class ClothHistoryServiceImpl implements ClothHistoryService{
 		
 		return dao.getClothDate(userid, kind);
 	}
+	@Override
+	public int removeClothHistory(Integer clothid) {
+		return dao.removeClothHistory(clothid);
+	}
 
 }

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.biz.cloth.service.ClothHistoryService;
 import spring.biz.cloth.service.ClothService;
 import spring.biz.cloth.vo.ClothVO;
 import spring.biz.user.vo.UserVO;
@@ -30,6 +31,9 @@ public class ClothesController {
 
 	@Autowired
 	ClothService clothservice;
+	
+	@Autowired
+	ClothHistoryService clothhistoryservice;
 
 	/* cloth_add.do 페이지 */
 	@RequestMapping(value = "/clothes/cloth_add.do", method = RequestMethod.GET)
@@ -135,10 +139,12 @@ public class ClothesController {
 				String currdir = ClothesController.class.getResource(".").getPath();
 				String[] dir = currdir.split("WEB-INF");
 				
+				clothhistoryservice.removeClothHistory(Integer.parseInt(clothid));
+				result = clothservice.removeCloth(Integer.parseInt(clothid));
+				
 				File file = new File(dir[0] + path + filename);
 				file.delete();
 				
-				result = clothservice.removeCloth(Integer.parseInt(clothid));
 			}
 			map.put("result", result);	
 

@@ -47,7 +47,7 @@
 			 season = #{season}, kind = #{kind}, color = #{color} where clothid = #{clothid}
 	</update>
 	
-	<delete id="removecloth"> <!-- 완료 -->
+	<delete id="removecloth"> <!-- 완료 -->	
 		delete from cloth where clothid = #{clothid}
 	</delete>
 	

@@ -9,5 +9,5 @@ public interface ClothHistoryService {
 	int addClothHistory(ClothHistoryVO clothhistory); 
 	List<ClothHistoryVO> getClothHistoryList(String clothid,String userid);
 	List<ClothHistoryVO> getClothDate(String userid, String kind );
-	
+	int removeClothHistory(Integer clothid);
 }

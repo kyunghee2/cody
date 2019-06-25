@@ -37,6 +37,11 @@ public class ClothHistoryDAO_MyBatis implements ClothHistoryDAO{
 		map.put("kind", kind);
 		return sqlSession.selectList("clothHistoryMapper.getclothhistorydate", map);
 	}
+
+	@Override
+	public int removeClothHistory(Integer clothid) {
+		return sqlSession.delete("clothHistoryMapper.removeclothhistory", clothid);
+	}
 	
 	
 	
