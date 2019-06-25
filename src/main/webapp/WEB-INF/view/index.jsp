@@ -207,7 +207,6 @@
 					$("#clothidlist").val(arrSel.join(","));
 					
 					//console.log(arrSel);
-					//console.log($('#form1').serializeArray());
 					if(arrSel.length > 0){
 						$.ajax({
 							url : "./api/clothes/clothhistoryadd.do",
@@ -216,6 +215,7 @@
 							success : function(data) {
 								if(data.result !=undefined || data.result=="1"){
 									alert("저장되었습니다.");
+									location.reload();
 								}else{
 									alert("저장실패.");
 								}
@@ -272,7 +272,6 @@
 			$.ajax({
 				url : './api/weather.do?lat=' + p_lat + '&lon=' + p_lon,
 				type : "GET",
-				//data:$('form').serializeArray(),
 				success : function(data) {
 					var json = $.parseJSON(data);
 					log(json);
@@ -288,12 +287,9 @@
 			var pm10Grade_txt = "좋음";
 			var ranFlag = false;
 			
-			//console.log("json.weatherID:"+json.weatherID);
 			if (json.weatherID != undefined) {
 				var bimg = "";
 				var weatherID = json.weatherID;
-				//console.log("=====================");
-				//console.log(weatherID.substring(0,1));
 				var t = weatherID.substring(0,1);
 				
 				if(t==2 || t==3 || t==5|| t==6){
