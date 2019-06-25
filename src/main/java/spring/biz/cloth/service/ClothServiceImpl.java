@@ -94,7 +94,7 @@ public class ClothServiceImpl implements ClothService {
 			season2 = "1";
 		} else if (season >= 515 && season <= 915) {
 			System.out.println("여름");
-			season2 = "1";
+			season2 = "2";
 		} else if (season >= 916 && season <= 1114) {
 			System.out.println("가을");
 			season2 = "3";
