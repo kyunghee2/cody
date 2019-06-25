@@ -20,16 +20,12 @@
 		$("#cloth_img_upload").on("change", addfiles);
 		
 		$("#add_cloth_img").click(function() {
-			log("파일업로드");
-			if(!("file")){
-				
+			var c = confirm("옷을 등록하시겠습니까?");
+			if(c){
+				return true;
 			}else{
-				confirm("옷을 등록하시겠습니까?");
-				
-				log("파일업로드완료");
+				return false;
 			}
-		
-			location.reload();
 		});
 	});
 	/*파일추가*/
@@ -117,7 +113,7 @@
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="spring" name="season" value="1" required>
+						<input class="form-check-input" type="checkbox" id="spring" name="season" value="1" >
 						<label class="form-check-label" for="spring">봄</label>
 					</div>	
 					
@@ -143,7 +139,7 @@
 				
 				<div class="col-sm-10">
 					<div class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="kind" id="top" value="1" required>
+					  <input class="form-check-input" type="radio" name="kind" id="top" value="1" >
 					  <label class="form-check-label" for="cloth_top">상의</label>
 					</div>
 					
@@ -158,7 +154,7 @@
 				<label for="inputEmail3" class="col-sm-2 col-form-label">색상</label>
 				
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="color" id="color" placeholder="ex) 흰색" required>
+					<input type="text" class="form-control" name="color" id="color" placeholder="ex) 흰색" >
 				</div>	
 			</div>
 			
