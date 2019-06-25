@@ -72,7 +72,6 @@ public class ClothesController {
 				UUID uuid = UUID.randomUUID();
 				fileName = uuid.toString() + fileName;
 				f = new File(path + fileName);
-				detailpath = path + fileName;
 			}
 		}
 		/* 파일 복사 */
