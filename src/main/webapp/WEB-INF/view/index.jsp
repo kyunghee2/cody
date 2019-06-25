@@ -207,7 +207,6 @@
 					$("#clothidlist").val(arrSel.join(","));
 					
 					//console.log(arrSel);
-					//console.log($('#form1').serializeArray());
 					if(arrSel.length > 0){
 						$.ajax({
 							url : "./api/clothes/clothhistoryadd.do",
@@ -233,11 +232,14 @@
 		});
 		
 		function getLocation() {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(geoPosition, showError);
-			} else {
-				log("브라우저에서 위치정보를 가져올 수 없습니다.");
-			}
+			
+			//크롬 브라우저 정책변경으로 5.0이상은 https만 지원 
+// 			if (navigator.geolocation) {
+// 				navigator.geolocation.getCurrentPosition(geoPosition, showError);
+// 			} else {
+// 				log("브라우저에서 위치정보를 가져올 수 없습니다.");
+// 			}
+			geoPosition("");
 		}
 		function showError(error) {
 			switch (error.code) {
@@ -257,9 +259,11 @@
 		}
 
 		function geoPosition(position) {
-			var lat = position.coords.latitude;
-			var lon = position.coords.longitude
-			//log(position);
+			//var lat = position.coords.latitude;
+			//var lon = position.coords.longitude;			
+			var lat ="37.511168000000005";
+			var lon ="127.029248";
+			//log("lat:"+lat + " lon:"+lon);
 
 			getWeather(lat, lon);
 		}
@@ -268,7 +272,6 @@
 			$.ajax({
 				url : './api/weather.do?lat=' + p_lat + '&lon=' + p_lon,
 				type : "GET",
-				//data:$('form').serializeArray(),
 				success : function(data) {
 					var json = $.parseJSON(data);
 					log(json);
@@ -284,12 +287,9 @@
 			var pm10Grade_txt = "좋음";
 			var ranFlag = false;
 			
-			//console.log("json.weatherID:"+json.weatherID);
 			if (json.weatherID != undefined) {
 				var bimg = "";
 				var weatherID = json.weatherID;
-				//console.log("=====================");
-				//console.log(weatherID.substring(0,1));
 				var t = weatherID.substring(0,1);
 				
 				if(t==2 || t==3 || t==5|| t==6){
