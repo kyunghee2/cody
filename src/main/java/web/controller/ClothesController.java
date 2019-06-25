@@ -128,6 +128,15 @@ public class ClothesController {
 		try {
 			
 			for(String clothid: de.split(",")) {				
+				ClothVO cloth = clothservice.getClothId(Integer.parseInt(clothid));
+				String path = cloth.getImgpath();
+				String filename = cloth.getImgname();
+				String currdir = ClothesController.class.getResource(".").getPath();
+				String[] dir = currdir.split("WEB-INF");
+				
+				File file = new File(dir[0] + path + filename);
+				file.delete();
+				
 				result = clothservice.removeCloth(Integer.parseInt(clothid));
 			}
 			map.put("result", result);	
